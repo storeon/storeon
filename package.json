@@ -1,15 +1,17 @@
 {
   "name": "storeon",
   "version": "0.0.0",
-  "description": "Tiny (196 bytes) event-based state manager",
+  "description": "Tiny (196 bytes) event-based immutable state manager for React and Preact",
   "keywords": [
     "state",
-    "immutable"
+    "immutable",
+    "react",
+    "preact"
   ],
   "scripts": {
     "clean": "rimraf docs/ coverage/",
     "docs": "jsdoc -d docs/ *.js",
-    "spell": "yarn docs && yaspeller-ci *.md docs/*.html",
+    "spell": "yarn docs && yaspeller *.md docs/*.html",
     "lint": "eslint *.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spell"
   },
@@ -33,17 +35,35 @@
     "jest": "^24.5.0",
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.5",
+    "preact": "^10.0.0-alpha.2",
+    "react": "^16.8.4",
+    "react-test-renderer": "^16.8.4",
     "size-limit": "^0.21.1",
-    "yaspeller-ci": "^1.0.0"
+    "yaspeller": "^5.0.1"
   },
   "size-limit": [
     {
       "path": "index.js",
       "limit": "196 B"
+    },
+    {
+      "path": [
+        "index.js",
+        "react.js"
+      ],
+      "limit": "407 B",
+      "ignore": [
+        "react"
+      ]
     }
   ],
   "eslintConfig": {
-    "extends": "@logux/eslint-config/browser"
+    "extends": "@logux/eslint-config/browser",
+    "rules": {
+      "node/no-unpublished-require": "off",
+      "node/no-missing-require": "off",
+      "global-require": "off"
+    }
   },
   "lint-staged": {
     "*.md": "yaspeller-ci",
@@ -66,7 +86,8 @@
       "GMT",
       "createStore",
       "js",
-      "moduleInitializer"
+      "moduleInitializer",
+      "Preact"
     ]
   }
 }
