@@ -1,7 +1,7 @@
 {
   "name": "storeon",
   "version": "0.0.0",
-  "description": "Tiny (196 bytes) event-based immutable state manager for React and Preact",
+  "description": "Tiny (196 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
     "immutable",
@@ -66,7 +66,7 @@
     }
   },
   "lint-staged": {
-    "*.md": "yaspeller-ci",
+    "*.md": "yaspeller",
     "*.js": "eslint"
   },
   "husky": {
@@ -87,7 +87,10 @@
       "createStore",
       "js",
       "moduleInitializer",
-      "Preact"
+      "Preact",
+      "Redux",
+      "gzipped",
+      "Storeon A"
     ]
   }
 }

@@ -47,7 +47,7 @@ module.exports = function (h, createContext, useState, useContext, useEffect) {
  * @return {decorator} The function to wrap component.
  *
  * @example
- * import connect from 'storeon/react' // or 'store/preact'
+ * import connect from 'storeon/react' // or 'storeon/preact'
  * const Counter = ({ count, dispatch }) => {
  *   return <div>
  *     {count}
