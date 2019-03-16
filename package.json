@@ -1,7 +1,7 @@
 {
-  "name": "store-on",
+  "name": "storeon",
   "version": "0.0.0",
-  "description": "Tiny (210 bytes) event-based state manager",
+  "description": "Tiny (208 bytes) event-based state manager",
   "keywords": [
     "state",
     "immutable"
@@ -15,7 +15,7 @@
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
-  "repository": "ai/state-on",
+  "repository": "ai/storeon",
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
     "clean-publish": "^1.1.0",
@@ -39,7 +39,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "210 B"
+      "limit": "208 B"
     }
   ],
   "eslintConfig": {

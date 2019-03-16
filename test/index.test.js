@@ -15,10 +15,10 @@ it('applies modules', function () {
   expect(store2).toBe(store)
 })
 
-it('fires store-on/init', function () {
+it('fires storeon/init', function () {
   var fired = 0
   function module1 (store) {
-    store.on('store-on/init', function () {
+    store.on('storeon/init', function () {
       fired += 1
     })
   }
@@ -44,7 +44,7 @@ it('changes state in event listener', function () {
     return { b: 2 }
   })
   var changed = 0
-  store.on('store-on/changed', function (state) {
+  store.on('storeon/changed', function (state) {
     expect(store.get()).toEqual(state)
     expect(state).toEqual({ a: 1, b: 2 })
     changed += 1
@@ -88,5 +88,5 @@ it('throws on unknown not system events', function () {
   expect(function () {
     store.dispatch('unknown')
   }).toThrow('Unknown event unknown')
-  store.dispatch('store-on/unknown')
+  store.dispatch('storeon/unknown')
 })

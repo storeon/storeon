@@ -10,7 +10,7 @@ var merge = require('./merge')
  * @return {Store} The new store.
  *
  * @example
- * import createStore from 'store-on'
+ * import createStore from 'storeon'
  * let increment = store => {
  *   store.on('store/init', () => ({ count: 0 }))
  *   store.on('inc', ({ count }) => ({ count: count + 1 }))
@@ -37,7 +37,7 @@ function createStore (modules) {
   function dispatch (event, data) {
     var list = events[event]
     if (process.env.NODE_ENV !== 'production') {
-      if (event.indexOf('store-on/') !== 0 && !list) {
+      if (event.indexOf('storeon/') !== 0 && !list) {
         throw new Error('Unknown event ' + event)
       }
     }
@@ -52,7 +52,7 @@ function createStore (modules) {
       }
     }
     if (changed) {
-      dispatch('store-on/changed')
+      dispatch('storeon/changed')
     }
   }
 
@@ -63,7 +63,7 @@ function createStore (modules) {
   var store = { on: on, dispatch: dispatch, get: get }
 
   for (var i = 0; i < modules.length; i++) modules[i](store)
-  store.dispatch('store-on/init')
+  store.dispatch('storeon/init')
 
   return store
 }
