@@ -1,14 +1,16 @@
 {
   "name": "store-on",
   "version": "0.0.0",
-  "description": "Tiny event-based state manager",
+  "description": "Tiny (210 bytes) event-based state manager",
   "keywords": [
     "state",
     "immutable"
   ],
   "scripts": {
-    "spell": "yaspeller-ci *.md",
-    "lint": "eslint-ci *.js",
+    "clean": "rimraf docs/ coverage/",
+    "docs": "jsdoc -d docs/ *.js",
+    "spell": "yarn docs && yaspeller-ci *.md docs/*.html",
+    "lint": "eslint *.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spell"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -18,7 +20,6 @@
     "@logux/eslint-config": "^27.0.0",
     "clean-publish": "^1.1.0",
     "eslint": "^5.15.1",
-    "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-es5": "^1.3.1",
     "eslint-plugin-import": "^2.16.0",
@@ -30,6 +31,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.3.1",
     "jest": "^24.5.0",
+    "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.5",
     "size-limit": "^0.21.1",
     "yaspeller-ci": "^1.0.0"
@@ -37,11 +39,11 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "0 B"
+      "limit": "210 B"
     }
   ],
   "eslintConfig": {
-    "extends": "@logux/eslint-config/node"
+    "extends": "@logux/eslint-config/browser"
   },
   "lint-staged": {
     "*.md": "yaspeller-ci",
@@ -55,8 +57,16 @@
   "yaspeller": {
     "lang": "en",
     "ignoreCapitalization": true,
+    "excludeFiles": [
+      "docs/*.js.html"
+    ],
     "dictionary": [
-      "Versioning"
+      "Versioning",
+      "JSDoc",
+      "GMT",
+      "createStore",
+      "js",
+      "moduleInitializer"
     ]
   }
 }

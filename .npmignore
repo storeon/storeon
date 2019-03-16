@@ -5,6 +5,7 @@ npm-debug.log
 yarn-error.log
 yarn.lock
 
+docs/
 coverage/
 test/
 .travis.yml
