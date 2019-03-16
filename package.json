@@ -51,7 +51,7 @@
         "index.js",
         "react.js"
       ],
-      "limit": "407 B",
+      "limit": "413 B",
       "ignore": [
         "react"
       ]
@@ -90,7 +90,9 @@
       "Preact",
       "Redux",
       "gzipped",
-      "Storeon A"
+      "Storeon A",
+      "Redux’s",
+      "async"
     ]
   }
 }

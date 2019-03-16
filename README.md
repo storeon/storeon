@@ -30,7 +30,7 @@ const Counter = ({ count, dispatch }) => {
     <button onClick={() => dispatch('inc')}
   </div>
 }
-export default connect('count')(React.memo(Counter))
+export default connect('count', React.memo(Counter))
 ```
 
 ```js
@@ -48,3 +48,145 @@ render(
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
        alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
+
+
+## Usage
+
+### Store
+
+The store should be created with `createStore()` function. It accepts list
+of the modules.
+
+Each module is just a function, which will accept `store`
+and bind own event listeners.
+
+```js
+// store/index.js
+import createStore from 'storeon'
+
+import projects from './projects'
+import users from './users'
+
+export const store = createStore([projects, users])
+```
+
+```js
+// store/projects.js
+
+export default store => {
+  store.on('@init', () => ({ projects: [] }))
+
+  store.on('projects/add', ({ projects }, project) => {
+    return projects.concat([project])
+  })
+}
+```
+
+The store has 3 methods:
+
+* `store.get()` will return current state. The state is always an object.
+* `store.on(event, callback)` will add event listener.
+* `store.dispatch(event, data)` will emit event with optional data.
+
+
+### Events
+
+There are 3 built-in events:
+
+* `@init` will be fired in `createStore`. The best moment to set initial state.
+* `@dispatch` will be fired on every `store.dispatch()` call.
+  Can be useful for debug.
+* `@changed` will be fired every when event listeners changed the state.
+
+To add event listener, call `store.on()` with event name and callback.
+
+```js
+store.on('@dispatch', ([event, data]) => {
+  console.log(`Storeon: ${ event } with `, data)
+})
+```
+
+`store.on()` will return cleanup function. This function will remove
+event listener.
+
+```js
+const unbind = store.on('@changed', …)
+unbind()
+```
+
+You can dispatch any other events. Just do not start event names with `@`.
+
+If event listeners will return a object, this object will update the state.
+You do not need to return the whole state, just return an object
+with changed keys.
+
+```js
+// count: 0 will be added to state on initialization
+store.on('@init', () => ({ users:  { } }))
+```
+
+Event listener accepts the current state as a first argument
+and optional event object as a second.
+
+So event listeners can be a reducers as well. As in Redux’s reducers,
+you should change immutable.
+
+```js
+store.on('users/save', ({ users }, user) => {
+  return {
+    users: { ...users, [user.id]: user }
+  }
+})
+
+store.dispatch('users/save', { id: 1, name: 'Ivan' })
+```
+
+You can dispatch other events in event listeners. It can be useful for async
+operations.
+
+```js
+store.on('users/add', async (state, user) => {
+  try {
+    await api.addUser(user)
+    store.dispatch('users/save', user)
+  } catch (e) {
+    store.dispatch('errors/server-error')
+  }
+})
+```
+
+
+### Components
+
+You can bind the store to React and Preact component with `connect()` decorator.
+
+```js
+import { connect } from 'storeon/react' // Use 'storeon/preact' for Preact
+
+const Users = ({ users, dispatch }) => {
+  const onAdd = useCallback(user => {
+    dispatch('users/add', user)
+  })
+  return <div>
+    {users.map(user => <User key={user.id} user={user} />)}
+    <NewUser onAdd={onAdd} />
+  </div>
+}
+
+export default connect('users', React.memo(Users))
+```
+
+`connect()` will re-render on any state changes.
+It is important for performance to wrap all your component into `React.memo`
+or define `shouldComponentUpdate`.
+
+`connect()` accept the list of state keys to pass into `props`.
+Or you can pass a function to convert state to `props`.
+
+```js
+const mapToProps = ({ projects }) => ({
+  activeProjects: projects.filter(i => i.active)
+})
+
+export default connect(mapToProps, React.memo(Projects, deepEqual))
+```
