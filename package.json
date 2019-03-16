@@ -1,0 +1,12 @@
+{
+  "name": "store-on",
+  "version": "0.0.0",
+  "description": "Tiny event based state manager",
+  "keywords": [
+    "state",
+    "immutable"
+  ],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "MIT",
+  "repository": "ai/state-on"
+}
