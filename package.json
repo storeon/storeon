@@ -1,7 +1,7 @@
 {
   "name": "store-on",
   "version": "0.0.0",
-  "description": "Tiny event based state manager",
+  "description": "Tiny event-based state manager",
   "keywords": [
     "state",
     "immutable"
