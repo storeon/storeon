@@ -35,24 +35,28 @@ function createStore (modules) {
   }
 
   function dispatch (event, data) {
+    if (event !== '@dispatch') {
+      dispatch('@dispatch', [event, data])
+    }
+
     var list = events[event]
     if (process.env.NODE_ENV !== 'production') {
-      if (event.indexOf('storeon/') !== 0 && !list) {
+      if (event.indexOf('@') !== 0 && !list) {
         throw new Error('Unknown event ' + event)
       }
     }
     if (!list) return
 
     var changed = false
-    for (var i = 0; i < list.length; i++) {
-      var changes = list[i](state, data)
+    list.forEach(function (i) {
+      var changes = i(state, data)
       if (changes) {
         state = merge(state, changes)
         changed = true
       }
-    }
+    })
     if (changed) {
-      dispatch('storeon/changed')
+      dispatch('@changed')
     }
   }
 
@@ -62,8 +66,10 @@ function createStore (modules) {
 
   var store = { on: on, dispatch: dispatch, get: get }
 
-  for (var i = 0; i < modules.length; i++) modules[i](store)
-  store.dispatch('storeon/init')
+  modules.forEach(function (i) {
+    i(store)
+  })
+  store.dispatch('@init')
 
   return store
 }

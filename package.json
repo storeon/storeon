@@ -1,7 +1,7 @@
 {
   "name": "storeon",
   "version": "0.0.0",
-  "description": "Tiny (208 bytes) event-based state manager",
+  "description": "Tiny (196 bytes) event-based state manager",
   "keywords": [
     "state",
     "immutable"
@@ -39,7 +39,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "208 B"
+      "limit": "196 B"
     }
   ],
   "eslintConfig": {

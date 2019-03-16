@@ -15,10 +15,10 @@ it('applies modules', function () {
   expect(store2).toBe(store)
 })
 
-it('fires storeon/init', function () {
+it('fires @init', function () {
   var fired = 0
   function module1 (store) {
-    store.on('storeon/init', function () {
+    store.on('@init', function () {
       fired += 1
     })
   }
@@ -44,7 +44,7 @@ it('changes state in event listener', function () {
     return { b: 2 }
   })
   var changed = 0
-  store.on('storeon/changed', function (state) {
+  store.on('@changed', function (state) {
     expect(store.get()).toEqual(state)
     expect(state).toEqual({ a: 1, b: 2 })
     changed += 1
@@ -88,5 +88,32 @@ it('throws on unknown not system events', function () {
   expect(function () {
     store.dispatch('unknown')
   }).toThrow('Unknown event unknown')
-  store.dispatch('storeon/unknown')
+  store.dispatch('@unknown')
+})
+
+it('notifies about new event', function () {
+  var events = []
+  function module (a) {
+    a.on('@dispatch', function (state, e) {
+      events.push(e)
+    })
+    a.on('test', function (state, data) {
+      if (data === 1) {
+        return { test: 1 }
+      } else {
+        return undefined
+      }
+    })
+  }
+
+  var store = createStore([module])
+  store.dispatch('test', 1)
+  store.dispatch('test', 2)
+
+  expect(events).toEqual([
+    ['@init', undefined],
+    ['test', 1],
+    ['@changed', undefined],
+    ['test', 2]
+  ])
 })
