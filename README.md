@@ -117,7 +117,7 @@ unbind()
 You can dispatch any other events. Just do not start event names with `@`.
 
 If the event listener returns an object, this object will update the state.
-You do not need to return the whole state, return an object
+You do not need to return the whole state, return an object
 with changed keys.
 
 ```js
@@ -178,7 +178,7 @@ export default connect('users', React.memo(Users))
 
 `connect()` will re-render on any state changes.
 It is important for performance to wrap all your component into `React.memo`
-or define `shouldComponentUpdate`.
+or define `shouldComponentUpdate`.
 
 `connect()` accept the list of state keys to pass into `props`.
 Or you can pass a function to convert state to `props`.
