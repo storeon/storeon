@@ -96,7 +96,7 @@ module.exports = createStore
  * Emit event.
  *
  * @param {string} event The event name.
- * @param {any} [data] Any additional data for the event.
+ * @param {*} [data] Any additional data for the event.
  *
  * @return {object} The current state.
  *
@@ -125,6 +125,6 @@ module.exports = createStore
 /**
  * @callback listener
  * @param {object} state The current state of the store.
- * @param {any} [data] The event data if it was passed.
+ * @param {*} [data] The event data if it was passed.
  * @return {object|undefined} Changes for next state.
  */
