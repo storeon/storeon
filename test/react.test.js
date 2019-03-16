@@ -37,7 +37,7 @@ function Button (props) {
 it('connects component to store', function () {
   var store = createStore([increment])
   var wrapper = init(store, function () {
-    return h(connect('count')(Button), { a: 1, count: 100 })
+    return h(connect('count', Button), { a: 1, count: 100 })
   })
 
   var props = wrapper.root.findByType(Button).props
@@ -55,7 +55,7 @@ it('maps state to props', function () {
     return { stateCount: state.count }
   }
   var wrapper = init(store, function () {
-    return h(connect(mapToProps)(Button))
+    return h(connect(mapToProps, Button))
   })
 
   var props = wrapper.root.findByType(Button).props

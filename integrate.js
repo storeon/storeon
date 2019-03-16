@@ -12,27 +12,27 @@ module.exports = function (h, createContext, useState, useContext, useEffect) {
         var args = arguments
         stateToProps = function (state) {
           var result = { }
-          for (var i = 0; i < args.length; i++) {
+          for (var i = 0; i < args.length - 1; i++) {
             result[args[i]] = state[args[i]]
           }
           return result
         }
       }
 
-      return function (Component) {
-        return function (originProps) {
-          var update = useState()[1]
-          var store = useContext(StoreContext)
-          useEffect(function () {
-            return store.on('@changed', function () {
-              update({ })
-            })
-          }, [])
-          var stateProps = stateToProps(store.get())
-          var props = merge(originProps, stateProps)
-          props.dispatch = store.dispatch
-          return h(Component, props)
-        }
+      var Component = arguments[arguments.length - 1]
+
+      return function (originProps) {
+        var update = useState()[1]
+        var store = useContext(StoreContext)
+        useEffect(function () {
+          return store.on('@changed', function () {
+            update({ })
+          })
+        }, [])
+        var stateProps = stateToProps(store.get())
+        var props = merge(originProps, stateProps)
+        props.dispatch = store.dispatch
+        return h(Component, props)
       }
     }
   }
@@ -43,8 +43,9 @@ module.exports = function (h, createContext, useState, useContext, useEffect) {
  *
  * @param {converter|...string} fields List of state’s field or function
  *                                     to map state to props.
+ * @param {function} Component React/Preact component.
  *
- * @return {decorator} The function to wrap component.
+ * @return {function} Wrapped component
  *
  * @example
  * import connect from 'storeon/react' // or 'storeon/preact'
@@ -54,7 +55,7 @@ module.exports = function (h, createContext, useState, useContext, useEffect) {
  *     <button onClick={() => dispatch('inc')}
  *   </div>
  * }
- * export default connect('count')(React.memo(Counter))
+ * export default connect('count', React.memo(Counter))
  *
  * @name connect
  * @function
@@ -64,10 +65,4 @@ module.exports = function (h, createContext, useState, useContext, useEffect) {
  * @callback converter
  * @param {object} state The store state.
  * @return {object} Props for component.
- */
-
-/**
- * @callback decorator
- * @param {function} Component React/Preact component.
- * @return {function} Wrapped component
  */
