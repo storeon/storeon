@@ -14,7 +14,7 @@ import createStore from 'storeon'
 let increment = store => {
   // Initial state
   store.on('@init', () => ({ count: 0 }))
-  // Reducers can return only changed part of the state
+  // Reducers returns only changed part of the state
   store.on('inc', ({ count }) => ({ count: count + 1 }))
 }
 
@@ -43,6 +43,8 @@ render(
   document.body
 )
 ```
+
+[Size Limit]: https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=storeon">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
