@@ -10,7 +10,7 @@ A tiny event-based Redux-like state manager for React and Preact.
 ```js
 import createStore from 'storeon'
 
-// Initial state, reducers and business logic are packed in independed modules
+// Initial state, reducers and business logic are packed in independent modules
 let increment = store => {
   // Initial state
   store.on('@init', () => ({ count: 0 }))
@@ -58,7 +58,7 @@ The store should be created with `createStore()` function. It accepts list
 of the modules.
 
 Each module is just a function, which will accept `store`
-and bind own event listeners.
+and bind their event listeners.
 
 ```js
 // store/index.js
@@ -91,14 +91,14 @@ The store has 3 methods:
 
 ### Events
 
-There are 3 built-in events:
+There are three built-in events:
 
-* `@init` will be fired in `createStore`. The best moment to set initial state.
+* `@init` will be fired in `createStore`. The best moment to set an initial state.
 * `@dispatch` will be fired on every `store.dispatch()` call.
-  Can be useful for debug.
+  Can be useful for debugging.
 * `@changed` will be fired every when event listeners changed the state.
 
-To add event listener, call `store.on()` with event name and callback.
+To add an event listener, call `store.on()` with event name and callback.
 
 ```js
 store.on('@dispatch', ([event, data]) => {
@@ -116,8 +116,8 @@ unbind()
 
 You can dispatch any other events. Just do not start event names with `@`.
 
-If event listeners will return a object, this object will update the state.
-You do not need to return the whole state, just return an object
+If the event listener returns an object, this object will update the state.
+You do not need to return the whole state, return an object
 with changed keys.
 
 ```js
@@ -128,7 +128,7 @@ store.on('@init', () => ({ users:  { } }))
 Event listener accepts the current state as a first argument
 and optional event object as a second.
 
-So event listeners can be a reducers as well. As in Redux’s reducers,
+So event listeners can be a reducer as well. As in Redux’s reducers,
 you should change immutable.
 
 ```js
