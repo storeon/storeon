@@ -24,12 +24,11 @@ export const store = createStore([increment])
 ```js
 import { connect } from 'storeon/react' // or storeon/preact
 
-const Counter = ({ count, dispatch }) => {
-  return <div>
-    {count}
-    <button onClick={() => dispatch('inc')}
-  </div>
-}
+const Counter = ({ count, dispatch }) => <>
+  {count}
+  <button onClick={() => dispatch('inc')}
+</>
+
 export default connect('count', React.memo(Counter))
 ```
 
