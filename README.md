@@ -26,7 +26,7 @@ import { connect } from 'storeon/react' // or storeon/preact
 
 const Counter = ({ count, dispatch }) => <>
   {count}
-  <button onClick={() => dispatch('inc')}
+  <button onClick={() => dispatch('inc')} />
 </>
 
 export default connect('count', React.memo(Counter))
