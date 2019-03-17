@@ -1,6 +1,6 @@
 # Storeon
 
-A tiny event-based Redux-like state manager for React and Preact.
+A tiny event-based Effector-like state manager for React and Preact.
 
 * **Small.** 196 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
