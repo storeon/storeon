@@ -66,6 +66,13 @@
       "global-require": "off"
     }
   },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  },
   "lint-staged": {
     "*.md": "yaspeller",
     "*.js": "eslint"
