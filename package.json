@@ -12,7 +12,7 @@
     "clean": "rimraf docs/ coverage/",
     "docs": "jsdoc -d docs/ *.js",
     "spell": "yarn docs && yaspeller *.md docs/*.html",
-    "lint": "eslint *.js",
+    "lint": "eslint *.js test/*.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spell"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
