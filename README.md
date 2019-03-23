@@ -166,7 +166,7 @@ store.on('users/add', async (state, user) => {
 You can bind the store to React and Preact component with `connect()` decorator.
 
 ```js
-import { connect } from 'storeon/react' // Use 'storeon/preact' for Preact
+import connect from 'storeon/react' // Use 'storeon/preact' for Preact
 
 const Users = ({ users, dispatch }) => {
   const onAdd = useCallback(user => {
@@ -183,3 +183,15 @@ export default connect('users', Users)
 
 `connect()` accept the list of state keys to pass into `props`.
 It will re-render only if this keys will be changed.
+
+
+### Logger
+
+Storeon has built-in events logger.
+
+```js
+const store = createStore([
+  …
+  process.env.NODE_ENV === 'production' && require('storeon/logger')
+])
+```

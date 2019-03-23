@@ -18,6 +18,9 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/storeon",
+  "browser": {
+    "./logger.js": "./logger.browser.js"
+  },
   "devDependencies": {
     "@logux/eslint-config": "^28.0.0",
     "clean-publish": "^1.1.0",
@@ -55,6 +58,10 @@
       "ignore": [
         "react"
       ]
+    },
+    {
+      "path": "logger.js",
+      "limit": "135 B"
     }
   ],
   "eslintConfig": {
@@ -100,7 +107,8 @@
       "Storeon A",
       "Redux’s",
       "async",
-      "StoreContext"
+      "StoreContext",
+      "Storeon"
     ]
   }
 }

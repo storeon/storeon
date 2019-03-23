@@ -71,9 +71,3 @@ module.exports.StoreContext = StoreContext
 * @name connect
 * @function
 */
-
-/**
-* @callback converter
-* @param {object} state The store state.
-* @return {object} Props for component.
-*/
