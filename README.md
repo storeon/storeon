@@ -4,6 +4,8 @@ A tiny event-based Redux-like state manager for React and Preact.
 
 * **Small.** 186 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
+* **Fast.** It track what state parts was changed and re-render only components
+  based on this state parts.
 * **Immutable.** The same Redux reducers, but already with syntax sugar on top.
 * **Modular.** API created to move business logic away from React components.
 
@@ -22,14 +24,14 @@ export const store = createStore([increment])
 ```
 
 ```js
-import { connect } from 'storeon/react' // or storeon/preact
+import connect from 'storeon/react' // or storeon/preact
 
 const Counter = ({ count, dispatch }) => <>
   {count}
   <button onClick={() => dispatch('inc')} />
 </>
 
-export default connect('count', React.memo(Counter))
+export default connect('count', Counter)
 ```
 
 ```js
@@ -176,20 +178,8 @@ const Users = ({ users, dispatch }) => {
   </div>
 }
 
-export default connect('users', React.memo(Users))
+export default connect('users', Users)
 ```
-
-`connect()` will re-render on any state changes.
-It is important for performance to wrap all your component into `React.memo`
-or define `shouldComponentUpdate`.
 
 `connect()` accept the list of state keys to pass into `props`.
-Or you can pass a function to convert state to `props`.
-
-```js
-const mapToProps = ({ projects }) => ({
-  activeProjects: projects.filter(i => i.active)
-})
-
-export default connect(mapToProps, React.memo(Projects, deepEqual))
-```
+It will re-render only if this keys will be changed.

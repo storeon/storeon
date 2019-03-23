@@ -5623,13 +5623,6 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.5, postcss@^7.0.6:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-preact@^10.0.0-alpha.2:
-  version "10.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.0.0-alpha.2.tgz#61ba4f2ca20b75352ad5ed8aa239302df83dae74"
-  integrity sha512-8G0UFC0Sa/giqI/jR3LIHzj0ohsIC4wnB+8+XdpHFEZ5GmtFLmQgkrrkdR0EcEAdd38geClUSj30H8AEIO4OqA==
-  dependencies:
-    prop-types "^15.6.2"
-
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"

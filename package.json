@@ -36,7 +36,6 @@
     "jest": "^24.5.0",
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.5",
-    "preact": "^10.0.0-alpha.2",
     "react": "^16.8.5",
     "react-test-renderer": "^16.8.5",
     "size-limit": "^0.21.1",
@@ -52,7 +51,7 @@
         "index.js",
         "react.js"
       ],
-      "limit": "413 B",
+      "limit": "387 B",
       "ignore": [
         "react"
       ]
@@ -100,7 +99,8 @@
       "gzipped",
       "Storeon A",
       "Redux’s",
-      "async"
+      "async",
+      "StoreContext"
     ]
   }
 }
