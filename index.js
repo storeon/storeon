@@ -67,7 +67,7 @@ function createStore (modules) {
   var store = { on: on, dispatch: dispatch, get: get }
 
   modules.forEach(function (i) {
-    i(store)
+    if (i) i(store)
   })
   store.dispatch('@init')
 

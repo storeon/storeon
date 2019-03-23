@@ -15,6 +15,10 @@ it('applies modules', function () {
   expect(store2).toBe(store)
 })
 
+it('allows false as module', function () {
+  createStore([false])
+})
+
 it('fires @init', function () {
   var fired = 0
   function module1 (store) {
