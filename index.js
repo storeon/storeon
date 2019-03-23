@@ -1,5 +1,3 @@
-var merge = require('./merge')
-
 /**
  * Initialize new store and apply all modules to the store.
  *
@@ -39,24 +37,29 @@ function createStore (modules) {
       dispatch('@dispatch', [event, data])
     }
 
-    var list = events[event]
     if (process.env.NODE_ENV !== 'production') {
-      if (event.indexOf('@') !== 0 && !list) {
+      if (event.indexOf('@') !== 0 && !events[event]) {
         throw new Error('Unknown event ' + event)
       }
     }
-    if (!list) return
 
-    var changed = false
-    list.forEach(function (i) {
-      var changes = i(state, data)
-      if (changes) {
-        state = merge(state, changes)
-        changed = true
-      }
-    })
-    if (changed) {
-      dispatch('@changed')
+    if (events[event]) {
+      var changes = { }
+      var changed, key
+      events[event].forEach(function (i) {
+        var diff = i(state, data)
+        if (diff) {
+          changed = true
+          var newState = { }
+          for (key in diff) {
+            newState[key] = diff[key]
+            changes[key] = diff[key]
+          }
+          for (key in state) newState[key] = newState[key] || state[key]
+          state = newState
+        }
+      })
+      if (changed) dispatch('@changed', changes)
     }
   }
 

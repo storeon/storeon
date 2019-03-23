@@ -38,7 +38,12 @@ it('has empty object in state by default', function () {
 })
 
 it('changes state in event listener', function () {
-  var store = createStore([])
+  function init (store) {
+    store.on('@init', function () {
+      return { a: 0, c: 0 }
+    })
+  }
+  var store = createStore([init])
   store.on('test', function (state, data) {
     expect(store.get()).toEqual(state)
     expect(data).toEqual('a')
@@ -47,17 +52,18 @@ it('changes state in event listener', function () {
   store.on('test', function () {
     return { b: 2 }
   })
-  var changed = 0
-  store.on('@changed', function (state) {
+  var calls = 0
+  store.on('@changed', function (state, changed) {
+    expect(changed).toEqual({ a: 1, b: 2 })
     expect(store.get()).toEqual(state)
-    expect(state).toEqual({ a: 1, b: 2 })
-    changed += 1
+    expect(state).toEqual({ a: 1, b: 2, c: 0 })
+    calls += 1
   })
 
   store.dispatch('test', 'a')
 
-  expect(changed).toEqual(1)
-  expect(store.get()).toEqual({ a: 1, b: 2 })
+  expect(calls).toEqual(1)
+  expect(store.get()).toEqual({ a: 1, b: 2, c: 0 })
 })
 
 it('changes state immutably', function () {
@@ -117,7 +123,7 @@ it('notifies about new event', function () {
   expect(events).toEqual([
     ['@init', undefined],
     ['test', 1],
-    ['@changed', undefined],
+    ['@changed', { test: 1 }],
     ['test', 2]
   ])
 })

@@ -2,7 +2,7 @@
 
 A tiny event-based Redux-like state manager for React and Preact.
 
-* **Small.** 196 bytes (minified and gzipped). No dependencies.
+* **Small.** 186 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Immutable.** The same Redux reducers, but already with syntax sugar on top.
 * **Modular.** API created to move business logic away from React components.
@@ -96,8 +96,10 @@ There are three built-in events:
 
 * `@init` will be fired in `createStore`. The best moment to set an initial state.
 * `@dispatch` will be fired on every `store.dispatch()` call.
+  It receives array with event name and event’s data.
   Can be useful for debugging.
 * `@changed` will be fired every when event listeners changed the state.
+  It receives object with state changes.
 
 To add an event listener, call `store.on()` with event name and callback.
 
