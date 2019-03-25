@@ -13,7 +13,8 @@
     "docs": "jsdoc -d docs/ *.js",
     "spell": "yarn docs && yaspeller *.md docs/*.html",
     "lint": "eslint *.js test/*.js",
-    "test": "jest --coverage && yarn lint && size-limit && yarn spell"
+    "test": "jest --coverage && yarn lint && size-limit && yarn spell",
+    "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
@@ -39,7 +40,9 @@
     "jest": "^24.5.0",
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.5",
+    "parcel-bundler": "^1.12.3",
     "react": "^16.8.5",
+    "react-dom": "^16.8.5",
     "react-test-renderer": "^16.8.5",
     "size-limit": "^0.21.1",
     "yaspeller": "^5.0.1"

@@ -7,3 +7,6 @@ yarn-error.log
 
 docs/
 coverage/
+
+test/demo/.cache/
+test/demo/dist/
