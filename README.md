@@ -192,6 +192,15 @@ Storeon has built-in events logger.
 ```js
 const store = createStore([
   …
-  process.env.NODE_ENV === 'production' && require('storeon/logger')
+  process.env.NODE_ENV !== 'production' && require('storeon/logger')
+])
+```
+
+Storeon supports debugging with [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
+
+```js
+const store = createStore([
+  …
+  process.env.NODE_ENV !== 'production' && require('storeon/devtools')
 ])
 ```

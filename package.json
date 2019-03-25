@@ -58,10 +58,6 @@
       "ignore": [
         "react"
       ]
-    },
-    {
-      "path": "logger.js",
-      "limit": "135 B"
     }
   ],
   "eslintConfig": {
@@ -110,7 +106,8 @@
       "StoreContext",
       "Storeon",
       "Hadeeb",
-      "Farhan"
+      "Farhan",
+      "DevTools"
     ]
   }
 }
