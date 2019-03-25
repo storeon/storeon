@@ -185,9 +185,20 @@ export default connect('users', Users)
 It will re-render only if this keys will be changed.
 
 
-### Logger
+### DevTools
 
-Storeon has built-in events logger.
+Storeon supports debugging with [Redux DevTools Extension].
+
+```js
+const store = createStore([
+  …
+  process.env.NODE_ENV !== 'production' && require('storeon/devtools')
+])
+```
+
+Or if you want to print events to `console` you can use built-in logger.
+It could be useful for simple cases or to investigate issue
+on online error trackers.
 
 ```js
 const store = createStore([
@@ -196,11 +207,4 @@ const store = createStore([
 ])
 ```
 
-Storeon supports debugging with [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
-
-```js
-const store = createStore([
-  …
-  process.env.NODE_ENV !== 'production' && require('storeon/devtools')
-])
-```
+[Redux DevTools Extension]: https://github.com/zalmoxisus/redux-devtools-extension
