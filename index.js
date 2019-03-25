@@ -23,8 +23,8 @@ function createStore (modules) {
   var state = { }
 
   function on (event, cb) {
-    if (!events[event]) events[event] = []
-    events[event].push(cb)
+    if (!events[event]) events[event] = [cb]
+    else events[event].push(cb)
     return function () {
       events[event] = events[event].filter(function (i) {
         return i !== cb
