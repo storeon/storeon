@@ -31,6 +31,7 @@ const Counter = ({ count, dispatch }) => <>
   <button onClick={() => dispatch('inc')} />
 </>
 
+// Counter will be re-render only on `state.count` changes
 export default connect('count', Counter)
 ```
 

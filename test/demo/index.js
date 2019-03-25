@@ -29,7 +29,6 @@ function counter2 (store) {
 
 function Tracker (props) {
   var hue = Math.round(255 * Math.random())
-  console.log(hue)
   var style = { backgroundColor: 'hsla(' + hue + ', 50%, 50%, 0.2)' }
   return h('div', { className: 'tracker', style: style }, props.value)
 }
