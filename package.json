@@ -62,6 +62,10 @@
     {
       "path": "logger.js",
       "limit": "135 B"
+    },
+    {
+      "path": "devtools.js",
+      "limit": "500 B"
     }
   ],
   "eslintConfig": {
@@ -110,7 +114,8 @@
       "StoreContext",
       "Storeon",
       "Hadeeb",
-      "Farhan"
+      "Farhan",
+      "DevTools"
     ]
   }
 }
