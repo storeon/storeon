@@ -53,8 +53,7 @@ function createStore (modules) {
           var newState = { }
           for (key in state) newState[key] = state[key]
           for (key in diff) {
-            newState[key] = diff[key]
-            changes[key] = diff[key]
+            newState[key] = changes[key] = diff[key]
           }
           state = newState
         }
