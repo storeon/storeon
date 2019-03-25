@@ -1,3 +1,5 @@
-import createStore from '.'
+import { Module } from ".";
 
-export default createStore;
+const logger: Module<any>;
+
+export default logger;

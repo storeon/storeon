@@ -58,14 +58,6 @@
       "ignore": [
         "react"
       ]
-    },
-    {
-      "path": "logger.js",
-      "limit": "135 B"
-    },
-    {
-      "path": "devtools.js",
-      "limit": "500 B"
     }
   ],
   "eslintConfig": {
