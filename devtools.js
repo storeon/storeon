@@ -4,7 +4,12 @@ function devtools (store) {
     window.top.__REDUX_DEVTOOLS_EXTENSION__
 
   if (!extension) {
-    console.warn('Please install Redux devtools extension')
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        'Please install Redux devtools extension\n' +
+        'http://extension.remotedev.io/'
+      )
+    }
     return
   }
   var prevMessage = ''
