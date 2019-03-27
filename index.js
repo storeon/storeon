@@ -23,8 +23,11 @@ function createStore (modules) {
   var state = { }
 
   function on (event, cb) {
-    if (!events[event]) events[event] = [cb]
-    else events[event].push(cb)
+    if (!events[event]) {
+      events[event] = [cb]
+    } else {
+      events[event].push(cb)
+    }
     return function () {
       events[event] = events[event].filter(function (i) {
         return i !== cb
@@ -52,9 +55,7 @@ function createStore (modules) {
           changed = true
           var newState = { }
           for (key in state) newState[key] = state[key]
-          for (key in diff) {
-            newState[key] = changes[key] = diff[key]
-          }
+          for (key in diff) newState[key] = changes[key] = diff[key]
           state = newState
         }
       })
