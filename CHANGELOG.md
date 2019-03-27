@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.4
+* Add `storeon/devtools` with Redux DevTools integration (by Hadeeb Farhan).
+* Fix state changes issue (by Hadeeb Farhan).
+* Reduce size (by Hadeeb Farhan).
+
 ## 0.3
 * Add TypeScript definitions (by Hadeeb Farhan).
 
