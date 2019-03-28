@@ -6,11 +6,12 @@
     "state",
     "immutable",
     "react",
-    "preact"
+    "preact",
+    "hook"
   ],
   "scripts": {
     "clean": "rimraf docs/ coverage/",
-    "docs": "jsdoc -d docs/ *.js",
+    "docs": "jsdoc -d docs/ *.js react/*.js",
     "spell": "yarn docs && yaspeller *.md docs/*.html",
     "lint": "eslint *.js test/*.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spell",
@@ -55,9 +56,19 @@
     {
       "path": [
         "index.js",
+        "react/hook.js"
+      ],
+      "limit": "332 B",
+      "ignore": [
+        "react"
+      ]
+    },
+    {
+      "path": [
+        "index.js",
         "react/connect.js"
       ],
-      "limit": "382 B",
+      "limit": "402 B",
       "ignore": [
         "react"
       ]
@@ -112,7 +123,8 @@
       "Farhan",
       "DevTools",
       "Tue",
-      "Thu"
+      "Thu",
+      "useStoreon"
     ]
   }
 }

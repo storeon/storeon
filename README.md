@@ -6,7 +6,7 @@ A tiny event-based Redux-like state manager for React and Preact.
   It uses [Size Limit] to control size.
 * **Fast.** It track what state parts was changed and re-render only components
   based on this state parts.
-* **Immutable.** The same Redux reducers, but already with syntax sugar on top.
+* **Hooks.** The same Redux reducers, but it already has React/Preact hooks API.
 * **Modular.** API created to move business logic away from React components.
 
 ```js
@@ -24,15 +24,16 @@ export const store = createStore([increment])
 ```
 
 ```js
-import connect from 'storeon/react/connect' // or storeon/preact/connect
+import useStoreon from 'storeon/react/hook' // or storeon/preact/hook
 
-const Counter = ({ count, dispatch }) => <>
-  {count}
-  <button onClick={() => dispatch('inc')} />
-</>
-
-// Counter will be re-render only on `state.count` changes
-export default connect('count', Counter)
+export default const Counter = () => {
+  // Counter will be re-render only on `state.count` changes
+  const { dispatch, count } = useStoreon()
+  return <>
+    {count}
+    <button onClick={() => dispatch('inc')} />
+  </>
+}
 ```
 
 ```js
@@ -164,12 +165,12 @@ store.on('users/add', async (state, user) => {
 
 ### Components
 
-You can bind the store to React and Preact component with `connect()` decorator.
+For functional components, `useStoreon` hook will be the best option:
 
 ```js
-import connect from 'storeon/react/connect' // Use 'storeon/preact/connect' for Preact
-
-const Users = ({ users, dispatch }) => {
+import connect from 'storeon/react/hook' // Use 'storeon/preact/hook' for Preact
+const Users = () => {
+  const { dispatch, users } = useStoreon('users')
   const onAdd = useCallback(user => {
     dispatch('users/add', user)
   })
@@ -177,6 +178,24 @@ const Users = ({ users, dispatch }) => {
     {users.map(user => <User key={user.id} user={user} />)}
     <NewUser onAdd={onAdd} />
   </div>
+}
+```
+
+For class components, you can use `connect()` decorator.
+
+```js
+import connect from 'storeon/react/connect' // Use 'storeon/preact/connect' for Preact
+
+class User extends React {
+  onAdd = () => {
+    this.props.dispatch('users/add', user)
+  }
+  render () {
+    return <div>
+      {this.props.users.map(user => <User key={user.id} user={user} />)}
+      <NewUser onAdd={this.onAdd} />
+    </div>
+  }
 }
 
 export default connect('users', Users)
