@@ -34,5 +34,3 @@ module.exports = function connect () {
     return Preact.h(Component, props)
   }
 }
-
-module.exports.StoreContext = StoreContext

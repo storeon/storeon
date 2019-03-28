@@ -1,9 +1,9 @@
 var renderer = require('react-test-renderer')
 var h = require('react').createElement
 
-var StoreContext = require('../react').StoreContext
+var StoreContext = require('../react/context')
 var createStore = require('../')
-var connect = require('../react')
+var connect = require('../react/connect')
 
 jest.mock('react', function () {
   var React = require('react/cjs/react.development.js')

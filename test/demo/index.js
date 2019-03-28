@@ -3,10 +3,10 @@ var Fragment = require('react').Fragment
 var render = require('react-dom').render
 var h = require('react').createElement
 
-var StoreContext = require('../../react').StoreContext
+var StoreContext = require('../../react/context')
 var createStore = require('../../')
 var devtools = require('../../devtools')
-var connect = require('../../react')
+var connect = require('../../react/connect')
 var logger = require('../../logger')
 
 function counter1 (store) {

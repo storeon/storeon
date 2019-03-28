@@ -55,9 +55,9 @@
     {
       "path": [
         "index.js",
-        "react.js"
+        "react/connect.js"
       ],
-      "limit": "383 B",
+      "limit": "382 B",
       "ignore": [
         "react"
       ]

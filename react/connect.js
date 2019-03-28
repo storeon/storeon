@@ -1,19 +1,6 @@
 var React = require('react')
 
-/**
- * Context to put store for `connect` decorator.
- *
- * @example
- * import { StoreContext } from 'storeon/react'
- * render(
- *   <StoreContext.Provider value={store}><App /></StoreContext.Provider>,
- *   document.body
- * )
- *
- * @name StoreContext
- * @type {Context}
- */
-var StoreContext = React.createContext('storeon')
+var StoreContext = require('./context')
 
 module.exports = function connect () {
   var keys = [].slice.call(arguments, 0, arguments.length - 1)
@@ -46,8 +33,6 @@ module.exports = function connect () {
     return React.createElement(Component, props)
   }
 }
-
-module.exports.StoreContext = StoreContext
 
 /**
 * Connect React/Preact components to the store.

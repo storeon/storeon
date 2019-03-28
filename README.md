@@ -24,7 +24,7 @@ export const store = createStore([increment])
 ```
 
 ```js
-import connect from 'storeon/react' // or storeon/preact
+import connect from 'storeon/react/connect' // or storeon/preact/connect
 
 const Counter = ({ count, dispatch }) => <>
   {count}
@@ -36,7 +36,7 @@ export default connect('count', Counter)
 ```
 
 ```js
-import { StoreContext } from 'storeon/react'
+import StoreContext from 'storeon/react/context'
 
 render(
   <StoreContext.Provider value={store}>
@@ -167,7 +167,7 @@ store.on('users/add', async (state, user) => {
 You can bind the store to React and Preact component with `connect()` decorator.
 
 ```js
-import connect from 'storeon/react' // Use 'storeon/preact' for Preact
+import connect from 'storeon/react/connect' // Use 'storeon/preact/connect' for Preact
 
 const Users = ({ users, dispatch }) => {
   const onAdd = useCallback(user => {
