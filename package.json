@@ -45,7 +45,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
-    "size-limit": "^0.21.1",
+    "size-limit": "^0.22.0",
     "yaspeller": "^5.0.1"
   },
   "size-limit": [
