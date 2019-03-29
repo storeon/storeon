@@ -1,5 +1,5 @@
-import { Module } from ".";
+import { Module } from "..";
 
-const logger: Module<any>;
+declare const devtool: Module<any>;
 
-export default logger;
+export default devtool;
