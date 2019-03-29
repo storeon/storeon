@@ -13,4 +13,4 @@ var React = require('react')
  * @name StoreContext
  * @type {Context}
  */
-module.exports = React.createContext('storeon')
+module.exports = React.createContext()
