@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.5
+* Add `useStoreon` hook.
+* Move `connect()` to `storeon/react/connect`.
+* Move `logger` to `storeon/devtools/logger`.
+
 ## 0.4
 * Add `storeon/devtools` with Redux DevTools integration (by Hadeeb Farhan).
 * Fix state changes issue (by Hadeeb Farhan).
