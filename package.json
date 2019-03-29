@@ -58,7 +58,7 @@
         "index.js",
         "react/hook.js"
       ],
-      "limit": "332 B",
+      "limit": "326 B",
       "ignore": [
         "react"
       ]
@@ -68,7 +68,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "402 B",
+      "limit": "396 B",
       "ignore": [
         "react"
       ]
@@ -124,7 +124,8 @@
       "DevTools",
       "Tue",
       "Thu",
-      "useStoreon"
+      "useStoreon",
+      "Fri"
     ]
   }
 }
