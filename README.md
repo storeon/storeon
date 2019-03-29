@@ -6,7 +6,7 @@ A tiny event-based Redux-like state manager for React and Preact.
   It uses [Size Limit] to control size.
 * **Fast.** It track what state parts was changed and re-render only components
   based on this state parts.
-* **Hooks.** The same Redux reducers, but it already has React/Preact hooks API.
+* **Hooks.** The same Redux reducers. Now with hooks for **React/Preact**.
 * **Modular.** API created to move business logic away from React components.
 
 ```js
@@ -29,10 +29,7 @@ import useStoreon from 'storeon/react' // or storeon/preact
 export default const Counter = () => {
   // Counter will be re-render only on `state.count` changes
   const { dispatch, count } = useStoreon('count')
-  return <>
-    {count}
-    <button onClick={() => dispatch('inc')} />
-  </>
+  return <button onClick={() => dispatch('inc')}>{count}</button>
 }
 ```
 
