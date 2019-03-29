@@ -1,6 +1,6 @@
 var React = require('react')
 
-var useStoreon = require('./hook')
+var useStoreon = require('./')
 
 /**
  * Connect React/Preact components to the store.

@@ -24,7 +24,7 @@ export const store = createStore([increment])
 ```
 
 ```js
-import useStoreon from 'storeon/react/hook' // or storeon/preact/hook
+import useStoreon from 'storeon/react' // or storeon/preact
 
 export default const Counter = () => {
   // Counter will be re-render only on `state.count` changes
@@ -168,7 +168,7 @@ store.on('users/add', async (state, user) => {
 For functional components, `useStoreon` hook will be the best option:
 
 ```js
-import connect from 'storeon/react/hook' // Use 'storeon/preact/hook' for Preact
+import connect from 'storeon/react' // Use 'storeon/preact' for Preact
 const Users = () => {
   const { dispatch, users } = useStoreon('users')
   const onAdd = useCallback(user => {

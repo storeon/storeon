@@ -56,7 +56,7 @@
     {
       "path": [
         "index.js",
-        "react/hook.js"
+        "react/index.js"
       ],
       "limit": "334 B",
       "ignore": [

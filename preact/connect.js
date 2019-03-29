@@ -1,6 +1,6 @@
 var Preact = require('preact')
 
-var useStoreon = require('./hook')
+var useStoreon = require('./')
 
 module.exports = function connect () {
   var keys = [].slice.call(arguments, 0, arguments.length - 1)

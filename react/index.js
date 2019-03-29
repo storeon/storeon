@@ -10,7 +10,7 @@ var StoreContext = require('./context')
  * @return {object} The selected part of the state.
  *
  * @example
- * import useStoreon from 'storeon/react/hook'
+ * import useStoreon from 'storeon/react'
  * const Counter = () => {
  *   const { dispatch, count } = useStoreon('count')
  *   return <div>
