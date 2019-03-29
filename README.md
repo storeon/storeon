@@ -28,7 +28,7 @@ import useStoreon from 'storeon/react' // or storeon/preact
 
 export default const Counter = () => {
   // Counter will be re-render only on `state.count` changes
-  const { dispatch, count } = useStoreon()
+  const { dispatch, count } = useStoreon('count')
   return <>
     {count}
     <button onClick={() => dispatch('inc')} />
