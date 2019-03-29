@@ -5,7 +5,7 @@
  * @returns {undefined}
  *
  * @example
- * import logger from 'storeon/logger'
+ * import logger from 'storeon/devtools/logger'
  * const store = createStore([logger])
  *
  * @name logger

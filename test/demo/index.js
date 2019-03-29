@@ -7,7 +7,7 @@ var StoreContext = require('../../react/context')
 var createStore = require('../../')
 var devtools = require('../../devtools')
 var connect = require('../../react/connect')
-var logger = require('../../logger')
+var logger = require('../../devtools/logger')
 
 function counter1 (store) {
   store.on('@init', function () {

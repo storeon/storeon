@@ -1,5 +1,5 @@
 var createStore = require('../')
-var logger = require('../logger.browser')
+var logger = require('../devtools/logger.browser')
 
 var STYLE = 'color: #008100'
 var BOLD = 'color: #008100; font-weight: bold'

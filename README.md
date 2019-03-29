@@ -223,7 +223,7 @@ on online error trackers.
 ```js
 const store = createStore([
   …
-  process.env.NODE_ENV !== 'production' && require('storeon/logger')
+  process.env.NODE_ENV !== 'production' && require('storeon/devtools/logger')
 ])
 ```
 

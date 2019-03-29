@@ -1,5 +1,5 @@
 var createStore = require('../')
-var logger = require('../logger')
+var logger = require('../devtools/logger')
 
 function counter (store) {
   store.on('@init', function () {
