@@ -38,7 +38,7 @@ import StoreContext from 'storeon/react/context'
 
 render(
   <StoreContext.Provider value={store}>
-    <Counter></Counter>
+    <Counter />
   </StoreContext.Provider>,
   document.body
 )
