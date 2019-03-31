@@ -5,7 +5,7 @@ export type Dispatch = {
 export interface Store<T> {
   on: (
     event: string,
-    handler: (state: Readonly<T>, data: any) => Partial<T> | null
+    handler: (state: Readonly<T>, data: any) => Partial<T> | Promise<any> | void
   ) => () => void;
   dispatch: Dispatch;
   get: () => T;
