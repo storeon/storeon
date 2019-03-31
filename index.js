@@ -72,7 +72,7 @@ function createStore (modules) {
   modules.forEach(function (i) {
     if (i) i(store)
   })
-  store.dispatch('@init')
+  dispatch('@init')
 
   return store
 }
