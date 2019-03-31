@@ -52,13 +52,16 @@ function createStore (modules) {
       events[event].forEach(function (i) {
         var diff = i(state, data)
         if (diff) {
-          changed = true
           var newState = { }
           for (key in state) newState[key] = state[key]
-          for (key in diff) newState[key] = changes[key] = diff[key]
+          for (key in diff) {
+            changed = true
+            newState[key] = changes[key] = diff[key]
+          }
           state = newState
         }
       })
+
       if (changed) dispatch('@changed', changes)
     }
   }
