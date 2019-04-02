@@ -4,8 +4,8 @@ A tiny event-based Redux-like state manager for React and Preact.
 
 * **Small.** 175 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
-* **Fast.** It track what state parts was changed and re-render only components
-  based on this state parts.
+* **Fast.** It tracks what parts of state were changed and re-renders only components
+  based on the changes.
 * **Hooks.** The same Redux reducers. Now with hooks for **React/Preact**.
 * **Modular.** API created to move business logic away from React components.
 
@@ -56,10 +56,10 @@ render(
 
 ### Store
 
-The store should be created with `createStore()` function. It accepts list
+The store should be created with `createStore()` function. It accepts a list
 of the modules.
 
-Each module is just a function, which will accept `store`
+Each module is just a function, which will accept a `store`
 and bind their event listeners.
 
 ```js
@@ -87,8 +87,8 @@ export default store => {
 The store has 3 methods:
 
 * `store.get()` will return current state. The state is always an object.
-* `store.on(event, callback)` will add event listener.
-* `store.dispatch(event, data)` will emit event with optional data.
+* `store.on(event, callback)` will add an event listener.
+* `store.dispatch(event, data)` will emit an event with optional data.
 
 
 ### Events
@@ -97,7 +97,7 @@ There are three built-in events:
 
 * `@init` will be fired in `createStore`. The best moment to set an initial state.
 * `@dispatch` will be fired on every `store.dispatch()` call.
-  It receives array with event name and event’s data.
+  It receives an array with the event name and the event’s data.
   Can be useful for debugging.
 * `@changed` will be fired every when event listeners changed the state.
   It receives object with state changes.
@@ -110,7 +110,7 @@ store.on('@dispatch', ([event, data]) => {
 })
 ```
 
-`store.on()` will return cleanup function. This function will remove
+`store.on()` will return cleanup function. This function will remove the
 event listener.
 
 ```js
