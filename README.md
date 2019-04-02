@@ -4,8 +4,8 @@ A tiny event-based Redux-like state manager for React and Preact.
 
 * **Small.** 175 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
-* **Fast.** It tracks what parts of state were changed and re-renders only components
-  based on the changes.
+* **Fast.** It tracks what parts of state were changed and re-renders
+  only components based on the changes.
 * **Hooks.** The same Redux reducers. Now with hooks for **React/Preact**.
 * **Modular.** API created to move business logic away from React components.
 
@@ -95,7 +95,8 @@ The store has 3 methods:
 
 There are three built-in events:
 
-* `@init` will be fired in `createStore`. The best moment to set an initial state.
+* `@init` will be fired in `createStore`. The best moment to set
+  an initial state.
 * `@dispatch` will be fired on every `store.dispatch()` call.
   It receives an array with the event name and the event’s data.
   Can be useful for debugging.
@@ -110,8 +111,8 @@ store.on('@dispatch', ([event, data]) => {
 })
 ```
 
-`store.on()` will return cleanup function. This function will remove the
-event listener.
+`store.on()` will return cleanup function. This function will remove
+the event listener.
 
 ```js
 const unbind = store.on('@changed', …)
