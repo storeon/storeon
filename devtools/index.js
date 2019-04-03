@@ -12,10 +12,8 @@ function devtools (store) {
     }
     return
   }
-  var prevMessage = ''
 
   var ReduxTool = extension.connect()
-
   store.on('@init', function () {
     ReduxTool.subscribe(function (message) {
       if (message.type === 'DISPATCH' && message.state) {
@@ -25,16 +23,15 @@ function devtools (store) {
     ReduxTool.init(store.get())
   })
 
+  var prev = ''
   store.on('@dispatch', function (state, data) {
-    if (
-      data[0] !== 'UPDATE_FROM_DEVTOOLS' &&
-      prevMessage !== 'UPDATE_FROM_DEVTOOLS'
-    ) {
-      if (data[0] !== '@changed' || Object.keys(data[1]).length) {
-        ReduxTool.send({ type: data[0], payload: data[1] }, state)
+    var event = data[0]
+    if (event !== 'UPDATE_FROM_DEVTOOLS' && prev !== 'UPDATE_FROM_DEVTOOLS') {
+      if (event !== '@changed' || Object.keys(data[1]).length) {
+        ReduxTool.send({ type: event, payload: data[1] }, state)
       }
     }
-    prevMessage = data[0]
+    prev = event
   })
 
   store.on('UPDATE_FROM_DEVTOOLS', function (state, data) {
