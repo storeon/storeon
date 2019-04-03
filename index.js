@@ -37,7 +37,7 @@ function createStore (modules) {
 
   function dispatch (event, data) {
     if (event !== '@dispatch') {
-      dispatch('@dispatch', [event, data])
+      dispatch('@dispatch', [event, data, events[event]])
     }
 
     if (process.env.NODE_ENV !== 'production') {

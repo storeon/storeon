@@ -51,7 +51,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "175 B"
+      "limit": "177 B"
     },
     {
       "path": [
@@ -68,7 +68,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "404 B",
+      "limit": "407 B",
       "ignore": [
         "react"
       ]

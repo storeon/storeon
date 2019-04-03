@@ -17,6 +17,7 @@ function devtools (options) {
     var extension =
       window.__REDUX_DEVTOOLS_EXTENSION__ ||
       window.top.__REDUX_DEVTOOLS_EXTENSION__
+
     if (!extension) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn(
@@ -27,7 +28,7 @@ function devtools (options) {
       return
     }
 
-    var ReduxTool = extension.connect(options)
+    var ReduxTool = extension.connect()
     store.on('@init', function () {
       ReduxTool.subscribe(function (message) {
         if (message.type === 'DISPATCH' && message.state) {
@@ -41,6 +42,9 @@ function devtools (options) {
     store.on('@dispatch', function (state, data) {
       var event = data[0]
       if (event !== 'UPDATE_FROM_DEVTOOLS' && prev !== 'UPDATE_FROM_DEVTOOLS') {
+        if (event.indexOf('@') !== 0 && data[2].length === 0) {
+          throw new Error('Unknown event ' + event)
+        }
         if (event !== '@changed' || Object.keys(data[1]).length) {
           ReduxTool.send({ type: event, payload: data[1] }, state)
         }
