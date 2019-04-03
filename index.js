@@ -42,7 +42,7 @@ function createStore (modules) {
 
     if (process.env.NODE_ENV !== 'production') {
       if (event.indexOf('@') !== 0 && !events[event]) {
-        throw new Error('Unknown event ' + event)
+        throw new Error('Unknown Storeon event ' + event)
       }
     }
 
