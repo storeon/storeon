@@ -97,7 +97,7 @@ it('throws on unknown not system events', function () {
 
   expect(function () {
     store.dispatch('unknown')
-  }).toThrow('Unknown event unknown')
+  }).toThrow('Unknown Storeon event unknown')
   store.dispatch('@unknown')
 })
 
