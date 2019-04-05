@@ -5,8 +5,9 @@
  * @returns {undefined}
  *
  * @example
- * import logger from 'storeon/devtools/logger'
- * const store = createStore([logger])
+ * const store = createStore([
+ *   process.env.NODE_ENV !== 'production' && require('storeon/devtools/logger')
+ * ])
  *
  * @name logger
  * @function

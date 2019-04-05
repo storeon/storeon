@@ -1,3 +1,17 @@
+/**
+ * Redux DevTools module for Storeon.
+ *
+ * @param {Store} store The store.
+ * @returns {undefined}
+ *
+ * @example
+ * const store = createStore([
+ *   process.env.NODE_ENV !== 'production' && require('storeon/devtools')
+ * ])
+ *
+ * @name devtools
+ * @function
+ */
 function devtools (store) {
   var extension =
     window.__REDUX_DEVTOOLS_EXTENSION__ ||
