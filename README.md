@@ -166,7 +166,7 @@ store.on('users/add', async (state, user) => {
 For functional components, `useStoreon` hook will be the best option:
 
 ```js
-import connect from 'storeon/react' // Use 'storeon/preact' for Preact
+import useStoreon from 'storeon/react' // Use 'storeon/preact' for Preact
 const Users = () => {
   const { dispatch, users } = useStoreon('users')
   const onAdd = useCallback(user => {
