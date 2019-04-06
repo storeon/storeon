@@ -1,6 +1,6 @@
 {
   "name": "storeon",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Tiny (175 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
@@ -125,7 +125,10 @@
       "Tue",
       "Thu",
       "useStoreon",
-      "Fri"
+      "Fri",
+      "Vadim",
+      "Boltach",
+      "Kyle"
     ]
   }
 }

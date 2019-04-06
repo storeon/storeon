@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.6
+* Allow to pass DevTools options.
+* Reduce size (by Hadeeb Farhan).
+* Improve error messages.
+* Fix documentation (by Vadim Boltach and Kyle Mills).
+
 ## 0.5
 * Add `useStoreon` hook.
 * Move `connect()` to `storeon/react/connect`.
