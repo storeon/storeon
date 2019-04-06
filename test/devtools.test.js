@@ -56,14 +56,14 @@ afterEach(function () {
 })
 
 it('initiates with data from store', function () {
-  var store = createStore([counter, devtools])
+  var store = createStore([counter, devtools()])
   var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
 
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
 it('get state updates from store', function () {
-  var store = createStore([counter, devtools])
+  var store = createStore([counter, devtools()])
   var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
 
   expect(getDevtoolStore()).toEqual(store.get())
@@ -73,7 +73,7 @@ it('get state updates from store', function () {
 })
 
 it('get events from store', function () {
-  var store = createStore([counter, devtools])
+  var store = createStore([counter, devtools()])
   var getDevtoolsActions = global.__REDUX_DEVTOOLS_EXTENSION__.actions
 
   var initialState = {
@@ -117,7 +117,7 @@ it('get events from store', function () {
 })
 
 it('able to change store value', function () {
-  var store = createStore([counter, devtools])
+  var store = createStore([counter, devtools()])
   var devToolDispatch = global.__REDUX_DEVTOOLS_EXTENSION__.devToolDispatch
 
   expect(store.get()).toEqual({ count: 0, started: true })
@@ -137,10 +137,10 @@ it('shows warning when devtool is not installed', function () {
   jest.spyOn(console, 'warn').mockImplementation(spy)
   global.__REDUX_DEVTOOLS_EXTENSION__ = null
 
-  createStore([counter, devtools])
+  createStore([counter, devtools()])
 
   expect(spy).toHaveBeenCalledWith(
     'Please install Redux devtools extension\n' +
-      'http://extension.remotedev.io/'
+    'http://extension.remotedev.io/'
   )
 })

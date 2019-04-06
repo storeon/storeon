@@ -81,7 +81,7 @@ function App () {
     h(Tracker12))
 }
 
-var store = createStore([counter1, counter2, logger, devtools])
+var store = createStore([counter1, counter2, logger, devtools()])
 
 render(
   h(StoreContext.Provider, { value: store }, h(App)),
