@@ -62,6 +62,12 @@ it('initiates with data from store', function () {
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
+it('support old API', function () {
+  var store = createStore([counter, devtools])
+  var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
+  expect(getDevtoolStore()).toEqual(store.get())
+})
+
 it('get state updates from store', function () {
   var store = createStore([counter, devtools()])
   var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
@@ -143,11 +149,4 @@ it('shows warning when devtool is not installed', function () {
     'Please install Redux devtools extension\n' +
     'http://extension.remotedev.io/'
   )
-})
-
-it('throws error on wrong initiation', function () {
-  global.__REDUX_DEVTOOLS_EXTENSION__ = null
-  expect(function () {
-    createStore([counter, devtools])
-  }).toThrow('devtools()')
 })

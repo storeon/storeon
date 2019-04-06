@@ -13,26 +13,19 @@
  * @function
  */
 function devtools (options) {
-  var extension =
-    window.__REDUX_DEVTOOLS_EXTENSION__ ||
-    window.top.__REDUX_DEVTOOLS_EXTENSION__
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (options && options.on && options.dispatch && options.get) {
-      throw new Error(
-        'Storeon DevTools should be initialized with devtools(), not devtools'
-      )
-    }
+  function module (store) {
+    var extension =
+      window.__REDUX_DEVTOOLS_EXTENSION__ ||
+      window.top.__REDUX_DEVTOOLS_EXTENSION__
     if (!extension) {
-      console.warn(
-        'Please install Redux devtools extension\n' +
-        'http://extension.remotedev.io/'
-      )
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(
+          'Please install Redux devtools extension\n' +
+          'http://extension.remotedev.io/'
+        )
+      }
+      return
     }
-  }
-
-  return function (store) {
-    if (!extension) return
 
     var ReduxTool = extension.connect(options)
     store.on('@init', function () {
@@ -66,6 +59,12 @@ function devtools (options) {
       }
       return newState
     })
+  }
+
+  if (options && options.on && options.dispatch && options.get) {
+    return module(options)
+  } else {
+    return module
   }
 }
 
