@@ -144,3 +144,10 @@ it('shows warning when devtool is not installed', function () {
     'http://extension.remotedev.io/'
   )
 })
+
+it('throws error on wrong initiation', function () {
+  global.__REDUX_DEVTOOLS_EXTENSION__ = null
+  expect(function () {
+    createStore([counter, devtools])
+  }).toThrow('devtools()')
+})

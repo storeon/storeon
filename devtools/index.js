@@ -13,20 +13,26 @@
  * @function
  */
 function devtools (options) {
-  return function (store) {
-    var extension =
-      window.__REDUX_DEVTOOLS_EXTENSION__ ||
-      window.top.__REDUX_DEVTOOLS_EXTENSION__
+  var extension =
+    window.__REDUX_DEVTOOLS_EXTENSION__ ||
+    window.top.__REDUX_DEVTOOLS_EXTENSION__
 
-    if (!extension) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn(
-          'Please install Redux devtools extension\n' +
-          'http://extension.remotedev.io/'
-        )
-      }
-      return
+  if (process.env.NODE_ENV !== 'production') {
+    if (options && options.on && options.dispatch && options.get) {
+      throw new Error(
+        'Storeon DevTools should be initialized with devtools(), not devtools'
+      )
     }
+    if (!extension) {
+      console.warn(
+        'Please install Redux devtools extension\n' +
+        'http://extension.remotedev.io/'
+      )
+    }
+  }
+
+  return function (store) {
+    if (!extension) return
 
     var ReduxTool = extension.connect(options)
     store.on('@init', function () {
