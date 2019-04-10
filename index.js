@@ -18,11 +18,11 @@
  * store.dispatch('inc')
  * store.get().count //=> 1
  */
-function createStore (modules) {
+var createStore = function (modules) {
   var events = { }
   var state = { }
 
-  function on (event, cb) {
+  var on = function (event, cb) {
     if (!events[event]) {
       events[event] = [cb]
     } else {
@@ -35,7 +35,7 @@ function createStore (modules) {
     }
   }
 
-  function dispatch (event, data) {
+  var dispatch = function (event, data) {
     if (event !== '@dispatch') {
       dispatch('@dispatch', [event, data, events[event]])
     }
@@ -46,22 +46,21 @@ function createStore (modules) {
       events[event].forEach(function (i) {
         var diff = i(state, data)
         if (diff) {
-          changed = true
-          var newState = { }
-          for (key in state) newState[key] = state[key]
-          for (key in diff) newState[key] = changes[key] = diff[key]
-          state = newState
+          changed = { }
+          for (key in state) changed[key] = state[key]
+          for (key in diff) changed[key] = changes[key] = diff[key]
+          state = changed
         }
       })
       if (changed) dispatch('@changed', changes)
     }
   }
 
-  function get () {
+  var get = function () {
     return state
   }
 
-  var store = { on: on, dispatch: dispatch, get: get }
+  var store = { dispatch: dispatch, get: get, on: on }
 
   modules.forEach(function (i) {
     if (i) i(store)
