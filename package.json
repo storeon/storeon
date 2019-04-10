@@ -24,7 +24,7 @@
     "./devtools/logger.js": "./devtools/logger.browser.js"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^28.0.0",
+    "@logux/eslint-config": "^28.1.0",
     "clean-publish": "^1.1.2",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
@@ -45,7 +45,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
-    "size-limit": "^1.0.0",
+    "size-limit": "^1.0.1",
     "yaspeller": "^5.0.1"
   },
   "size-limit": [
