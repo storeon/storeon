@@ -52,9 +52,13 @@ render(
 </a>
 
 
-## Usage
+## Install
 
-### Store
+```sh
+npm install storeon
+```
+
+## Store
 
 The store should be created with `createStore()` function. It accepts a list
 of the modules.
@@ -91,7 +95,7 @@ The store has 3 methods:
 * `store.dispatch(event, data)` will emit an event with optional data.
 
 
-### Events
+## Events
 
 There are three built-in events:
 
@@ -161,7 +165,7 @@ store.on('users/add', async (state, user) => {
 ```
 
 
-### Components
+## Components
 
 For functional components, `useStoreon` hook will be the best option:
 
@@ -203,7 +207,7 @@ export default connect('users', Users)
 It will re-render only if this keys will be changed.
 
 
-### DevTools
+## DevTools
 
 Storeon supports debugging with [Redux DevTools Extension].
 
@@ -214,9 +218,11 @@ const store = createStore([
 ])
 ```
 
+DevTools will also warn you about **typo in event name**. It will throw an error
+if you are dispatching event, but nobody subscribed to it.
+
 Or if you want to print events to `console` you can use built-in logger.
-It could be useful for simple cases or to investigate issue
-on online error trackers.
+It could be useful for simple cases or to investigate issue in error trackers.
 
 ```js
 const store = createStore([
