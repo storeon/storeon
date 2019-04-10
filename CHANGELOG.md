@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.7
+* Move event typo check to `devtools`.
+* Reduce size.
+
 ## 0.6
 * Allow to pass DevTools options.
 * Reduce size (by Hadeeb Farhan).
