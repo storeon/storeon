@@ -150,3 +150,20 @@ it('shows warning when devtool is not installed', function () {
     'http://extension.remotedev.io/'
   )
 })
+
+it('throws on unknown not system events', function () {
+  var store = createStore([devtools()])
+
+  var unbind = store.on('unknown2', function () { })
+  unbind()
+
+  expect(function () {
+    store.dispatch('unknown1')
+  }).toThrow('Unknown Storeon event unknown1')
+
+  expect(function () {
+    store.dispatch('unknown2')
+  }).toThrow('Unknown Storeon event unknown2')
+
+  store.dispatch('@unknown')
+})

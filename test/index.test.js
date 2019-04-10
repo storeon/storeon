@@ -92,28 +92,20 @@ it('unbinds event listeners', function () {
   expect(fired).toEqual(0)
 })
 
-it('throws on unknown not system events', function () {
-  var store = createStore([])
-
-  expect(function () {
-    store.dispatch('unknown')
-  }).toThrow('Unknown Storeon event unknown')
-  store.dispatch('@unknown')
-})
-
 it('notifies about new event', function () {
   var events = []
+  function testCallback (state, data) {
+    if (data === 1) {
+      return { test: 1 }
+    } else {
+      return undefined
+    }
+  }
   function module (a) {
     a.on('@dispatch', function (state, e) {
       events.push(e)
     })
-    a.on('test', function (state, data) {
-      if (data === 1) {
-        return { test: 1 }
-      } else {
-        return undefined
-      }
-    })
+    a.on('test', testCallback)
   }
 
   var store = createStore([module])
@@ -121,9 +113,9 @@ it('notifies about new event', function () {
   store.dispatch('test', 2)
 
   expect(events).toEqual([
-    ['@init', undefined],
-    ['test', 1],
-    ['@changed', { test: 1 }],
-    ['test', 2]
+    ['@init', undefined, undefined],
+    ['test', 1, [testCallback]],
+    ['@changed', { test: 1 }, undefined],
+    ['test', 2, [testCallback]]
   ])
 })

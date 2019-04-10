@@ -40,12 +40,6 @@ function createStore (modules) {
       dispatch('@dispatch', [event, data, events[event]])
     }
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (event.indexOf('@') !== 0 && !events[event]) {
-        throw new Error('Unknown Storeon event ' + event)
-      }
-    }
-
     if (events[event]) {
       var changes = { }
       var changed, key
