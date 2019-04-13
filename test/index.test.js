@@ -138,4 +138,22 @@ it('allows symbol as a store key', function () {
 
   expect(store.get()[a]).toBe(1)
 })
+
+it('allows symbol as an event name', function () {
+  var inc = Symbol('inc')
+
+  function init (store) {
+    store.on('@init', function () {
+      return { a: 0 }
+    })
+  }
+  var store = createStore([init])
+  store.on(inc, function () {
+    return { a: 1 }
+  })
+
+  store.dispatch(inc, 'a')
+
+  expect(store.get().a).toBe(1)
+})
 /* eslint-enable es5/no-computed-properties */

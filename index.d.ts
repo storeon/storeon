@@ -1,10 +1,10 @@
 export type Dispatch = {
-  (event: string, data?: any): void;
+  (event: PropertyKey, data?: any): void;
 };
 
 export interface Store<T> {
   on: (
-    event: string,
+    event: PropertyKey,
     handler: (state: Readonly<T>, data: any) => Partial<T> | null
   ) => () => void;
   dispatch: Dispatch;
