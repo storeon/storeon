@@ -4,6 +4,7 @@ var h = require('react').createElement
 var StoreContext = require('../react/context')
 var createStore = require('../')
 var connect = require('../react/connect')
+var useStoreon = require('../react')
 
 jest.mock('react', function () {
   var React = require('react/cjs/react.development.js')
@@ -75,3 +76,34 @@ it('renders only on changes', function () {
   })
   expect(renders).toEqual(2)
 })
+
+/* eslint-disable es5/no-computed-properties */
+it('allows using symbol as a store key', function () {
+  var sym = Symbol('sym')
+
+  function symbol (store) {
+    store.on('@init', function () {
+      return { [sym]: 0 }
+    })
+    store.on('sym', function (state) {
+      return { [sym]: state[sym] + 1 }
+    })
+  }
+
+  function Button () {
+    var hooks = useStoreon(sym)
+    return hooks[sym]
+  }
+  var store = createStore([symbol])
+
+  var wrapper = init(store, h(Button, {}, 'Test'))
+
+  expect(wrapper.toJSON()).toBe('0')
+
+  renderer.act(function () {
+    store.dispatch('sym')
+  })
+
+  expect(wrapper.toJSON()).toBe('1')
+})
+/* eslint-enable es5/no-computed-properties */

@@ -5,6 +5,6 @@ type StoreData = {
   [x: string]: any;
 };
 
-declare function useStoreon(...keys: string[]): StoreData;
+declare function useStoreon(...keys: PropertyKey[]): StoreData;
 
 export default useStoreon;
