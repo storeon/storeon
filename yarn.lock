@@ -1205,9 +1205,9 @@ acorn-dynamic-import@^4.0.0:
   integrity sha512-d3OEjQV4ROpoflsnUA8HozoIR504TFxNivYEUi6uwz0IYhBkTDXGuWlNdMtybRt3nqVx/L6XqMt0FxkXuWKZhw==
 
 acorn-globals@^4.1.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-4.3.0.tgz#e3b6f8da3c1552a95ae627571f7dd6923bb54103"
-  integrity sha512-hMtHj3s5RnuhvHPowpBYvJVj3rAar82JiDQHvGs1zO0l10ocX/xEdBShNHTJaboucJUsScghp74pH3s7EnHHQw==
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-4.3.1.tgz#deb149c59276657ebd40ba2ba849ddd529763ccf"
+  integrity sha512-gJSiKY8dBIjV/0jagZIFBdVMtfQyA5QHCvAT48H2q8REQoW8Fs5AOjqBql1LgSXgrMWdevcE+8cdZ33NtVbIBA==
   dependencies:
     acorn "^6.0.1"
     acorn-walk "^6.0.1"
@@ -1360,6 +1360,14 @@ array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
+
+array-includes@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
+  integrity sha1-GEtI9i2S10UrsxsyMWXH+L0CJm0=
+  dependencies:
+    define-properties "^1.1.2"
+    es-abstract "^1.7.0"
 
 array-union@^1.0.1, array-union@^1.0.2:
   version "1.0.2"
@@ -2916,7 +2924,7 @@ error-ex@^1.2.0, error-ex@^1.3.1:
   dependencies:
     is-arrayish "^0.2.1"
 
-es-abstract@^1.12.0, es-abstract@^1.5.1:
+es-abstract@^1.12.0, es-abstract@^1.5.1, es-abstract@^1.7.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.13.0.tgz#ac86145fdd5099d8dd49558ccba2eaf9b88e24e9"
   integrity sha512-vDZfg/ykNxQVwup/8E1BZhVzFfBxs9NqMzGcvIJrqg5k2/5Za2bWo40dK2J1pgLngZ7c+Shh8lwYtLGyrwPutg==
@@ -2984,10 +2992,10 @@ eslint-import-resolver-node@^0.3.2:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-module-utils@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.3.0.tgz#546178dab5e046c8b562bbb50705e2456d7bda49"
-  integrity sha512-lmDJgeOOjk8hObTysjqH7wyMi+nsHwwvfBykwfhjR1LNdd7C2uFJBvx4OpWYpXOw4df1yE1cDEVd1yLHitk34w==
+eslint-module-utils@^2.3.0, eslint-module-utils@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.4.0.tgz#8b93499e9b00eab80ccb6614e69f03678e84e09a"
+  integrity sha512-14tltLm38Eu3zS+mt0KvILC3q8jyIAH518MlG+HO0p+yK885Lb1UHTY/UgR91eOyGdmxAPb+OLoW4znqIT6Ndw==
   dependencies:
     debug "^2.6.8"
     pkg-dir "^2.0.0"
@@ -3015,21 +3023,22 @@ eslint-plugin-import-helpers@^0.1.4:
     eslint-module-utils "^2.3.0"
     lodash.cond "^4.5.2"
 
-eslint-plugin-import@^2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.16.0.tgz#97ac3e75d0791c4fac0e15ef388510217be7f66f"
-  integrity sha512-z6oqWlf1x5GkHIFgrSvtmudnqM6Q60KM4KvpWi5ubonMjycLjndvd5+8VAZIsTlHC03djdgJuyKG6XO577px6A==
+eslint-plugin-import@^2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.17.1.tgz#b888feb4d9b3ee155113c8dccdd4bec5db33bdf4"
+  integrity sha512-lzD9uvRvW4MsHzIOMJEDSb5MOV9LzgxRPBaovvOhJqzgxRHYfGy9QOrMuwHIh5ehKFJ7Z3DcrcGKDQ0IbP0EdQ==
   dependencies:
+    array-includes "^3.0.3"
     contains-path "^0.1.0"
     debug "^2.6.9"
     doctrine "1.5.0"
     eslint-import-resolver-node "^0.3.2"
-    eslint-module-utils "^2.3.0"
+    eslint-module-utils "^2.4.0"
     has "^1.0.3"
     lodash "^4.17.11"
     minimatch "^3.0.4"
     read-pkg-up "^2.0.0"
-    resolve "^1.9.0"
+    resolve "^1.10.0"
 
 eslint-plugin-jest@^22.3.2:
   version "22.4.1"
@@ -3775,9 +3784,9 @@ gzip-size@^5.0.0:
     pify "^3.0.0"
 
 handlebars@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.1.tgz#6e4e41c18ebe7719ae4d38e5aca3d32fa3dd23d3"
-  integrity sha512-3Zhi6C0euYZL5sM0Zcy7lInLXKQ+YLcF/olbN010mzGQ4XVm50JeyBnMqofHh696GrciGruC7kCcApPDJvVgwA==
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
+  integrity sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
   dependencies:
     neo-async "^2.6.0"
     optimist "^0.6.1"
@@ -7324,7 +7333,7 @@ resolve@1.1.7:
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
   integrity sha1-IDEU2CrSxe2ejgQRs5ModeiJ6Xs=
 
-resolve@^1.1.5, resolve@^1.10.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.8.1, resolve@^1.9.0:
+resolve@^1.1.5, resolve@^1.10.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.8.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.10.0.tgz#3bdaaeaf45cc07f375656dfd2e54ed0810b101ba"
   integrity sha512-3sUr9aq5OfSg2S9pNtPA9hL1FVEAjvfOC4leW0SNf/mpnaakz2a9femSd6LqAww2RaFctwyf1lCqnTHuF1rxDg==
@@ -8074,9 +8083,9 @@ taffydb@2.6.2:
   integrity sha1-fLy2S1oUG2ou/CxdLGe04VCyomg=
 
 tapable@^1.0.0, tapable@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.1.tgz#4d297923c5a72a42360de2ab52dadfaaec00018e"
-  integrity sha512-9I2ydhj8Z9veORCw5PRm4u9uebCn0mcCa6scWoNcbZ6dAtoo2618u9UUzxgmsCOreJpqDDuv61LvwofW7hLcBA==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"
+  integrity sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==
 
 tar@^4:
   version "4.4.8"
@@ -8571,9 +8580,9 @@ webidl-conversions@^4.0.2:
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
 
 webpack-bundle-analyzer@^3.2.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.3.0.tgz#2c18aca01fa03f11dccb3f627fb40b9f38bd7225"
-  integrity sha512-xNz1oC5pFiVLyDHDz2qZs3ydAuIWv96zokdBZAz+xdhD8BX3mytCmbWkzLzNRDjuWEovhQtycuvpfd368XvLBA==
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.3.2.tgz#3da733a900f515914e729fcebcd4c40dde71fc6f"
+  integrity sha512-7qvJLPKB4rRWZGjVp5U1KEjwutbDHSKboAl0IfafnrdXMrgC0tOtZbQD6Rw0u4cmpgRN4O02Fc0t8eAT+FgGzA==
   dependencies:
     acorn "^6.0.7"
     acorn-walk "^6.1.1"
@@ -8598,9 +8607,9 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     source-map "~0.6.1"
 
 webpack@^4.29.6:
-  version "4.29.6"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.29.6.tgz#66bf0ec8beee4d469f8b598d3988ff9d8d90e955"
-  integrity sha512-MwBwpiE1BQpMDkbnUUaW6K8RFZjljJHArC6tWQJoFm0oQtfoSebtg4Y7/QHnJ/SddtjYLHaKGX64CFjG5rehJw==
+  version "4.30.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.30.0.tgz#aca76ef75630a22c49fcc235b39b4c57591d33a9"
+  integrity sha512-4hgvO2YbAFUhyTdlR4FNyt2+YaYBYHavyzjCMbZzgglo02rlKi/pcsEzwCuCpsn1ryzIl1cq/u8ArIKu8JBYMg==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
