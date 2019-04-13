@@ -51,14 +51,14 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "174 B"
+      "limit": "165 B"
     },
     {
       "path": [
         "index.js",
         "react/index.js"
       ],
-      "limit": "331 B",
+      "limit": "321 B",
       "ignore": [
         "react"
       ]
@@ -68,7 +68,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "403 B",
+      "limit": "380 B",
       "ignore": [
         "react"
       ]
@@ -78,6 +78,7 @@
     "extends": "@logux/eslint-config/browser",
     "rules": {
       "node/no-unpublished-require": "off",
+      "es5/no-es6-static-methods": "off",
       "node/no-missing-require": "off",
       "func-style": "off"
     }
@@ -128,7 +129,8 @@
       "Fri",
       "Vadim",
       "Boltach",
-      "Kyle"
+      "Kyle",
+      "polyfill"
     ]
   }
 }

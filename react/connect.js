@@ -27,10 +27,7 @@ module.exports = function () {
   var Component = arguments[arguments.length - 1]
 
   return function (originProps) {
-    var props = useStoreon.apply(null, keys)
-    for (var i in originProps) {
-      if (!(i in props)) props[i] = originProps[i]
-    }
+    var props = Object.assign({ }, originProps, useStoreon.apply(null, keys))
     return React.createElement(Component, props)
   }
 }

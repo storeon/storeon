@@ -58,6 +58,15 @@ render(
 npm install storeon
 ```
 
+If you need to support IE, add [`Object.assign`] polyfill to your bundle.
+You should have this polyfill already if you are using React.
+
+```js
+Object.assign = require('object-assign')
+```
+
+[`Object.assign`]: https://www.npmjs.com/package/object-assign
+
 ## Store
 
 The store should be created with `createStore()` function. It accepts a list
