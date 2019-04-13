@@ -120,26 +120,28 @@ it('notifies about new event', function () {
   ])
 })
 
-/* eslint-disable es5/no-computed-properties */
-it('allows symbol as a store key', function () {
+it('allows Symbol as a store key', function () {
   var a = Symbol('a')
 
   function init (store) {
     store.on('@init', function () {
-      return { [a]: 0 }
+      var diff = { }
+      diff[a] = 0
+      return diff
     })
   }
   var store = createStore([init])
   store.on('test', function () {
-    return { [a]: 1 }
+    var diff = { }
+    diff[a] = 1
+    return diff
   })
 
   store.dispatch('test', 'a')
-
   expect(store.get()[a]).toBe(1)
 })
 
-it('allows symbol as an event name', function () {
+it('allows Symbol as an event name', function () {
   var inc = Symbol('inc')
 
   function init (store) {
@@ -153,7 +155,5 @@ it('allows symbol as an event name', function () {
   })
 
   store.dispatch(inc, 'a')
-
   expect(store.get().a).toBe(1)
 })
-/* eslint-enable es5/no-computed-properties */

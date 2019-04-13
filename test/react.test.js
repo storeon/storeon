@@ -77,19 +77,21 @@ it('renders only on changes', function () {
   expect(renders).toEqual(2)
 })
 
-/* eslint-disable es5/no-computed-properties */
-it('allows using symbol as a store key', function () {
+it('allows using Symbol as a store key', function () {
   var sym = Symbol('sym')
 
   function symbol (store) {
     store.on('@init', function () {
-      return { [sym]: 0 }
+      var diff = { }
+      diff[sym] = 0
+      return diff
     })
     store.on('sym', function (state) {
-      return { [sym]: state[sym] + 1 }
+      var diff = { }
+      diff[sym] = state[sym] + 1
+      return diff
     })
   }
-
   function Button () {
     var hooks = useStoreon(sym)
     return hooks[sym]
@@ -97,13 +99,10 @@ it('allows using symbol as a store key', function () {
   var store = createStore([symbol])
 
   var wrapper = init(store, h(Button, {}, 'Test'))
-
   expect(wrapper.toJSON()).toBe('0')
 
   renderer.act(function () {
     store.dispatch('sym')
   })
-
   expect(wrapper.toJSON()).toBe('1')
 })
-/* eslint-enable es5/no-computed-properties */
