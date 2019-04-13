@@ -2,11 +2,11 @@
 
 A tiny event-based Redux-like state manager for React and Preact.
 
-* **Small.** 174 bytes (minified and gzipped). No dependencies.
+* **Small.** 165 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
-* **Hooks.** The same Redux reducers. Now with hooks for **React/Preact**.
+* **Hooks.** The same Redux reducers. With hooks for **React** or **Preact**.
 * **Modular.** API created to move business logic away from React components.
 
 ```js
