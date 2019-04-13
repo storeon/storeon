@@ -18,6 +18,8 @@
  * store.dispatch('inc')
  * store.get().count //=> 1
  */
+var assign = Object.assign
+
 var createStore = function (modules) {
   var events = { }
   var state = { }
@@ -42,13 +44,12 @@ var createStore = function (modules) {
 
     if (events[event]) {
       var changes = { }
-      var changed, key
+      var changed
       events[event].forEach(function (i) {
         var diff = i(state, data)
         if (diff) {
-          changed = { }
-          for (key in state) changed[key] = state[key]
-          for (key in diff) changed[key] = changes[key] = diff[key]
+          changed = assign({ }, state, diff)
+          assign(changes, diff)
           state = changed
         }
       })

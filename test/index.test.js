@@ -119,3 +119,23 @@ it('notifies about new event', function () {
     ['test', 2, [testCallback]]
   ])
 })
+
+/* eslint-disable es5/no-computed-properties */
+it('allows symbol as a store key', function () {
+  var a = Symbol('a')
+
+  function init (store) {
+    store.on('@init', function () {
+      return { [a]: 0 }
+    })
+  }
+  var store = createStore([init])
+  store.on('test', function () {
+    return { [a]: 1 }
+  })
+
+  store.dispatch('test', 'a')
+
+  expect(store.get()[a]).toBe(1)
+})
+/* eslint-enable es5/no-computed-properties */
