@@ -7,9 +7,9 @@ module.exports = function (store) {
       var keys = Object.keys(data[1]).join(', ')
       console.log('%cchanged %c' + keys, STYLE, BOLD, state)
     } else if (data[1]) {
-      console.log('%caction %c' + data[0], STYLE, BOLD, data[1])
+      console.log('%caction %c' + String(data[0]), STYLE, BOLD, data[1])
     } else {
-      console.log('%caction %c' + data[0], STYLE, BOLD)
+      console.log('%caction %c' + String(data[0]), STYLE, BOLD)
     }
   })
 }

@@ -40,7 +40,7 @@ function devtools (options) {
 
     var prev = ''
     store.on('@dispatch', function (state, data) {
-      var event = data[0]
+      var event = String(data[0])
       if (event !== 'UPDATE_FROM_DEVTOOLS' && prev !== 'UPDATE_FROM_DEVTOOLS') {
         if (event[0] !== '@' && (!data[2] || data[2].length === 0)) {
           throw new Error('Unknown Storeon event ' + event)

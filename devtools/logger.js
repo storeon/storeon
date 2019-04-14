@@ -18,9 +18,9 @@ module.exports = function (store) {
       var keys = Object.keys(data[1]).join(', ')
       console.log('changed ' + keys, state)
     } else if (data[1]) {
-      console.log('action ' + data[0], data[1])
+      console.log('action ' + String(data[0]), data[1])
     } else {
-      console.log('action ' + data[0])
+      console.log('action ' + String(data[0]))
     }
   })
 }
