@@ -82,7 +82,7 @@ const App = () => (
   </>
 )
 
-const store = createStore<State>([counter1, counter2, logger, devtools])
+const store = createStore<State>([counter1, counter2, logger, devtools()])
 
 ReactDOM.render(
   <StoreContext.Provider value={store}>
