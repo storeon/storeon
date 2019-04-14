@@ -2,7 +2,7 @@
 
 A tiny event-based Redux-like state manager for React and Preact.
 
-* **Small.** 165 bytes (minified and gzipped). No dependencies.
+* **Small.** 173 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
@@ -172,7 +172,6 @@ store.on('users/add', async (state, user) => {
   }
 })
 ```
-
 
 ## Components
 
