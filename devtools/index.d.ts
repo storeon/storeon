@@ -1,5 +1,5 @@
 import { Module } from "..";
 
-declare const devtool: Module<any>;
+declare const devtools: Module<unknown>;
 
-export default devtool;
+export = devtools;

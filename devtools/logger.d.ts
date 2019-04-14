@@ -1,5 +1,5 @@
 import { Module } from "..";
 
-declare const logger: Module<any>;
+declare const logger: Module<unknown>;
 
-export default logger;
+export = logger;
