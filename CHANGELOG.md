@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8
+* Add `Symbol` support for store keys and event names (by Vlad Rindevich).
+* Fix `async`/`await` support (by Vlad Rindevich).
+* Fix TypeScript definitions (by Vlad Rindevich).
+* Reduce size (by Vlad Rindevich).
+
 ## 0.7
 * Move event typo check to `devtools`.
 * Reduce size.
