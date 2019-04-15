@@ -1,3 +1,5 @@
+var delay = require('nanodelay')
+
 var createStore = require('../')
 
 it('applies modules', function () {
@@ -172,12 +174,10 @@ it('does not fire @change if Promise is returned', function (done) {
   })
 
   store.on('incAsync', async function () {
-    setTimeout(function () {
-      store.dispatch('inc', 10)
-    }, 500)
+    await delay(500)
+    store.dispatch('inc', 10)
   })
 
   store.dispatch('incAsync')
-
   expect(count).toBe(0)
 })

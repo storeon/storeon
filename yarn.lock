@@ -5628,6 +5628,11 @@ nan@^2.9.2:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
   integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
 
+nanodelay@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/nanodelay/-/nanodelay-0.1.4.tgz#1cc7e37ac10d107ca009b4803a25c8474ca636bf"
+  integrity sha512-HffnJWkIKNyFxPNoeAM3CkHXQMNLk8rQUqGIQuUduoHwOYjx4ILeGv1z6sdHaDis8oIXi85MfyAC3d/R5jT96Q==
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
