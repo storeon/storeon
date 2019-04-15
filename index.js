@@ -45,7 +45,7 @@ var createStore = function (modules) {
       var changed
       events[event].forEach(function (i) {
         var diff = i(state, data)
-        if (diff) {
+        if (diff && typeof diff.then !== 'function') {
           changed = Object.assign({ }, state, diff)
           Object.assign(changes, diff)
           state = changed

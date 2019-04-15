@@ -1,7 +1,7 @@
 {
   "name": "storeon",
   "version": "0.7.0",
-  "description": "Tiny (165 bytes) event-based Redux-like state manager for React and Preact",
+  "description": "Tiny (173 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
     "immutable",
@@ -51,14 +51,14 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "165 B"
+      "limit": "173 B"
     },
     {
       "path": [
         "index.js",
         "react/index.js"
       ],
-      "limit": "321 B",
+      "limit": "331 B",
       "ignore": [
         "react"
       ]
@@ -68,7 +68,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "380 B",
+      "limit": "389 B",
       "ignore": [
         "react"
       ]

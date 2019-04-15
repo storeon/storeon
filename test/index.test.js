@@ -157,3 +157,27 @@ it('allows Symbol as an event name', function () {
   store.dispatch(inc, 'a')
   expect(store.get().a).toBe(1)
 })
+
+it('does not fire @change if Promise is returned', function (done) {
+  var store = createStore([])
+
+  store.on('inc', function (state, data) {
+    expect(data).toBe(10)
+    done()
+  })
+
+  var count = 0
+  store.on('@changed', function () {
+    count += 1
+  })
+
+  store.on('incAsync', async function () {
+    setTimeout(function () {
+      store.dispatch('inc', 10)
+    }, 500)
+  })
+
+  store.dispatch('incAsync')
+
+  expect(count).toBe(0)
+})
