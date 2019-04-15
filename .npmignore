@@ -9,3 +9,4 @@ docs/
 coverage/
 test/
 .travis.yml
+tsconfig.json
