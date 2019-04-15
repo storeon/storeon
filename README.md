@@ -222,7 +222,7 @@ Storeon supports debugging with [Redux DevTools Extension].
 ```js
 const store = createStore([
   …
-  process.env.NODE_ENV !== 'production' && require('storeon/devtools')()
+  process.env.NODE_ENV !== 'production' && require('storeon/devtools')
 ])
 ```
 
