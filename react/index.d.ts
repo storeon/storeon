@@ -1,13 +1,13 @@
-import { Dispatch } from "..";
+import {Dispatch} from '..'
 
 declare namespace useStoreon {
-  export type StoreData<T extends PropertyKey> = {
+  export type StoreData<State extends object = {}> = {
     dispatch: Dispatch;
-  } & {
-    [P in T]: unknown;
-  }
+  } & State
 }
 
-declare function useStoreon<T extends PropertyKey>(...keys: T[]): useStoreon.StoreData<T>;
+declare function useStoreon<State extends object = {}>(
+  ...keys: (keyof State)[]
+): useStoreon.StoreData<State>;
 
 export = useStoreon;

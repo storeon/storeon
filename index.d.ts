@@ -1,20 +1,20 @@
 declare namespace createStore {
-  export type Dispatch = {
-    (event: PropertyKey, data?: unknown): void;
-  };
+  export type Dispatch = (event: PropertyKey, data?: unknown) => void;
 
-  export interface Store<T = unknown> {
+  export interface Store<State = unknown> {
     readonly on: (
       event: PropertyKey,
-      handler: (state: Readonly<T>, data: unknown) => Partial<T> | Promise<void> | null
+      handler: (state: Readonly<State>, data: unknown) => Partial<State> | Promise<void> | null
     ) => () => void;
     readonly dispatch: Dispatch;
-    readonly get: () => T;
+    readonly get: () => State;
   }
 
-  export type Module<T> = (store: Store<T>) => void;
+  export type Module<State> = (store: Store<State>) => void;
 }
 
-declare function createStore<T>(modules: Array<createStore.Module<T> | false>): createStore.Store<T>;
+declare function createStore<State>(
+  modules: Array<createStore.Module<State> | false>
+): createStore.Store<State>;
 
 export = createStore;
