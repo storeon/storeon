@@ -1,10 +1,13 @@
-import { Dispatch } from "..";
+import {Dispatch} from '..'
 
-type StoreData = {
-  dispatch: Dispatch;
-  [x: string]: any;
-};
+declare namespace useStoreon {
+  export type StoreData<State extends object = {}> = {
+    dispatch: Dispatch;
+  } & State
+}
 
-declare function useStoreon(...keys: PropertyKey[]): StoreData;
+declare function useStoreon<State extends object = {}>(
+  ...keys: (keyof State)[]
+): useStoreon.StoreData<State>;
 
-export default useStoreon;
+export = useStoreon;

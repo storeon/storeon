@@ -1,5 +1,8 @@
-import { Module } from "..";
+import {Store} from '..';
 
-declare const devtool: Module<any>;
+declare const devtools: {
+  <State>(store: Store<State>): void;
+  (): <State>(store: Store<State>) => void;
+};
 
-export default devtool;
+export = devtools;

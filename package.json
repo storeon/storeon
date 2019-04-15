@@ -14,8 +14,9 @@
     "docs": "jsdoc -d docs/ *.js react/*.js",
     "spell": "yarn docs && yaspeller *.md docs/*.html",
     "lint": "eslint *.js test/*.js",
-    "test": "jest --coverage && yarn lint && size-limit && yarn spell",
-    "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open"
+    "test": "jest --coverage && yarn lint && size-limit && yarn typecheck && yarn spell",
+    "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^28.1.0",
+    "@types/react": "^16.8.13",
     "clean-publish": "^1.1.2",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
@@ -43,10 +45,12 @@
     "lint-staged": "^8.1.5",
     "nanodelay": "^0.1.4",
     "parcel-bundler": "^1.12.3",
+    "preact": "^10.0.0-alpha.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
     "size-limit": "^1.0.1",
+    "typescript": "^3.4.3",
     "yaspeller": "^5.0.1"
   },
   "size-limit": [
