@@ -139,7 +139,7 @@ You do not need to return the whole state, return an object
 with changed keys.
 
 ```js
-// count: 0 will be added to state on initialization
+// users: {} will be added to state on initialization
 store.on('@init', () => ({ users:  { } }))
 ```
 
