@@ -1,12 +1,12 @@
 # Storeon
 
 <img src="https://ai.github.io/storeon/logo.svg" align="right"
-     alt="Storeon logo by Anton Lovchikov" width="180" height="160">
+     alt="Storeon logo by Anton Lovchikov" width="160" height="142">
 
 A tiny event-based Redux-like state manager for React and Preact.
 
 * **Small.** 173 bytes (minified and gzipped). No dependencies.
-  It uses [Size Limit] to control size.
+  It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
 * **Hooks.** The same Redux reducers. With hooks for **React** and **Preact**.
@@ -47,7 +47,7 @@ render(
 )
 ```
 
-[Size Limit]: https://github.com/ai/size-limit
+[Size Limit]: https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=storeon">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
