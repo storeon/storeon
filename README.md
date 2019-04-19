@@ -1,5 +1,8 @@
 # Storeon
 
+<img src="https://ai.github.io/storeon/logo.svg" align="right"
+     alt="Storeon logo by Anton Lovchikov" width="180" height="160">
+
 A tiny event-based Redux-like state manager for React and Preact.
 
 * **Small.** 173 bytes (minified and gzipped). No dependencies.
