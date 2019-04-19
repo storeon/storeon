@@ -47,7 +47,7 @@ render(
 )
 ```
 
-[Size Limit]: https://github.com/ai/size-limit
+[Size Limit]: https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=storeon">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
