@@ -199,7 +199,7 @@ For class components, you can use `connect()` decorator.
 ```js
 import connect from 'storeon/react/connect' // Use 'storeon/preact/connect' for Preact
 
-class User extends React {
+class Users extends React {
   onAdd = () => {
     this.props.dispatch('users/add', user)
   }
