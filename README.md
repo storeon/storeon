@@ -12,6 +12,8 @@ A tiny event-based Redux-like state manager for React and Preact.
 * **Hooks.** The same Redux reducers. With hooks for **React** and **Preact**.
 * **Modular.** API created to move business logic away from React components.
 
+Read more about Storeon features in **[our article]**.
+
 ```js
 import createStore from 'storeon'
 
@@ -47,6 +49,7 @@ render(
 )
 ```
 
+[our article]: https://evilmartians.com/chronicles/storeon-redux-in-173-bytes
 [Size Limit]: https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=storeon">
