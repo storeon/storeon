@@ -125,7 +125,7 @@ There are three built-in events:
 To add an event listener, call `store.on()` with event name and callback.
 
 ```js
-store.on('@dispatch', ([event, data]) => {
+store.on('@dispatch', (state, [event, data]) => {
   console.log(`Storeon: ${ event } with `, data)
 })
 ```
