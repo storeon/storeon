@@ -246,3 +246,34 @@ const store = createStore([
 ```
 
 [Redux DevTools Extension]: https://github.com/zalmoxisus/redux-devtools-extension
+
+
+## Testing
+
+Tests for store can be written in this way:
+
+```js
+it('creates users', () => {
+  let addUserResolve
+  jest.spyOn(api, 'addUser').mockImplementation(() => new Promise(resolve => {
+    addUserResolve = resolve
+  }))
+  let store = createStore([usersModule])
+
+  store.dispatch('users/add', { name: 'User' })
+  expect(api.addUser).toHaveBeenCalledWith({ name: 'User' })
+  expect(store.get().users).toEqual([])
+
+  addUserResolve()
+  expect(store.get().users).toEqual([{ name: 'User' }])
+})
+```
+
+We recommend to keep business logic away from the components. In this case,
+UI kit (special page with all your components in all states)
+will be the best way to test components.
+
+For instance, with [UIBook] you can mock store and show notification
+on any `dispatch` call.
+
+[UIBook]: https://github.com/vrizo/uibook/
