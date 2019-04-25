@@ -63,7 +63,7 @@
         "index.js",
         "react/index.js"
       ],
-      "limit": "331 B",
+      "limit": "330 B",
       "ignore": [
         "react"
       ]
