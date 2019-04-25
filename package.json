@@ -10,7 +10,7 @@
     "hook"
   ],
   "scripts": {
-    "clean": "rimraf docs/ coverage/",
+    "clean": "rimraf api.md coverage/",
     "docs": "documentation build *.js react/*.js -f md -o api.md",
     "spell": "yarn docs && yaspeller *.md",
     "lint": "eslint *.js test/*.js",
