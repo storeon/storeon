@@ -12,6 +12,7 @@
   "scripts": {
     "clean": "rimraf api.md coverage/",
     "docs": "documentation build *.js react/*.js -f md -o api.md",
+    "flow": "flow",
     "spell": "yarn docs && yaspeller *.md",
     "lint": "eslint *.js test/*.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -136,5 +137,8 @@
       "UIBook",
       "UI"
     ]
+  },
+  "dependencies": {
+    "flow-bin": "^0.98.0"
   }
 }
