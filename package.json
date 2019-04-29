@@ -20,7 +20,7 @@
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
-  "repository": "ai/storeon",
+  "repository": "storeon/storeon",
   "browser": {
     "./devtools/logger.js": "./devtools/logger.browser.js"
   },
