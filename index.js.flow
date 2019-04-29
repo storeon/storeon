@@ -1,0 +1,20 @@
+// @flow
+
+type PropertyKey = string | number | Symbol;
+
+export type Dispatch = (event: PropertyKey, data?: any) => void;
+
+export type Store<State> = {
+  on: (
+    event: PropertyKey,
+    handler: (state: State, data: any) => $Shape<State> | Promise<void> | null
+  ) => () => void;
+  dispatch: Dispatch;
+  get: () => State;
+}
+
+export type Module<State> = (store: Store<State>) => void;
+
+declare export default function createStore<State>(
+  modules: Array<Module<State> | false>
+): Store<State>;

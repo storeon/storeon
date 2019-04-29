@@ -41,6 +41,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
+    "flow-bin": "^0.98.0",
     "husky": "^2.1.0",
     "jest": "^24.7.1",
     "lint-staged": "^8.1.5",
@@ -137,8 +138,5 @@
       "UIBook",
       "UI"
     ]
-  },
-  "dependencies": {
-    "flow-bin": "^0.98.0"
   }
 }
