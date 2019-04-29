@@ -1,0 +1,6 @@
+// @flow
+import { type Store } from "..";
+
+declare var StoreContext: React$Context<Store<*>>;
+
+declare export default typeof StoreContext;

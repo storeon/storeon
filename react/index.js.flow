@@ -1,0 +1,11 @@
+// @flow
+import type {Dispatch} from '..'
+
+export type StoreData<State: {}> = {
+    dispatch: Dispatch;
+} & State
+
+declare export default function useStoreon<State: {}>(
+...keys: Array<$Keys<State>>
+): useStoreon.StoreData<State>;
+

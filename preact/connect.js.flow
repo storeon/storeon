@@ -1,0 +1,6 @@
+// @flow
+import type {Omit} from 'flown'
+
+declare export default function connect<C>(
+  ...keysOrComponent: Array<$Keys<C> | React$ComponentType<C>>
+): React$ComponentType<$Shape<Omit<C, ["dispatch"]>>>;
