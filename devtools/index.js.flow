@@ -1,0 +1,7 @@
+import {Store} from '..';
+
+declare export default {
+  <State>(store: Store<State>): void;
+  (): <State>(store: Store<State>) => void;
+};
+
