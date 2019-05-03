@@ -186,12 +186,12 @@ For functional components, `useStoreon` hook will be the best option:
 ```js
 import useStoreon from 'storeon/react' // Use 'storeon/preact' for Preact
 const Users = () => {
-  const { dispatch, users, anotherStateKey } = useStoreon('users', 'anotherStateKey')
+  const { dispatch, users, projects } = useStoreon('users', 'projects')
   const onAdd = useCallback(user => {
     dispatch('users/add', user)
   })
   return <div>
-    {users.map(user => <User key={user.id} user={user} />)}
+    {users.map(user => <User key={user.id} user={user} projects={projects} />)}
     <NewUser onAdd={onAdd} />
   </div>
 }
@@ -217,8 +217,8 @@ class Users extends React.Component {
 export default connect('users', 'anotherStateKey', Users)
 ```
 
-`useStoreon` hook and `connect()` accept the list of state keys to pass into `props`.
-It will re-render only if this keys will be changed.
+`useStoreon` hook and `connect()` accept the list of state keys to pass
+into `props`. It will re-render only if this keys will be changed.
 
 
 ## DevTools
