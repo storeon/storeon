@@ -58,6 +58,12 @@ render(
 </a>
 
 
+## Tools
+
+* [`@storeon/localstorage`](https://github.com/storeon/localstorage)
+  to save/restore state to `localStorage`.
+
+
 ## Install
 
 ```sh
