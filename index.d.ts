@@ -4,7 +4,7 @@ declare namespace createStore {
   export interface Store<State = unknown> {
     readonly on: (
       event: PropertyKey,
-      handler: (state: Readonly<State>, data: unknown) => Partial<State> | Promise<void> | null
+      handler: (state: Readonly<State>, data: any) => Partial<State> | Promise<void> | null
     ) => () => void;
     readonly dispatch: Dispatch;
     readonly get: () => State;
