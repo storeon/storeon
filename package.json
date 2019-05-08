@@ -107,10 +107,12 @@
   "yaspeller": {
     "lang": "en",
     "ignoreCapitalization": true,
+    "ignoreText": [
+      "\\(by \\w+ \\w+( and \\w+ \\w+)?\\)"
+    ],
     "dictionary": [
       "Versioning",
       "createStore",
-      "js",
       "moduleInitializer",
       "Preact",
       "Redux",
@@ -120,19 +122,9 @@
       "async",
       "StoreContext",
       "Storeon",
-      "Hadeeb",
-      "Farhan",
       "DevTools",
-      "Tue",
-      "Thu",
       "useStoreon",
-      "Fri",
-      "Vadim",
-      "Boltach",
-      "Kyle",
       "polyfill",
-      "Vlad",
-      "Rindevich",
       "UIBook",
       "UI"
     ]
