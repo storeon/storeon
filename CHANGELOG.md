@@ -1,6 +1,13 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.1
+* Fix TypeScript definitions (by Eugeny Schibrikov).
+* Reduce size (by Hyan Mandian).
+* Add project logo (by Anton Lovchikov).
+* Improve examples (by Nikolay Puzyrev and Alan H).
+* Fix docs (by Theodore Diamantidis and Igor Kamyshev).
+
 ## 0.8
 * Add `Symbol` support for store keys and event names (by Vlad Rindevich).
 * Fix `async`/`await` support (by Vlad Rindevich).
