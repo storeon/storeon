@@ -2,6 +2,9 @@ var React = require('react')
 
 var StoreContext = require('./context')
 
+var useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
+
 /**
  * Hook to use Storeon in functional React component.
  *
@@ -27,7 +30,7 @@ module.exports = function () {
   var store = React.useContext(StoreContext)
   var rerender = React.useState({ })
 
-  React.useEffect(function () {
+  useIsomorphicLayoutEffect(function () {
     return store.on('@changed', function (_, changed) {
       var changesInKeys = keys.some(function (key) {
         return key in changed
