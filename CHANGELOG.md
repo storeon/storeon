@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.2
+* Fix React `useEffect` re-render issue (by @sHooKDT).
+
 ## 0.8.1
 * Fix TypeScript definitions (by Eugeny Schibrikov).
 * Reduce size (by Hyan Mandian).
