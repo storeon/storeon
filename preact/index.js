@@ -2,13 +2,16 @@ var hooks = require('preact/hooks')
 
 var StoreContext = require('./context')
 
+var useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? hooks.useLayoutEffect : hooks.useEffect
+
 module.exports = function () {
   var keys = [].slice.call(arguments)
 
   var store = hooks.useContext(StoreContext)
   var rerender = hooks.useState({ })
 
-  hooks.useEffect(function () {
+  useIsomorphicLayoutEffect(function () {
     return store.on('@changed', function (_, changed) {
       var changesInKeys = keys.some(function (key) {
         return key in changed
