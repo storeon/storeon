@@ -108,7 +108,7 @@
     "lang": "en",
     "ignoreCapitalization": true,
     "ignoreText": [
-      "\\(by [^ ]+( [^ ]+)*\\)"
+      " \\(by [^)]+\\)."
     ],
     "dictionary": [
       "Versioning",
