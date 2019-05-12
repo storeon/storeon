@@ -61,7 +61,9 @@ render(
 ## Tools
 
 * [`@storeon/localstorage`](https://github.com/storeon/localstorage)
-  to save/restore state to `localStorage`.
+  saves and restores state to `localStorage`.
+* [`@storeon/crosstab`](https://github.com/storeon/crosstab)
+  synchronizes events between browser tabs.
 
 
 ## Install
