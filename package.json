@@ -11,8 +11,8 @@
   ],
   "scripts": {
     "clean": "rimraf api.md coverage/",
-    "docs": "documentation build *.js react/*.js -f md -o api.md",
-    "spell": "yarn docs && yaspeller *.md",
+    "api": "documentation build *.js react/*.js -f md -o api.md",
+    "spell": "yarn api && yaspeller *.md",
     "lint": "eslint *.js test/*.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "jest --coverage && yarn lint && size-limit && yarn typecheck && yarn spell",
