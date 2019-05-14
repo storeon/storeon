@@ -3,7 +3,7 @@
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="160" height="142">
 
-A tiny event-based Redux-like state manager for React and Preact.
+A tiny event-based Redux-like state manager for React, Preact and **[Angular]**.
 
 * **Small.** 173 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
@@ -51,6 +51,7 @@ render(
 
 [our article]: https://evilmartians.com/chronicles/storeon-redux-in-173-bytes
 [Size Limit]: https://github.com/ai/size-limit
+[Angular]: https://github.com/irustm/ng-storeon
 
 <a href="https://evilmartians.com/?utm_source=storeon">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
