@@ -51,7 +51,7 @@ render(
 
 [our article]: https://evilmartians.com/chronicles/storeon-redux-in-173-bytes
 [Size Limit]: https://github.com/ai/size-limit
-[Angular]: https://github.com/irustm/ng-storeon
+[Angular]: https://github.com/storeon/angular
 
 <a href="https://evilmartians.com/?utm_source=storeon">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
