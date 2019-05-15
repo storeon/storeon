@@ -65,6 +65,8 @@ render(
   saves and restores state to `localStorage`.
 * [`@storeon/crosstab`](https://github.com/storeon/crosstab)
   synchronizes events between browser tabs.
+* [`@storeon/undo`](https://github.com/storeon/undo)
+  and undo/redo functionality to state.
 
 
 ## Install
