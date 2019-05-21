@@ -62,6 +62,9 @@ render(
 
 ## Tools
 
+* [`@storeon/router`](https://github.com/storeon/router)
+  tracks links and Back button click and allows you to open
+  pages without reloading the whole page.
 * [`@storeon/localstorage`](https://github.com/storeon/localstorage)
   saves and restores state to `localStorage`.
 * [`@storeon/crosstab`](https://github.com/storeon/crosstab)
