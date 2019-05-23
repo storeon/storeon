@@ -3,13 +3,14 @@
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="160" height="142">
 
-A tiny event-based Redux-like state manager for React, Preact, [Angular] and [Svelte].
+A tiny event-based Redux-like state manager for **React**, **Preact**,
+**[Angular]**, and **[Svelte]**.
 
 * **Small.** 173 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
-* **Hooks.** The same Redux reducers. With hooks for **React** and **Preact**.
+* **Hooks.** The same Redux reducers.
 * **Modular.** API created to move business logic away from React components.
 
 Read more about Storeon features in **[our article]**.
