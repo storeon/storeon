@@ -77,7 +77,7 @@ Third-party tools:
 
 * [`majo44/storeon-async-router`](https://github.com/majo44/storeon-async-router)
   is router with data prefetch, modules lazy load, navigation cancellation,
-  and routes modification on the fly.
+  and routes modification on the fly.
 
 
 ## Install
