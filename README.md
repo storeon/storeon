@@ -72,6 +72,11 @@ render(
   synchronizes events between browser tabs.
 * [`@storeon/undo`](https://github.com/storeon/undo)
   allows undoing or redoing the latest event.
+  
+#### 3Party
+* [storeon-async-router](https://github.com/majo44/storeon-async-router)
+  asynchronous router for storeon which allows prefetch the data, lazy load modules, 
+  navigation cancellation, and routes modification on the fly.   
 
 
 ## Install
