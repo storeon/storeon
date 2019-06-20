@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.6
+* Fix `devtools/logger` on React Native.
+
 ## 0.8.5
 * Fix TypeScript definitions (by Nikita Sivakov).
 
