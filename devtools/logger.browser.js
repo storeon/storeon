@@ -1,21 +1,13 @@
-var print
-if (typeof navigator === 'undefined' || navigator.product === 'ReactNative') {
-  print = function (type, name, opts) {
-    if (opts) {
-      console.log(type + ' ' + name, opts)
-    } else {
-      console.log(type + ' ' + name)
-    }
-  }
-} else {
-  var STYLE = 'color: #008100'
-  var BOLD = 'color: #008100; font-weight: bold'
-  print = function (type, name, opts) {
-    if (opts) {
-      console.log('%c' + type + ' %c' + name, STYLE, BOLD, opts)
-    } else {
-      console.log('%c' + type + ' %c' + name, STYLE, BOLD)
-    }
+const print = function(type, name, opts) {
+  const isReactNative = typeof navigator === 'undefined' || navigator.product === 'ReactNative';
+  const STYLE = 'color: #008100'
+  const BOLD = `${STYLE}; font-weight: bold'`
+  const msg = !isReactNative ? `${type} ${name}` : `%c${type} %c${name}`
+
+  if (isReactNative) {
+    console.log(msg, opts ? opts : '')
+  } else {
+    console.log(msg, STYLE, BOLD, opts ? opts : '')
   }
 }
 
