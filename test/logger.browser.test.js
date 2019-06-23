@@ -1,8 +1,8 @@
 var createStore = require('../')
 var logger = require('../devtools/logger.browser')
 
-var STYLE = 'color: #008100'
-var BOLD = 'color: #008100; font-weight: bold'
+var STYLE = 'color: green'
+var BOLD = 'color: green; font-weight: bold'
 
 function counter (store) {
   store.on('@init', function () {
