@@ -8,13 +8,11 @@ if (typeof navigator === 'undefined' || navigator.product === 'ReactNative') {
     }
   }
 } else {
-  var STYLE = 'color: #008100'
-  var BOLD = 'color: #008100; font-weight: bold'
   print = function (type, name, opts) {
     if (opts) {
-      console.log('%c' + type + ' %c' + name, STYLE, BOLD, opts)
+      console.log('%c' + type + ' %c' + name, 'color: #008100', 'color: #008100; font-weight: bold', opts)
     } else {
-      console.log('%c' + type + ' %c' + name, STYLE, BOLD)
+      console.log('%c' + type + ' %c' + name, 'color: #008100', 'color: #008100; font-weight: bold')
     }
   }
 }

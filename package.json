@@ -87,7 +87,7 @@
         "devtools/index.browser.js",
         "devtools/logger.browser.js"
       ],
-      "limit": "201 B"
+      "limit": "192 B"
     }
   ],
   "eslintConfig": {
