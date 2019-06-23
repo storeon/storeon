@@ -1,28 +1,12 @@
-var print
-if (typeof navigator === 'undefined' || navigator.product === 'ReactNative') {
+var print = console.log
+if (typeof navigator !== 'undefined' && navigator.product !== 'ReactNative') {
   print = function (type, name, opts) {
-    if (opts) {
-      console.log(type + ' ' + name, opts)
-    } else {
-      console.log(type + ' ' + name)
-    }
-  }
-} else {
-  print = function (type, name, opts) {
-    if (opts) {
-      console.log(
-        '%c' + type + ' %c' + name,
-        'color: green',
-        'color: green; font-weight: bold',
-        opts
-      )
-    } else {
-      console.log(
-        '%c' + type + ' %c' + name,
-        'color: green',
-        'color: green; font-weight: bold'
-      )
-    }
+    console.log(
+      '%c' + type + ' %c' + name,
+      'color: #070',
+      'color: #070; font-weight: 700',
+      arguments.length === 2 ? '' : opts
+    )
   }
 }
 
