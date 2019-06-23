@@ -18,7 +18,7 @@ it('prints dispatches', function () {
   var store = createStore([counter, logger])
   store.dispatch('inc', 2)
   expect(console.log.mock.calls).toEqual([
-    ['%caction %c@init', STYLE, BOLD, ''],
+    ['%caction %c@init', STYLE, BOLD],
     ['%cchanged %ccount, started', STYLE, BOLD, { count: 0, started: true }],
     ['%caction %cinc', STYLE, BOLD, 2],
     ['%cchanged %ccount', STYLE, BOLD, { count: 2, started: true }]

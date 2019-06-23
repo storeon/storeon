@@ -1,12 +1,20 @@
 var print = console.log
 if (typeof navigator !== 'undefined' && navigator.product !== 'ReactNative') {
   print = function (type, name, opts) {
-    console.log(
-      '%c' + type + ' %c' + name,
-      'color: #070',
-      'color: #070; font-weight: 700',
-      arguments.length === 2 ? '' : opts
-    )
+    if (opts) {
+      console.log(
+        '%c' + type + ' %c' + name,
+        'color: #070',
+        'color: #070; font-weight: 700',
+        opts
+      )
+    } else {
+      console.log(
+        '%c' + type + ' %c' + name,
+        'color: #070',
+        'color: #070; font-weight: 700'
+      )
+    }
   }
 }
 
