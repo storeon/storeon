@@ -25,11 +25,11 @@
     "./devtools/logger.js": "./devtools/logger.browser.js"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^28.2.2",
+    "@logux/eslint-config": "^28.2.3",
     "@types/react": "^16.8.20",
     "clean-publish": "^1.1.2",
     "documentation": "^11.0.1",
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-es5": "^1.3.1",
     "eslint-plugin-import": "^2.17.3",
@@ -40,7 +40,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
-    "husky": "^2.4.1",
+    "husky": "^2.5.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
     "nanodelay": "^0.1.4",
