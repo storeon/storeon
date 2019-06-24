@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.7
+* Reduce `devtools/logger` size (by WrinkleJ and Alexey Berezin).
+
 ## 0.8.6
 * Fix `devtools/logger` on React Native.
 
