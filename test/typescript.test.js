@@ -12,5 +12,5 @@ it('Should fail on unsuitable declaration of events types', function () {
   })
 
   // provided example contains 6 errors
-  expect(ts.getPreEmitDiagnostics(program)).toHaveLength()(6)
+  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(6)
 })
