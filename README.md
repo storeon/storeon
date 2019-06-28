@@ -269,6 +269,9 @@ const store = createStore([
 
 [Redux DevTools Extension]: https://github.com/zalmoxisus/redux-devtools-extension
 
+## Typescript
+Storeon delivers typescript declaration which allows to declare type of `State` and optionally    
+
 
 ## Testing
 

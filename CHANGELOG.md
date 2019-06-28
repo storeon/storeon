@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.8
+* Updated TypeScript definitions to allows event names and data type checking
+
 ## 0.8.7
 * Reduce `devtools/logger` size (by WrinkleJ and Alexey Berezin).
 
