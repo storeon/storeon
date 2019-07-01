@@ -14,8 +14,7 @@
     "api": "documentation build *.js react/*.js -f md -o api.md",
     "spell": "yarn api && yaspeller *.md",
     "lint": "eslint *.js test/*.js",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "jest --coverage && yarn lint && size-limit && yarn typecheck && yarn spell",
+    "test": "jest --coverage && yarn lint && size-limit && yarn spell",
     "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
