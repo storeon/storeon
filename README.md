@@ -269,9 +269,72 @@ const store = createStore([
 
 [Redux DevTools Extension]: https://github.com/zalmoxisus/redux-devtools-extension
 
-## Typescript
-Storeon delivers typescript declaration which allows to declare type of `State` and optionally    
+## TypeScript 
+Storeon delivers TypeScript declaration which allows to declare type of `State` and optionally declare types of events 
+and event object which are emits by `Store`. If Storeon store has to be full type safe 
+the event types declaration interface has to be delivered as second type to `createStore` function. 
 
+#### Simple TypeScript usage
+   
+```typescript
+import createStore from 'storeon'
+
+// declaration of state structure
+interface State {
+    counter: number;
+}
+
+const counterModule = (store) => {
+    store.on('@init', () => ({ counter: 0}));
+    store.on('inc', state => ({ counter: state.counter + 1}));
+    store.on('set', (state, event) => ({ counter: event}));
+};
+
+const store = createStore<State>([counterModule]);
+
+store.dispatch('set', 100); 
+store.dispatch('inc');
+
+store.dispatch('inc', 100); // No error  
+store.dispatch('set', "100"); // No error
+store.dispatch('dec'); // Runtime error !! There is no listener registered for 'dec' event.
+```
+
+#### Full type safe TypeScript usage
+
+```typescript
+import createStore, { Module, StoreonEvents } from 'storeon'
+
+// declaration of state structure
+interface State {
+    counter: number;
+}
+
+// declaration of events, which is mapping event names with type of event object, 
+// if event do not goes with any event object `undefined` or `never` type can be used 
+interface Events extends StoreonEvents<State> {
+    // `inc` event which do not goes with any event object
+    'inc': undefined;
+    // `set` event which goes with number as event object
+    'set': number;
+}
+
+const counterModule: Module<State, Events> = (store) => {
+    store.on('@init', () => ({ counter: 0}));
+    store.on('inc', state => ({ counter: state.counter + 1}));
+    // event object is auto casted to number
+    store.on('set', (state, event) => ({ counter: event}));
+};
+
+const store = createStore<State, Events>([counterModule]);
+
+store.dispatch('set', 100);
+store.dispatch('inc');
+
+store.dispatch('inc', 100); // Compilation error, inc event do not expect event object !!
+store.dispatch('set', "100"); // Compilation error, set event do not expect string event object !!
+store.dispatch('dec'); // Compilation error, there is no such event declared !!
+```
 
 ## Testing
 
