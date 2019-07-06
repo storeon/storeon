@@ -305,14 +305,11 @@ const store = createStore<State, Events>([counterModule])
 
 const Counter = () => {
   const { dispatch, count } = useStoreon<State, Events>('count')
-
-  // Correct calls:
-  dispatch('inc')
-
-  // Compilation errors:
-  dispatch('dec')
-
-  return <button onClick={() => dispatch('inc')}>{count}</button>
+  // Correct call
+  dispatch('set', 100)
+  // Compilation error: `set` event do not expect string data
+  dispatch('set', "100")
+  …
 }
 
 // Correct calls:
