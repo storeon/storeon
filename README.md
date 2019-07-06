@@ -280,6 +280,7 @@ interface has to be delivered as second type to `createStore` function.
 
 ```typescript
 import createStore, { Module, StoreonEvents } from 'storeon'
+import useStoreon from 'storeon/react' // or storeon/preact
 
 // State structure
 interface State {
@@ -301,6 +302,18 @@ const counterModule: Module<State, Events> = store => {
 }
 
 const store = createStore<State, Events>([counterModule])
+
+const Counter = () => {
+  const { dispatch, count } = useStoreon<State, Events>('count')
+
+  // Correct calls:
+  dispatch('inc')
+
+  // Compilation errors:
+  dispatch('dec')
+
+  return <button onClick={() => dispatch('inc')}>{count}</button>
+}
 
 // Correct calls:
 store.dispatch('set', 100)
