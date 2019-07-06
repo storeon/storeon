@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.1
+* Fix event types support for `useStoreon` (by Dmitriy Skrylnikov).
+
 ## 0.9
 * Allow to define types for events (by Pawel Majewski).
 
