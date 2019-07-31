@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.2
+* Fix passing options for Redux DevTools (by Hovhannes Babayan).
+
 ## 0.9.1
 * Fix event types support for `useStoreon` (by Dmitriy Skrylnikov).
 
