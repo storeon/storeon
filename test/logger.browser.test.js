@@ -1,21 +1,17 @@
-var createStore = require('../')
-var logger = require('../devtools/logger.browser')
+let createStore = require('../')
+let logger = require('../devtools/logger.browser')
 
-var STYLE = 'color: #070'
-var BOLD = 'color: #070; font-weight: 700'
+let STYLE = 'color: #070'
+let BOLD = 'color: #070; font-weight: 700'
 
 function counter (store) {
-  store.on('@init', function () {
-    return { count: 0, started: true }
-  })
-  store.on('inc', function (state, value) {
-    return { count: state.count + value }
-  })
+  store.on('@init', () => ({ count: 0, started: true }))
+  store.on('inc', (state, value) => ({ count: state.count + value }))
 }
 
-it('prints dispatches', function () {
-  jest.spyOn(console, 'log').mockImplementation(function () { })
-  var store = createStore([counter, logger])
+it('prints dispatches', () => {
+  jest.spyOn(console, 'log').mockImplementation(() => true)
+  let store = createStore([counter, logger])
   store.dispatch('inc', 2)
   expect(console.log.mock.calls).toEqual([
     ['%caction %c@init', STYLE, BOLD],
