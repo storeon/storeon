@@ -14,7 +14,7 @@ it('fails on unsuitable declaration of events types', function () {
       maxNodeModuleJsDepth: 1
     })
 
-  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(6)
+  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(10)
 })
 
 it('typescript successfully compiles faultless source code', function () {

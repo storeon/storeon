@@ -51,14 +51,48 @@ store.dispatch(sym, 2);
 store.dispatch('comment:error', true);
 
 
-const state = store.get();
-state.a;
+// Lazy module
+function postUp(store: Store<{a: number}, {'inc': string;}>): void {
+    store.on('inc', (state) => ({ a: state.a + 1 }))
+}
 
-interface WrongModuleEvents extends StoreonEvents<State> {}
-const init2: Module<State, WrongModuleEvents> = () => {};
+// TestCase#6 Should not allow to lazy apply module which is not in common with declared one
+// TS2345: Argument of type 'Store<State, EventsDataTypesMap & StoreonEvents<State>>' is not assignable to parameter of type 'Store<{ a: number; }, { 'inc': string; }>'.
+postUp(store);
 
-// TestCase#6 Should not allow to use modules with unsuitable events types declaration
+let s1: Store<{}, {a: string}>  = {} as any;
+let s2: Store<{}, {a: string, b: number}>  = {} as any;
+
+// TestCase#7 Store with narrower events declaration should not be assignable to Store with wider events declaration
+// TS2322: Type 'Store<{}, { a: string; }>' is not assignable to type 'Store<{}, { a: string; b: number; }>'.
+s2 = s1;
+
+let s3: Store<{a: string}>  = {} as any;
+let s4: Store<{a: string, b: number}>  = {} as any;
+
+// TestCase#8 Store with narrower state declaration should not be assignable to Store with wider state declaration
+s4 = s3;
+
+
+interface ModuleEventsOverwritesWrongly {
+    'comment:posting': number;
+}
+const init2: Module<State, ModuleEventsOverwritesWrongly> = () => {};
+
+// TestCase#9 Should not allow to use modules with events types declaration which for same events have a different data
 // TS2322: Type 'Module<State, WrongModuleEvents>' is not assignable to type 'false | Module<State, EventsDataTypesMap>'.
-createStore<State, EventsDataTypesMap>([
+const store1 = createStore<State, EventsDataTypesMap>([
     init2
+]);
+
+interface ModuleEventsUnknownEvents {
+    'comment:n': undefined;
+}
+const init3: Module<State, ModuleEventsUnknownEvents> = () => {};
+
+// TestCase#10 Should not allow to use modules with events types are not in common with events interface declared on Store
+// TS2322: Type 'Module<State, ModuleEventsUnknownEvents>' is not assignable to type 'false | Module<State, EventsDataTypesMap>'.
+// Note, probably this
+const store2 = createStore<State, EventsDataTypesMap>([
+    init3
 ]);
