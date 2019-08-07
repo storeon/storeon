@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.3
+* Improved TypeScript support for typed events and store (by @majo44).
+
 ## 0.9.2
 * Fix passing options for Redux DevTools (by Hovhannes Babayan).
 
