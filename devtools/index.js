@@ -13,6 +13,8 @@
  * @function
  */
 function devtools (options) {
+  var isStore = options && options.on && options.dispatch && options.get
+
   function module (store) {
     var extension =
       window.__REDUX_DEVTOOLS_EXTENSION__ ||
@@ -28,7 +30,7 @@ function devtools (options) {
       return
     }
 
-    var ReduxTool = extension.connect()
+    var ReduxTool = extension.connect(isStore ? {} : options)
     store.on('@init', function () {
       ReduxTool.subscribe(function (message) {
         if (message.type === 'DISPATCH' && message.state) {
@@ -65,11 +67,7 @@ function devtools (options) {
     })
   }
 
-  if (options && options.on && options.dispatch && options.get) {
-    return module(options)
-  } else {
-    return module
-  }
+  return isStore ? module(options) : module
 }
 
 module.exports = devtools

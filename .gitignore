@@ -1,12 +1,8 @@
-.DS_Store
-*~
-
 node_modules/
-npm-debug.log
 yarn-error.log
 
-api.md
 coverage/
+api.md
 
 test/demo/.cache/
 test/demo/dist/

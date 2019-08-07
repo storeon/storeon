@@ -1,76 +1,68 @@
-var createStore = require('../')
-var devtools = require('../devtools')
+let createStore = require('../')
+let devtools = require('../devtools')
 
-function DEVTOOL_MOCK () {
-  var store
-  var subscribeCb
-  var actions = []
+function mockDevTools () {
+  let store
+  let subscribeCb
+  let actions = []
 
-  var ReduxTool = {
-    init: function (state) {
+  let reduxTool = {
+    init (state) {
       store = state
     },
-    send: function (action, state) {
+    send (action, state) {
       actions.push(action)
       store = state
     },
-    subscribe: function (cb) {
+    subscribe (cb) {
       subscribeCb = cb
     }
   }
 
-  function dispatchState (message) {
-    if (subscribeCb) subscribeCb(message)
-  }
-
   return {
-    connect: function () {
-      return ReduxTool
+    connect () {
+      return reduxTool
     },
-    store: function () {
+    store () {
       return store
     },
-    devToolDispatch: dispatchState,
-    actions: function () {
+    devToolDispatch (message) {
+      if (subscribeCb) subscribeCb(message)
+    },
+    actions () {
       return actions
     }
   }
 }
 
 function counter (store) {
-  store.on('@init', function () {
-    return { count: 0, started: true }
-  })
-  store.on('inc', function (state, value) {
-    return { count: state.count + value }
-  })
+  store.on('@init', () => ({ count: 0, started: true }))
+  store.on('inc', (state, value) => ({ count: state.count + value }))
 }
 
-beforeEach(function () {
-  global.__REDUX_DEVTOOLS_EXTENSION__ = DEVTOOL_MOCK()
+beforeEach(() => {
+  global.__REDUX_DEVTOOLS_EXTENSION__ = mockDevTools()
 })
 
-afterEach(function () {
+afterEach(() => {
   global.__REDUX_DEVTOOLS_EXTENSION__ = undefined
-  jest.restoreAllMocks()
 })
 
-it('initiates with data from store', function () {
-  var store = createStore([counter, devtools()])
-  var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
-
+it('initiates with data from store', () => {
+  let store = createStore([counter, devtools()])
+  let getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
-it('support old API', function () {
-  var store = createStore([counter, devtools])
-  var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
+it('supports old API', () => {
+  let store = createStore([counter, devtools])
+  let getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
-it('get state updates from store', function () {
-  var store = createStore([counter, devtools()])
-  var getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
+it('gets state updates from store', () => {
+  let store = createStore([counter, devtools()])
+  let getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
 
   expect(getDevtoolStore()).toEqual(store.get())
   store.dispatch('inc', 2)
@@ -78,90 +70,55 @@ it('get state updates from store', function () {
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
-it('get events from store', function () {
-  var store = createStore([counter, devtools()])
-  var getDevtoolsActions = global.__REDUX_DEVTOOLS_EXTENSION__.actions
-
-  var initialState = {
-    count: 0,
-    started: true
-  }
-
-  var initialActions = [
-    {
-      payload: undefined,
-      type: '@init'
-    },
-    {
-      payload: initialState,
-      type: '@changed'
-    }
+it('gets events from store', () => {
+  let store = createStore([counter, devtools()])
+  let getDevtoolsActions = global.__REDUX_DEVTOOLS_EXTENSION__.actions
+  let initialState = { count: 0, started: true }
+  let initialActions = [
+    { type: '@init', payload: undefined },
+    { type: '@changed', payload: initialState }
   ]
-
   expect(getDevtoolsActions()).toEqual(initialActions)
 
-  var event = {
-    action: 'inc',
-    payload: 5
-  }
+  let event = { action: 'inc', payload: 5 }
   store.dispatch(event.action, event.payload)
-
-  var newActions = initialActions.concat([
-    {
-      payload: event.payload,
-      type: event.action
-    },
-    {
-      payload: {
-        count: event.payload
-      },
-      type: '@changed'
-    }
-  ])
-
-  expect(getDevtoolsActions()).toEqual(newActions)
+  expect(getDevtoolsActions()).toEqual(initialActions.concat([
+    { type: event.action, payload: event.payload },
+    { type: '@changed', payload: { count: event.payload } }
+  ]))
 })
 
-it('able to change store value', function () {
-  var store = createStore([counter, devtools()])
-  var devToolDispatch = global.__REDUX_DEVTOOLS_EXTENSION__.devToolDispatch
-
+it('is able to change store value', () => {
+  let store = createStore([counter, devtools()])
+  let devToolDispatch = global.__REDUX_DEVTOOLS_EXTENSION__.devToolDispatch
   expect(store.get()).toEqual({ count: 0, started: true })
 
-  var newState = {
-    count: 10,
-    started: false
-  }
-
+  let newState = { count: 10, started: false }
   devToolDispatch({ type: 'DISPATCH', state: JSON.stringify(newState) })
-
   expect(store.get()).toEqual(newState)
 })
 
-it('shows warning when devtool is not installed', function () {
-  var spy = jest.fn()
-  jest.spyOn(console, 'warn').mockImplementation(spy)
+it('shows warning when devtool is not installed', () => {
+  jest.spyOn(console, 'warn').mockImplementation(() => true)
   global.__REDUX_DEVTOOLS_EXTENSION__ = null
 
   createStore([counter, devtools()])
-
-  expect(spy).toHaveBeenCalledWith(
+  expect(console.warn).toHaveBeenCalledWith(
     'Please install Redux devtools extension\n' +
     'http://extension.remotedev.io/'
   )
 })
 
-it('throws on unknown not system events', function () {
-  var store = createStore([devtools()])
-
-  var unbind = store.on('unknown2', function () { })
+it('throws on unknown not system events', () => {
+  let store = createStore([devtools()])
+  let unbind = store.on('unknown2', () => { })
   unbind()
 
-  expect(function () {
+  expect(() => {
     store.dispatch('unknown1')
   }).toThrow('Unknown Storeon event unknown1')
 
-  expect(function () {
+  expect(() => {
     store.dispatch('unknown2')
   }).toThrow('Unknown Storeon event unknown2')
 
