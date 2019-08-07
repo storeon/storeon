@@ -51,7 +51,9 @@ store.dispatch('comment:error', true)
 const state = store.get()
 state.a
 
-interface WrongModuleEvents extends StoreonEvents<State> {}
+interface WrongModuleEvents {
+    'unknown': undefined
+}
 const init2: Module<State, WrongModuleEvents> = () => {}
 
 // TestCase#6 Should not allow to use modules with unsuitable events types declaration
@@ -59,3 +61,39 @@ const init2: Module<State, WrongModuleEvents> = () => {}
 createStore<State, EventsDataTypesMap>([
   init2
 ])
+
+interface WrongModuleEvents2 {
+    'comment:posting': number;
+}
+const init3: Module<State, WrongModuleEvents2> = () => {}
+
+// TestCase#7 Should not allow to use modules with events types are not in common with events interface declared on Store
+// TS2322: Type 'Module<State, WrongModuleEvents2>' is not assignable to type 'false | Module<State, EventsDataTypesMap>'.
+createStore<State, EventsDataTypesMap>([
+  init3
+])
+
+// Lazy module
+function postUp(store: Store<{a: number}, {'inc': string;}>): void {
+    store.on('inc', (state) => ({ a: state.a + 1 }))
+}
+
+// TestCase#8 Should not allow to lazy apply module which is not in common with declared one
+// TS2345: Argument of type 'Store<State, EventsDataTypesMap & StoreonEvents<State>>' is not assignable to parameter of type 'Store<{ a: number; }, { 'inc': string; }>'.
+postUp(store);
+
+let s1: Store<{}, {a: string}>  = {} as any;
+let s2: Store<{}, {a: string, b: number}>  = {} as any;
+
+// TestCase#9 Store with narrower events declaration should not be assignable to Store with wider events declaration
+// TS2322: Type 'Store<{}, { a: string; }>' is not assignable to type 'Store<{}, { a: string; b: number; }>'.
+s2 = s1;
+s1.dispatch('a', '1')
+
+let s3: Store<{a: string}>  = {} as any;
+let s4: Store<{a: string, b: number}>  = {} as any;
+
+// TestCase#10 Store with narrower state declaration should not be assignable to Store with wider state declaration
+// TS2322: Type 'Store<{ a: string; }, any>' is not assignable to type 'Store<{ a: string; b: number; }, any>'.
+s4 = s3;
+s3.get().a
