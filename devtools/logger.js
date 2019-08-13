@@ -17,7 +17,7 @@ module.exports = function (store) {
     if (data[0] === '@changed') {
       var keys = Object.keys(data[1]).join(', ')
       console.log('changed ' + keys, state)
-    } else if (data[1]) {
+    } else if (typeof data[1] !== 'undefined') {
       console.log('action ' + String(data[0]), data[1])
     } else {
       console.log('action ' + String(data[0]))
