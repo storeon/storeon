@@ -16,10 +16,11 @@ function devtools (options) {
   var isStore = options && options.on && options.dispatch && options.get
 
   function module (store) {
-    var extension =
-      window.__REDUX_DEVTOOLS_EXTENSION__ ||
-      window.top.__REDUX_DEVTOOLS_EXTENSION__
-
+    var extension
+    try {
+      extension = window.__REDUX_DEVTOOLS_EXTENSION__ ||
+        window.top.__REDUX_DEVTOOLS_EXTENSION__
+    } catch (e) {}
     if (!extension) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn(
