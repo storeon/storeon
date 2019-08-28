@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.5
+* Fix DevTools in `<iframe>` with `same-origin` (by Hovhannes Babayan).
+
 ## 0.9.4
 * Fix logger on `0` in event data.
 
