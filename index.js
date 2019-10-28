@@ -9,10 +9,10 @@
  *
  * @example
  * import createStore from 'storeon'
- * let increment = store => {
+ * let increment = store => [
  *   store.on('@init', () => ({ count: 0 }))
  *   store.on('inc', ({ count }) => ({ count: count + 1 }))
- * }
+ * ]
  * const store = createStore([increment])
  * store.get().count //=> 0
  * store.dispatch('inc')
@@ -55,10 +55,18 @@ var createStore = function (modules) {
     return state
   }
 
-  var store = { dispatch: dispatch, get: get, on: on }
+  var subs = []
+
+  var destroy = function () {
+    subs.forEach(function (i) {
+      if (i) i()
+    })
+  }
+
+  var store = { dispatch: dispatch, get: get, on: on, destroy: destroy }
 
   modules.forEach(function (i) {
-    if (i) i(store)
+    if (i) subs = subs.concat(i(store))
   })
   dispatch('@init')
 
