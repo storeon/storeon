@@ -160,3 +160,14 @@ it('does not fire @change if Promise is returned', done => {
   store.dispatch('incAsync')
   expect(count).toBe(0)
 })
+
+it('destroys all modules', () => {
+  let spy = jest.fn()
+  let module = () => [spy, spy]
+
+  let store = createStore([module, module, () => spy])
+
+  store.destroy()
+
+  expect(spy).toHaveBeenCalledTimes(5)
+})
