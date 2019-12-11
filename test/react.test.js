@@ -90,3 +90,14 @@ it('allows using Symbol as a store key', () => {
   })
   expect(wrapper.toJSON()).toBe('1')
 })
+
+it('throws if there is no StoreProvider', () => {
+  function Button () {
+    let hooks = useStoreon('')
+    return hooks
+  }
+  function render () {
+    renderer.create(h(Button))
+  }
+  expect(render).toThrow(Error)
+})
