@@ -59,7 +59,7 @@
     {
       "name": "core",
       "path": "index.js",
-      "limit": "173 B"
+      "limit": "175 B"
     },
     {
       "name": "core + react hook",
@@ -67,7 +67,7 @@
         "index.js",
         "react/index.js"
       ],
-      "limit": "350 B",
+      "limit": "354 B",
       "ignore": [
         "react"
       ]
@@ -78,7 +78,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "409 B",
+      "limit": "415 B",
       "ignore": [
         "react"
       ]
@@ -89,7 +89,7 @@
         "devtools/index.browser.js",
         "devtools/logger.browser.js"
       ],
-      "limit": "186 B"
+      "limit": "187 B"
     }
   ],
   "eslintConfig": {
