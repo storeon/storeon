@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.7
+* Reduce package size.
+
 ## 0.9.6
 * Show proper warning on usage outside of `Provider` (by Hadeeb Farhan).
 
