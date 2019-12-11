@@ -1,7 +1,7 @@
 {
   "name": "storeon",
   "version": "0.9.5",
-  "description": "Tiny (173 bytes) event-based Redux-like state manager for React and Preact",
+  "description": "Tiny (175 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
     "immutable",
