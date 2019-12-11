@@ -66,7 +66,7 @@
         "index.js",
         "react/index.js"
       ],
-      "limit": "349 B",
+      "limit": "350 B",
       "ignore": [
         "react"
       ]
@@ -77,7 +77,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "408 B",
+      "limit": "409 B",
       "ignore": [
         "react"
       ]
