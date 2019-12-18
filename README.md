@@ -78,6 +78,8 @@ Third-party tools:
 * [`majo44/storeon-async-router`](https://github.com/majo44/storeon-async-router)
   is router with data prefetch, modules lazy load, navigation cancellation,
   and routes modification on the fly.
+* [`koddr/storeon-sessionstorage`](https://github.com/koddr/storeon-sessionstorage)
+  saves and restores state to `sessionStorage` (based on [`@storeon/localstorage`](https://github.com/storeon/localstorage)).
 
 
 ## Install
