@@ -279,7 +279,6 @@ of state and optionally declare types of events and parameter.
 
 If Storeon store has to be full type safe the event types declaration
 interface has to be delivered as second type to `createStore` function.
-(In order to work properly for imports, it is considering adding `allowSyntheticDefaultImports: true` to `tsconfig.json`)
 
 ```typescript
 import createStore, { Module, StoreonEvents } from 'storeon'
@@ -324,6 +323,9 @@ store.dispatch('inc', 100)   // `inc` doesn’t have data
 store.dispatch('set', "100") // `set` event do not expect string data
 store.dispatch('dec')        // Unknown event
 ```
+
+In order to work properly for imports, it is considering adding
+`allowSyntheticDefaultImports: true` to `tsconfig.json`.
 
 
 ## Testing
