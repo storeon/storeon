@@ -23,9 +23,9 @@
     "./devtools/logger.js": "./devtools/logger.browser.js"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^35.0.2",
+    "@logux/eslint-config": "^35.0.3",
     "@logux/sharec-config": "^0.5.6",
-    "@size-limit/preset-small-lib": "^2.2.3",
+    "@size-limit/preset-small-lib": "^2.2.4",
     "@types/react": "^16.9.17",
     "clean-publish": "^1.1.4",
     "documentation": "^12.1.4",
@@ -34,8 +34,8 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jest": "^23.1.1",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-jest": "^23.2.0",
+    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
