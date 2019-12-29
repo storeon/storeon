@@ -142,7 +142,8 @@
       "useStoreon",
       "polyfill",
       "UIBook",
-      "UI"
+      "UI",
+      "WebSocket"
     ]
   },
   "sharec": {

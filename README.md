@@ -72,6 +72,8 @@ render(
   synchronizes events between browser tabs.
 * [`@storeon/undo`](https://github.com/storeon/undo)
   allows undoing or redoing the latest event.
+* [`@storeon/websocket`](https://github.com/storeon/websocket)
+  to sync actions through WebSocket.
 
 Third-party tools:
 
