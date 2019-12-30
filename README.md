@@ -142,10 +142,10 @@ There are three built-in events:
 
 * `@init` will be fired in `createStore`. The best moment to set
   an initial state.
-* `@dispatch` will be fired on every `store.dispatch()` call.
+* `@dispatch` will be fired on every new action (on `store.dispatch()` calls and `@changed` event).
   It receives an array with the event name and the event’s data.
   Can be useful for debugging.
-* `@changed` will be fired every when event listeners changed the state.
+* `@changed` will be fired when any event changes the state.
   It receives object with state changes.
 
 To add an event listener, call `store.on()` with event name and callback.
