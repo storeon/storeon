@@ -17,7 +17,7 @@ function findTsFiles (dir = join(__dirname, '..')) {
 }
 
 it('supports TypeScript', () => {
-  let files = findTsFiles().filter(i => !i.includes('test/typescript/error.ts'))
+  let files = findTsFiles().filter(i => !i.includes('error.ts'))
   let tsPackage = dirname(require.resolve('typescript'))
   files.push(join(tsPackage, 'lib.dom.d.ts'))
   files.push(join(tsPackage, 'lib.es2018.d.ts'))
@@ -47,5 +47,5 @@ it('fails on wrong types', () => {
     strict: true,
     noEmit: true
   })
-  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(6)
+  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(11)
 })
