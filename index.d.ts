@@ -27,6 +27,6 @@ declare namespace createStore {
 
 declare function createStore<State, EventsDataTypesMap = any>(
     modules: Array<createStore.Module<State, EventsDataTypesMap> | false>
-): createStore.Store<State, EventsDataTypesMap & createStore.StoreonEvents<State>>;
+): createStore.Store<State, EventsDataTypesMap & createStore.StoreonEvents<State, EventsDataTypesMap>>;
 
 export = createStore;
