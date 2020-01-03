@@ -9,6 +9,13 @@ module.exports = function () {
   var keys = [].slice.call(arguments)
 
   var store = hooks.useContext(StoreContext)
+  if (process.env.NODE_ENV !== 'production' && !store) {
+    throw new Error(
+      'Could not find storeon context value.' +
+      'Please ensure the component is wrapped in a <StoreContext.Provider>'
+    )
+  }
+
   var rerender = hooks.useState({ })
 
   useIsomorphicLayoutEffect(function () {

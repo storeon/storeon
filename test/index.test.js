@@ -139,24 +139,26 @@ it('allows Symbol as an event name', () => {
   expect(store.get().a).toBe(1)
 })
 
-it('does not fire @change if Promise is returned', done => {
+it('does not fire @change if Promise is returned', () => {
   let store = createStore([])
 
-  store.on('inc', (state, data) => {
-    expect(data).toBe(10)
-    done()
-  })
+  return new Promise(resolve => {
+    store.on('inc', (state, data) => {
+      expect(data).toBe(10)
+      resolve()
+    })
 
-  let count = 0
-  store.on('@changed', () => {
-    count += 1
-  })
+    let count = 0
+    store.on('@changed', () => {
+      count += 1
+    })
 
-  store.on('incAsync', async () => {
-    await delay(500)
-    store.dispatch('inc', 10)
-  })
+    store.on('incAsync', async () => {
+      await delay(500)
+      store.dispatch('inc', 10)
+    })
 
-  store.dispatch('incAsync')
-  expect(count).toBe(0)
+    store.dispatch('incAsync')
+    expect(count).toBe(0)
+  })
 })

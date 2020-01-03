@@ -1,7 +1,7 @@
-var print = console.log
+var print
 if (typeof navigator !== 'undefined' && navigator.product !== 'ReactNative') {
   print = function (type, name, opts) {
-    if (opts) {
+    if (typeof opts !== 'undefined') {
       console.log(
         '%c' + type + ' %c' + name,
         'color: #070',
@@ -16,6 +16,14 @@ if (typeof navigator !== 'undefined' && navigator.product !== 'ReactNative') {
       )
     }
   }
+} else {
+  print = function (type, name, opts) {
+    if (typeof opts !== 'undefined') {
+      console.log(type, name, opts)
+    } else {
+      console.log(type, name)
+    }
+  }
 }
 
 module.exports = function (store) {
@@ -23,10 +31,8 @@ module.exports = function (store) {
     if (data[0] === '@changed') {
       var keys = Object.keys(data[1]).join(', ')
       print('changed', keys, state)
-    } else if (data[1]) {
-      print('action', String(data[0]), data[1])
     } else {
-      print('action', String(data[0]))
+      print('action', String(data[0]), data[1])
     }
   })
 }

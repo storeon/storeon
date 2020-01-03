@@ -1,6 +1,21 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.7
+* Reduce package size.
+
+## 0.9.6
+* Show proper warning on usage outside of `Provider` (by Hadeeb Farhan).
+
+## 0.9.5
+* Fix DevTools in `<iframe>` with `same-origin` (by Hovhannes Babayan).
+
+## 0.9.4
+* Fix logger on `0` in event data.
+
+## 0.9.3
+* Improved TypeScript support for typed events and store (by @majo44).
+
 ## 0.9.2
 * Fix passing options for Redux DevTools (by Hovhannes Babayan).
 

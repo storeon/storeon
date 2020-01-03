@@ -6,7 +6,7 @@
 A tiny event-based Redux-like state manager for **React**, **Preact**,
 **[Angular]**, and **[Svelte]**.
 
-* **Small.** 173 bytes (minified and gzipped). No dependencies.
+* **Small.** 175 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
@@ -72,12 +72,16 @@ render(
   synchronizes events between browser tabs.
 * [`@storeon/undo`](https://github.com/storeon/undo)
   allows undoing or redoing the latest event.
+* [`@storeon/websocket`](https://github.com/storeon/websocket)
+  to sync actions through WebSocket.
 
 Third-party tools:
 
 * [`majo44/storeon-async-router`](https://github.com/majo44/storeon-async-router)
   is router with data prefetch, modules lazy load, navigation cancellation,
   and routes modification on the fly.
+* [`koddr/storeon-sessionstorage`](https://github.com/koddr/storeon-sessionstorage)
+  saves and restores state to `sessionStorage` (based on [`@storeon/localstorage`](https://github.com/storeon/localstorage)).
 
 
 ## Install
@@ -138,10 +142,10 @@ There are three built-in events:
 
 * `@init` will be fired in `createStore`. The best moment to set
   an initial state.
-* `@dispatch` will be fired on every `store.dispatch()` call.
+* `@dispatch` will be fired on every new action (on `store.dispatch()` calls and `@changed` event).
   It receives an array with the event name and the event’s data.
   Can be useful for debugging.
-* `@changed` will be fired every when event listeners changed the state.
+* `@changed` will be fired when any event changes the state.
   It receives object with state changes.
 
 To add an event listener, call `store.on()` with event name and callback.
@@ -321,6 +325,9 @@ store.dispatch('inc', 100)   // `inc` doesn’t have data
 store.dispatch('set', "100") // `set` event do not expect string data
 store.dispatch('dec')        // Unknown event
 ```
+
+In order to work properly for imports, it is considering adding
+`allowSyntheticDefaultImports: true` to `tsconfig.json`.
 
 
 ## Testing

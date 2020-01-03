@@ -2,11 +2,10 @@ type DataTypes<Map, Key extends keyof Map> =
     Map extends never ? [any?] : (Map[Key] extends (never | undefined) ? [never?] : [Map[Key]])
 
 declare namespace createStore {
-
-  export type DispatchEvent<Map, Key extends keyof Map = keyof Map> = [Key, Map[Key]]
-
   export type Dispatch<EventsDataTypesMap> = (<Event extends keyof EventsDataTypesMap>(
       event: Event, ...data: DataTypes<Partial<EventsDataTypesMap>, Event>) => void) & {___events: EventsDataTypesMap};
+
+  export type DispatchEvent<Map, Key extends keyof Map = keyof Map> = [Key, Map[Key]];
 
   export interface Store<State = unknown, EventsDataTypesMap = any> {
     readonly on: <Event extends keyof EventsDataTypesMap>(
@@ -28,6 +27,6 @@ declare namespace createStore {
 
 declare function createStore<State, EventsDataTypesMap = any>(
     modules: Array<createStore.Module<State, EventsDataTypesMap> | false>
-): createStore.Store<State, EventsDataTypesMap & createStore.StoreonEvents<State, EventsDataTypesMap>>;
+): createStore.Store<State, EventsDataTypesMap & createStore.StoreonEvents<State>>;
 
 export = createStore;
