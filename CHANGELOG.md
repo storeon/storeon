@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.8
+* Fix TypeScript definitions (by @majo44).
+
 ## 0.9.7
 * Reduce package size.
 
