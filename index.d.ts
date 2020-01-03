@@ -9,8 +9,8 @@ declare namespace createStore {
 
   export interface Store<State = unknown, EventsDataTypesMap = any> {
     readonly on: <Event extends keyof EventsDataTypesMap>(
-        event: Event,
-        handler: (state: Readonly<State>, data: EventsDataTypesMap[Event]) => Partial<State> | Promise<void> | null | void
+      event: Event,
+      handler: (state: Readonly<State>, data: EventsDataTypesMap[Event]) => Partial<State> | Promise<void> | null | void
     ) => () => void;
     readonly dispatch: Dispatch<EventsDataTypesMap>;
     readonly get: () => State;
