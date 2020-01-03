@@ -1,4 +1,4 @@
-import createStore, { Module, Store, StoreonEvents } from '../..'
+import createStore, { Module, Store, StoreonEvents } from '../..';
 import logger from '../../devtools/logger'
 import loggerBrowser from '../../devtools/logger.browser'
 import devtools from '../../devtools'
@@ -57,6 +57,21 @@ store.on('comment:post', async (_, data: string) => {
     store.dispatch('comment:error', e)
   }
 })
+
+store.on('@dispatch', (_, [event, data]) => {
+  if (event === 'comment:post') {
+    console.log(data);
+  }
+})
+
+const module: Module<{a: number}, {'inc': undefined}> = (store) => {
+  store.on('@dispatch', (_,[event, data]) => {
+    if (event === '@changed') {
+      console.log(data)
+    }
+  })
+}
+module(store);
 
 const state = store.get()
 state.a

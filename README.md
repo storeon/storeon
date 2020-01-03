@@ -283,7 +283,7 @@ If Storeon store has to be full type safe the event types declaration
 interface has to be delivered as second type to `createStore` function.
 
 ```typescript
-import createStore, { Module, StoreonEvents } from 'storeon'
+import createStore, { Module } from 'storeon'
 import useStoreon from 'storeon/react' // or storeon/preact
 
 // State structure
@@ -292,7 +292,7 @@ interface State {
 }
 
 // Events declaration: map of event names to type of event data
-interface Events extends StoreonEvents<State> {
+interface Events {
   // `inc` event which do not goes with any data
   'inc': undefined
   // `set` event which goes with number as data

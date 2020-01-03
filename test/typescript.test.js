@@ -47,5 +47,5 @@ it('fails on wrong types', () => {
     strict: true,
     noEmit: true
   })
-  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(10)
+  expect(ts.getPreEmitDiagnostics(program)).toHaveLength(11)
 })

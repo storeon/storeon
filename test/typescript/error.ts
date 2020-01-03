@@ -97,3 +97,11 @@ let s4: Store<{a: string, b: number}>  = {} as any;
 // TS2322: Type 'Store<{ a: string; }, any>' is not assignable to type 'Store<{ a: string; b: number; }, any>'.
 s4 = s3;
 s3.get().a
+
+store.on('@dispatch', (_, [event, data]) => {
+  // TestCase#11 @dispatch event data should provide type of events which are known
+  // TS2367: This condition will always return 'false' since the types 'unique symbol | "comment:posting" | "comment:posted" | "comment:post" | "comment:error" | "@init" | "@changed" | "@dispatch"' and '"abc"' have no overlap.
+  if (event === 'abc') {
+    console.log(data);
+  }
+})
