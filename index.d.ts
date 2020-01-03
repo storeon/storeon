@@ -2,31 +2,38 @@ type DataTypes<Map, Key extends keyof Map> =
     Map extends never ? [any?] : (Map[Key] extends (never | undefined) ? [never?] : [Map[Key]])
 
 declare namespace createStore {
-  export type Dispatch<EventsDataTypesMap> = (<Event extends keyof EventsDataTypesMap>(
-      event: Event, ...data: DataTypes<Partial<EventsDataTypesMap>, Event>) => void) & {___events: EventsDataTypesMap};
+  export type Dispatch<Events> = (<Event extends keyof Events>(
+    event: Event, ...data: DataTypes<Partial<Events>, Event>) => void) & {___events: Events};
 
-  export type DispatchEvent<Map, Key extends keyof Map = keyof Map> = [Key, Map[Key]];
+  export type DispatchEvent<State, Events, Event extends keyof Events = keyof Events> =
+    [Event, Events[Event], Array<StoreonEventHandler<State, Events, Event>>];
 
-  export interface Store<State = unknown, EventsDataTypesMap = any> {
-    readonly on: <Event extends keyof EventsDataTypesMap>(
+  export type StoreonEventHandler<State, Events, Event extends keyof (Events & StoreonEvents<State, Events>)> =
+    (state: Readonly<State>, data: (Events & StoreonEvents<State, Events>)[Event]) => Partial<State> | Promise<void> | null | void;
+
+  export interface Store<State = unknown, Events = any> {
+    readonly on: <Event extends keyof (Events & StoreonEvents<State, Events>)>(
       event: Event,
-      handler: (state: Readonly<State>, data: EventsDataTypesMap[Event]) => Partial<State> | Promise<void> | null | void
+      handler: StoreonEventHandler<State, Events, Event>
     ) => () => void;
-    readonly dispatch: Dispatch<EventsDataTypesMap>;
+    readonly dispatch: Dispatch<Events & DispatchableStoreonEvents<State>>;
     readonly get: () => State;
   }
 
-  export type Module<State, EventsDataTypesMap = any> = (store: Store<State, EventsDataTypesMap>) => void;
+  export type Module<State, Events = any> = (store: Store<State, Events>) => void;
 
-  export interface StoreonEvents<State, EventsDataTypesMap = any> {
+  export interface DispatchableStoreonEvents<State> {
     '@init': never;
     '@changed': State;
-    '@dispatch': DispatchEvent<EventsDataTypesMap>;
+  }
+
+  export interface StoreonEvents<State, Events = any> extends DispatchableStoreonEvents<State>{
+     '@dispatch': DispatchEvent<State, Events & DispatchableStoreonEvents<State>>;
   }
 }
 
-declare function createStore<State, EventsDataTypesMap = any>(
-    modules: Array<createStore.Module<State, EventsDataTypesMap> | false>
-): createStore.Store<State, EventsDataTypesMap & createStore.StoreonEvents<State, EventsDataTypesMap>>;
+declare function createStore<State, Events = any>(
+    modules: Array<createStore.Module<State, Events> | false>
+): createStore.Store<State, Events>;
 
 export = createStore;

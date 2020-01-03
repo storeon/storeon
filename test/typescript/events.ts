@@ -63,6 +63,16 @@ store.on('@dispatch', (_, [event, data]) => {
     console.log(data);
   }
 })
+
+const module: Module<{a: number}, {'inc': undefined}> = (store) => {
+  store.on('@dispatch', (_,[event, data]) => {
+    if (event === '@changed') {
+      console.log(data)
+    }
+  })
+}
+module(store);
+
 const state = store.get()
 state.a
 
