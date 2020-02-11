@@ -1,7 +1,7 @@
-import createStore, {Module, Store} from '../..'
-import logger from '../../devtools/logger'
-import loggerBrowser from '../../devtools/logger.browser'
-import devtools from '../../devtools'
+import createStore, {Module, Store} from '..'
+import logger from '../devtools/logger'
+import loggerBrowser from '../devtools/logger.browser'
+import devtools from '../devtools'
 
 interface State {
   a: number

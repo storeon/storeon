@@ -1,9 +1,9 @@
 import * as ReactDOM from 'react-dom'
 import * as React from 'react'
-import createStore, {Store, StoreonEvents} from '../..'
-import useStoreon from '../../react'
-import connect from '../../react/connect'
-import StoreContext from '../../react/context'
+import createStore, {Store, StoreonEvents} from '..'
+import useStoreon from '../react'
+import connect from '../react/connect'
+import StoreContext from '../react/context'
 
 interface State {
   a: number

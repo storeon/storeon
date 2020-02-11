@@ -13,7 +13,7 @@
     "api": "documentation build *.js -f md -o api.md",
     "spell": "yarn api && yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/ test/demo/.cache test/demo/dist",
-    "test": "jest --coverage && eslint-ci . && size-limit && yarn spell",
+    "test": "jest --coverage && eslint-ci . && check-dts && size-limit && yarn spell",
     "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -27,6 +27,7 @@
     "@logux/sharec-config": "^0.5.7",
     "@size-limit/preset-small-lib": "^4.0.1",
     "@types/react": "^16.9.19",
+    "check-dts": "^0.1.0",
     "clean-publish": "^1.1.4",
     "documentation": "^12.1.4",
     "eslint": "^6.8.0",
