@@ -2565,10 +2565,10 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-check-dts@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/check-dts/-/check-dts-0.1.0.tgz#56569ff91a310cdd21b18f6b103cbdb760ae30b2"
-  integrity sha512-YMe6OnCcvIMw7+tvSoCtp3fQn0fg0Hqxqj0Ydq7JX6xNVRXvbuOWfl4I9YZ54c6ibtBpf9xeBdLS8ssdfW/aoA==
+check-dts@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/check-dts/-/check-dts-0.1.1.tgz#e5d61599ab1a10b975e4ff0a2eca2513ff4003f6"
+  integrity sha512-SFd2qbiewpL53OH/OHehPh/Plo8deDb7d32papchSyKUu2xCPp+hnQ5dpNUunrHIKF4gk3btV98tJBSCm1IvjQ==
   dependencies:
     chalk "^3.0.0"
     ci-job-number "^0.3.1"
@@ -5074,10 +5074,10 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-husky@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.1.tgz#b09f1bd9129e6c323cc515dc17081d0615e2d7c1"
-  integrity sha512-Qa0lRreeIf4Tl92sSs42ER6qc3hzoyQPPorzOrFWfPEVbdi6LuvJEqWKPk905fOWIR76iBpp7ECZNIwk+a8xuQ==
+husky@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.2.tgz#aa858a99ad685f13ab5f99fa71b60e0fe0cd9048"
+  integrity sha512-RAjZNO74zJyFJuRFESy+3LXTJvYbjGL+jhoSNJNF1DTKq2USrL5fEH70e1cJXEgvLaPyZt1NoGi0oNQQkPs4jA==
   dependencies:
     chalk "^3.0.0"
     ci-info "^2.0.0"
