@@ -89,4 +89,3 @@ let s4: Store<{a: string, b: number}>  = {} as any
 // Store with wider state declaration should be assignable to Store with narrower store declaration
 s3 = s4
 s3.get().a
-
