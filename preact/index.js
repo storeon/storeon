@@ -1,14 +1,12 @@
-var hooks = require('preact/hooks')
+let hooks = require('preact/hooks')
 
-var StoreContext = require('./context')
+let StoreContext = require('./context')
 
-var useIsomorphicLayoutEffect =
+let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? hooks.useLayoutEffect : hooks.useEffect
 
-module.exports = function () {
-  var keys = [].slice.call(arguments)
-
-  var store = hooks.useContext(StoreContext)
+module.exports = (...keys) => {
+  let store = hooks.useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
       'Could not find storeon context value.' +
@@ -16,21 +14,19 @@ module.exports = function () {
     )
   }
 
-  var rerender = hooks.useState({ })
+  let rerender = hooks.useState({ })
 
-  useIsomorphicLayoutEffect(function () {
-    return store.on('@changed', function (_, changed) {
-      var changesInKeys = keys.some(function (key) {
-        return key in changed
-      })
+  useIsomorphicLayoutEffect(() => {
+    return store.on('@changed', (_, changed) => {
+      let changesInKeys = keys.some(key => key in changed)
       if (changesInKeys) rerender[1]({ })
     })
   }, [])
 
-  return hooks.useMemo(function () {
-    var state = store.get()
-    var data = { }
-    keys.forEach(function (key) {
+  return hooks.useMemo(() => {
+    let state = store.get()
+    let data = { }
+    keys.forEach(key => {
       data[key] = state[key]
     })
     data.dispatch = store.dispatch

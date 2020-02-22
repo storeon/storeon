@@ -1,22 +1,8 @@
-/**
- * Create Redux DevTools module for Storeon.
- *
- * @param {object} options Redux DevTools option.
- * @returns {devtools} Redux DevTools module
- *
- * @example
- * const store = createStore([
- *   process.env.NODE_ENV !== 'production' && require('storeon/devtools')()
- * ])
- *
- * @name devtools
- * @function
- */
-function devtools (options) {
-  var isStore = options && options.on && options.dispatch && options.get
+module.exports = options => {
+  let isStore = options && options.on && options.dispatch && options.get
 
-  function module (store) {
-    var extension
+  let module = store => {
+    let extension
     try {
       extension = window.__REDUX_DEVTOOLS_EXTENSION__ ||
         window.top.__REDUX_DEVTOOLS_EXTENSION__
@@ -31,9 +17,9 @@ function devtools (options) {
       return
     }
 
-    var ReduxTool = extension.connect(isStore ? {} : options)
-    store.on('@init', function () {
-      ReduxTool.subscribe(function (message) {
+    let ReduxTool = extension.connect(isStore ? { } : options)
+    store.on('@init', () => {
+      ReduxTool.subscribe(message => {
         if (message.type === 'DISPATCH' && message.state) {
           store.dispatch('UPDATE_FROM_DEVTOOLS', JSON.parse(message.state))
         }
@@ -41,9 +27,9 @@ function devtools (options) {
       ReduxTool.init(store.get())
     })
 
-    var prev = ''
-    store.on('@dispatch', function (state, data) {
-      var event = String(data[0])
+    let prev = ''
+    store.on('@dispatch', (state, data) => {
+      let event = String(data[0])
       if (event !== 'UPDATE_FROM_DEVTOOLS' && prev !== 'UPDATE_FROM_DEVTOOLS') {
         if (event[0] !== '@' && (!data[2] || data[2].length === 0)) {
           throw new Error('Unknown Storeon event ' + event)
@@ -55,9 +41,9 @@ function devtools (options) {
       prev = event
     })
 
-    store.on('UPDATE_FROM_DEVTOOLS', function (state, data) {
-      var newState = {}
-      var key
+    store.on('UPDATE_FROM_DEVTOOLS', (state, data) => {
+      let newState = { }
+      let key
       for (key in state) {
         newState[key] = undefined
       }
@@ -70,11 +56,3 @@ function devtools (options) {
 
   return isStore ? module(options) : module
 }
-
-module.exports = devtools
-
-/**
- * @callback devtools
- * @param {Store} store The store.
- * @returns {devtools}
- */

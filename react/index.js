@@ -1,33 +1,12 @@
-var React = require('react')
+let React = require('react')
 
-var StoreContext = require('./context')
+let StoreContext = require('./context')
 
-var useIsomorphicLayoutEffect =
+let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
-/**
- * Hook to use Storeon in functional React component.
- *
- * @param {...string} fields List of state’s field.
- *
- * @return {object} The selected part of the state.
- *
- * @example
- * import useStoreon from 'storeon/react'
- * const Counter = () => {
- *   const { dispatch, count } = useStoreon('count')
- *   return <div>
- *     {count}
- *     <button onClick={() => dispatch('inc')}
- *   </div>
- * }
- *
- * @name useStoreon
- */
-module.exports = function () {
-  var keys = [].slice.call(arguments)
-
-  var store = React.useContext(StoreContext)
+module.exports = (...keys) => {
+  let store = React.useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
       'Could not find storeon context value.' +
@@ -35,21 +14,19 @@ module.exports = function () {
     )
   }
 
-  var rerender = React.useState({ })
+  let rerender = React.useState({ })
 
-  useIsomorphicLayoutEffect(function () {
-    return store.on('@changed', function (_, changed) {
-      var changesInKeys = keys.some(function (key) {
-        return key in changed
-      })
+  useIsomorphicLayoutEffect(() => {
+    return store.on('@changed', (_, changed) => {
+      let changesInKeys = keys.some(key => key in changed)
       if (changesInKeys) rerender[1]({ })
     })
   }, [])
 
-  return React.useMemo(function () {
-    var state = store.get()
-    var data = { }
-    keys.forEach(function (key) {
+  return React.useMemo(() => {
+    let state = store.get()
+    let data = { }
+    keys.forEach(key => {
       data[key] = state[key]
     })
     data.dispatch = store.dispatch

@@ -1,4 +1,4 @@
-var print
+let print
 if (typeof navigator !== 'undefined' && navigator.product !== 'ReactNative') {
   print = function (type, name, opts) {
     if (typeof opts !== 'undefined') {
@@ -27,9 +27,9 @@ if (typeof navigator !== 'undefined' && navigator.product !== 'ReactNative') {
 }
 
 module.exports = function (store) {
-  store.on('@dispatch', function (state, data) {
+  store.on('@dispatch', (state, data) => {
     if (data[0] === '@changed') {
-      var keys = Object.keys(data[1]).join(', ')
+      let keys = Object.keys(data[1]).join(', ')
       print('changed', keys, state)
     } else {
       print('action', String(data[0]), data[1])

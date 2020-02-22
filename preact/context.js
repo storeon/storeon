@@ -1,3 +1,3 @@
-var Preact = require('preact')
+let Preact = require('preact')
 
 module.exports = Preact.createContext()
