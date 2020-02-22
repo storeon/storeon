@@ -1,4 +1,4 @@
-import {Store} from '..'
+import { Store } from '..'
 
 declare const devtools: {
   <State>(store: Store<State>): void
