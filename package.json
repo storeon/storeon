@@ -64,7 +64,7 @@
     {
       "name": "core",
       "path": "index.js",
-      "limit": "175 B"
+      "limit": "172 B"
     },
     {
       "name": "core + react hook",
@@ -72,7 +72,7 @@
         "index.js",
         "react/index.js"
       ],
-      "limit": "354 B",
+      "limit": "330 B",
       "ignore": [
         "react"
       ]
@@ -83,7 +83,7 @@
         "index.js",
         "react/connect.js"
       ],
-      "limit": "415 B",
+      "limit": "364 B",
       "ignore": [
         "react"
       ]
