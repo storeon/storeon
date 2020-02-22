@@ -1,13 +1,30 @@
-import {Dispatch} from '..'
+import { Dispatch } from '..'
 
 declare namespace useStoreon {
-  export type StoreData<State extends object = {}, EventsDataTypesMap = any> = {
-    dispatch: Dispatch<EventsDataTypesMap>;
+  export type StoreData<State extends object = {}, EventsMap = any> = {
+    dispatch: Dispatch<EventsMap>
   } & State
 }
 
-declare function useStoreon<State extends object = {}, EventsDataTypesMap = any>(
+/**
+ * Hook to use Storeon in functional React component.
+ *
+ * ```js
+ * import useStoreon from 'storeon/react'
+ * const Counter = () => {
+ *   const { dispatch, count } = useStoreon('count')
+ *   return <div>
+ *     {count}
+ *     <button onClick={() => dispatch('inc')}
+ *   </div>
+ * }
+ * ```
+ *
+ * @param keys List of state’s field.
+ * @returns The selected part of the state.
+ */
+declare function useStoreon<State extends object = {}, EventsMap = any>(
   ...keys: (keyof State)[]
-): useStoreon.StoreData<State, EventsDataTypesMap>;
+): useStoreon.StoreData<State, EventsMap>
 
-export = useStoreon;
+export = useStoreon
