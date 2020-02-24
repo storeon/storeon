@@ -10,8 +10,7 @@
     "hook"
   ],
   "scripts": {
-    "api": "documentation build *.js -f md -o api.md",
-    "spell": "yarn api && yaspeller-ci *.md",
+    "spell": "yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/ test/demo/.cache test/demo/dist",
     "test": "jest --coverage && eslint-ci . && check-dts && size-limit && yarn spell",
     "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open"
@@ -29,7 +28,6 @@
     "@types/react": "^16.9.22",
     "check-dts": "^0.1.2",
     "clean-publish": "^1.1.5",
-    "documentation": "^12.1.4",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.0",
