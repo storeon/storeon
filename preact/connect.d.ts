@@ -14,7 +14,7 @@ declare namespace connect {
  * const Counter = ({ count, dispatch }) => {
  *   return <div>
  *     {count}
- *     <button onClick={() => dispatch('inc')}
+ *     <button onClick={() => dispatch('inc')} />
  *   </div>
  * }
  * export default connect('count', Counter)

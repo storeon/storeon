@@ -34,7 +34,7 @@ import useStoreon from 'storeon/react' // or storeon/preact
 
 export default const Counter = () => {
   // Counter will be re-render only on `state.count` changes
-  const { dispatch, count } = useStoreon('count')
+  const { dispatch, count } = useStoreon()('count')
   return <button onClick={() => dispatch('inc')}>{count}</button>
 }
 ```
@@ -212,7 +212,7 @@ For functional components, `useStoreon` hook will be the best option:
 ```js
 import useStoreon from 'storeon/react' // Use 'storeon/preact' for Preact
 const Users = () => {
-  const { dispatch, users, projects } = useStoreon('users', 'projects')
+  const { dispatch, users, projects } = useStoreon()('users', 'projects')
   const onAdd = useCallback(user => {
     dispatch('users/add', user)
   })
@@ -308,7 +308,7 @@ const counterModule: Module<State, Events> = store => {
 const store = createStore<State, Events>([counterModule])
 
 const Counter = () => {
-  const { dispatch, count } = useStoreon<State, Events>('count')
+  const { dispatch, count } = useStoreon<State, Events>()('count')
   // Correct call
   dispatch('set', 100)
   // Compilation error: `set` event do not expect string data

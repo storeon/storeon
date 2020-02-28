@@ -28,7 +28,7 @@ function tracker (text) {
 }
 
 function Button1 () {
-  let { dispatch } = useStoreon()
+  let { dispatch } = useStoreon()()
   let onClick = useCallback(() => {
     dispatch('inc1')
   })
@@ -36,7 +36,7 @@ function Button1 () {
 }
 
 function Button2 () {
-  let { dispatch } = useStoreon()
+  let { dispatch } = useStoreon()()
   let onClick = useCallback(() => {
     dispatch('inc2')
   })
@@ -44,17 +44,17 @@ function Button2 () {
 }
 
 function Tracker1 () {
-  let { count1 } = useStoreon('count1')
+  let { count1 } = useStoreon()('count1')
   return tracker(`Counter 1: ${ count1 }`)
 }
 
 function Tracker2 () {
-  let { count2 } = useStoreon('count2')
+  let { count2 } = useStoreon()('count2')
   return tracker(`Counter 2: ${ count2 }`)
 }
 
 function Tracker12 () {
-  let { count1, count2 } = useStoreon('count1', 'count2')
+  let { count1, count2 } = useStoreon()('count1', 'count2')
   return tracker(`Counter 1: ${ count1 }, counter 2: ${ count2 }`)
 }
 

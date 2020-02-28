@@ -5,7 +5,7 @@ let StoreContext = require('./context')
 let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
-module.exports = (...keys) => {
+module.exports = () => (...keys) => {
   let store = React.useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(

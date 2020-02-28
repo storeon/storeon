@@ -1,4 +1,5 @@
-import createStore, {Module, Store, StoreonEvents } from '..'
+import createStore, { Module, Store, StoreonEvents } from '..'
+import useStoreon from '../react'
 
 const sym = Symbol('sym')
 
@@ -87,6 +88,9 @@ store.on('@dispatch', (_, [event, data]) => {
     console.log(data);
   }
 })
+
+// THROWS Property 'b' does not exist on type 'StoreData<State, EventsDataTypesMap, ["a"]>'.
+useStoreon<State, EventsDataTypesMap>()('a').b
 
 s2.get()
 s3.get().a

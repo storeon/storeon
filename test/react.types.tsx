@@ -21,7 +21,7 @@ function init(store: Store<State>) {
 const store = createStore<State, EventsDataTypesMap>([init])
 
 function Button() {
-  const { dispatch, a } = useStoreon<State, EventsDataTypesMap>('a')
+  const { dispatch, a } = useStoreon<State, EventsDataTypesMap>()('a')
 
   const onClick = React.useCallback(() => dispatch('inc'), [])
 

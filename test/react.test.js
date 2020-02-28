@@ -77,7 +77,7 @@ it('allows using Symbol as a store key', () => {
     store.on('sym', state => ({ [sym]: state[sym] + 1 }))
   }
   function Button () {
-    let hooks = useStoreon(sym)
+    let hooks = useStoreon()(sym)
     return hooks[sym]
   }
   let store = createStore([symbol])
@@ -93,7 +93,7 @@ it('allows using Symbol as a store key', () => {
 
 it('throws if there is no StoreProvider', () => {
   function Button () {
-    let hooks = useStoreon('')
+    let hooks = useStoreon()('')
     return hooks
   }
   function render () {
