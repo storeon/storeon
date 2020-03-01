@@ -65,7 +65,7 @@ function postUp(store: Store<{a: number}, {'inc': string;}>): void {
     store.on('inc', (state) => ({ a: state.a + 1 }))
 }
 
-// THROWS Argument of type 'Store<State, EventsDataTypesMap>' is not assignable to parameter of type 'Store<{ a: number; }, { 'inc': string; }>'.
+// THROWS Argument of type 'Store<State, EventsDataTypesMap>' is not assignable to parameter of type 'Store<{ a: number; }, { inc: string; }>'.
 postUp(store);
 
 let s1: Store<{}, {a: string}> = {} as any;
