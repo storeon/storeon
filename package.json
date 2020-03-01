@@ -1,6 +1,6 @@
 {
   "name": "storeon",
-  "version": "0.9.8",
+  "version": "1.0.0",
   "description": "Tiny (175 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": "storeon/storeon",
   "browser": {
-    "./devtools/logger.js": "./devtools/logger.browser.js"
+    "./devtools/logger/index.js": "./devtools/logger/index.browser.js"
   },
   "devDependencies": {
     "@logux/eslint-config": "^36.0.0",
@@ -27,7 +27,7 @@
     "@size-limit/preset-small-lib": "^4.0.2",
     "@types/react": "^16.9.23",
     "check-dts": "^0.1.2",
-    "clean-publish": "^1.1.5",
+    "dual-publish": "^0.2.0",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.0",
@@ -79,7 +79,7 @@
       "name": "core + react decorator",
       "path": [
         "index.js",
-        "react/connect.js"
+        "react/connect/index.js"
       ],
       "limit": "364 B",
       "ignore": [
@@ -90,7 +90,7 @@
       "name": "devtools",
       "path": [
         "devtools/index.browser.js",
-        "devtools/logger.browser.js"
+        "devtools/logger/index.browser.js"
       ],
       "limit": "190 B"
     }
@@ -144,7 +144,11 @@
       "polyfill",
       "UIBook",
       "UI",
-      "WebSocket"
+      "WebSocket",
+      "supports ES",
+      "bundlers",
+      "CDN",
+      "ES"
     ]
   },
   "sharec": {

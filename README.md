@@ -99,6 +99,19 @@ Object.assign = require('object-assign')
 
 [`Object.assign`]: https://www.npmjs.com/package/object-assign
 
+
+## ES Modules
+
+Storeon supports ES modules. You do not need to do anything for bundlers.
+
+For quick hacks you can load Storeon from CDN. Do not use it in production
+because of low performance.
+
+```js
+import createStore from 'https://cdn.jsdelivr.net/npm/storeon/index.js'
+```
+
+
 ## Store
 
 The store should be created with `createStore()` function. It accepts a list
