@@ -18,9 +18,6 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "storeon/storeon",
-  "browser": {
-    "./devtools/logger/index.js": "./devtools/logger/index.browser.js"
-  },
   "devDependencies": {
     "@logux/eslint-config": "^36.0.0",
     "@logux/sharec-config": "^0.5.7",
@@ -87,10 +84,10 @@
     {
       "name": "devtools",
       "path": [
-        "devtools/index.browser.js",
-        "devtools/logger/index.browser.js"
+        "devtools/index.js",
+        "devtools/logger/index.js"
       ],
-      "limit": "190 B"
+      "limit": "537 B"
     }
   ],
   "eslintConfig": {

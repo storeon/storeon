@@ -1,3 +1,5 @@
+Object.defineProperty(global, 'navigator', { undefined })
+
 let createStore = require('../')
 let logger = require('../devtools/logger')
 
@@ -13,13 +15,13 @@ it('prints dispatches', () => {
   store.dispatch('inc', 0)
   store.dispatch('inc')
   expect(console.log.mock.calls).toEqual([
-    ['action @init'],
-    ['changed count, started', { count: 0, started: true }],
-    ['action inc', 2],
-    ['changed count', { count: 2, started: true }],
-    ['action inc', 0],
-    ['changed count', { count: 2, started: true }],
-    ['action inc'],
-    ['changed count', { count: 3, started: true }]
+    ['action', '@init'],
+    ['changed', 'count, started', { count: 0, started: true }],
+    ['action', 'inc', 2],
+    ['changed', 'count', { count: 2, started: true }],
+    ['action', 'inc', 0],
+    ['changed', 'count', { count: 2, started: true }],
+    ['action', 'inc'],
+    ['changed', 'count', { count: 3, started: true }]
   ])
 })
