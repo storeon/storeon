@@ -13,7 +13,7 @@ function counter (store) {
 
 it('prints dispatches', () => {
   jest.spyOn(console, 'log').mockImplementation(() => { })
-  let logger = require('../devtools/logger.browser')
+  let logger = require('../devtools/logger/index.browser')
   let store = createStore([counter, logger])
   store.dispatch('inc', 2)
   store.dispatch('inc', 0)

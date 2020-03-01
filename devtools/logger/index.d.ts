@@ -1,4 +1,4 @@
-import { Module } from '..'
+import { Module } from '../..'
 
 declare const logger: Module<unknown>
 

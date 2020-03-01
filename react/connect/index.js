@@ -1,6 +1,6 @@
 let React = require('react')
 
-let useStoreon = require('./')
+let useStoreon = require('../')
 
 module.exports = (...keys) => {
   let Component = keys.pop()

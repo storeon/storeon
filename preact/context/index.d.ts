@@ -1,5 +1,5 @@
 import { PreactContext } from 'preact'
-import { Store } from '..'
+import { Store } from '../..'
 
 /**
  * Context to put store for `connect` decorator.

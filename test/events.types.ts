@@ -1,6 +1,6 @@
 import createStore, { Module, Store, StoreonEvents } from '..';
 import logger from '../devtools/logger'
-import loggerBrowser from '../devtools/logger.browser'
+import loggerBrowser from '../devtools/logger/index.browser'
 import devtools from '../devtools'
 
 const sym = Symbol('sym')

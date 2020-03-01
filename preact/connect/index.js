@@ -1,6 +1,6 @@
 let Preact = require('preact')
 
-let useStoreon = require('./')
+let useStoreon = require('../')
 
 module.exports = (...keys) => {
   let Component = keys.pop()
