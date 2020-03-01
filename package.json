@@ -1,6 +1,6 @@
 {
   "name": "storeon",
-  "version": "0.9.8",
+  "version": "1.0.0",
   "description": "Tiny (175 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
@@ -143,7 +143,8 @@
       "supports ES",
       "bundlers",
       "CDN",
-      "ES"
+      "ES",
+      "ES2016"
     ]
   },
   "sharec": {

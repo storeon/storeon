@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0
+* Add ES modules support.
+* Use ES2016 syntax.
+* Use universal `devtools/logger` for Node and bundlers.
+* Reduce size.
+
 ## 0.9.8
 * Fix TypeScript definitions (by @majo44).
 
