@@ -90,8 +90,9 @@ Third-party tools:
 npm install storeon
 ```
 
-If you need to support IE, add [`Object.assign`] polyfill to your bundle.
-You should have this polyfill already if you are using React.
+If you need to support IE, you need to compile `node_modules` with Babel and
+add [`Object.assign`] polyfill to your bundle. You should have this polyfill
+already if you are using React.
 
 ```js
 Object.assign = require('object-assign')
