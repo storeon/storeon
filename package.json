@@ -45,7 +45,7 @@
     "lint-staged": "^10.0.8",
     "nanodelay": "^0.1.4",
     "parcel-bundler": "^1.12.4",
-    "preact": "^10.3.2",
+    "preact": "^10.3.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-test-renderer": "^16.13.0",
