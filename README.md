@@ -90,7 +90,7 @@ Third-party tools:
 npm install storeon
 ```
 
-If you need to support IE, you need to compile `node_modules` with Babel and
+If you need to support IE, you need to [compile `node_modules`] with Babel and
 add [`Object.assign`] polyfill to your bundle. You should have this polyfill
 already if you are using React.
 
@@ -98,6 +98,7 @@ already if you are using React.
 Object.assign = require('object-assign')
 ```
 
+[compile `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
 [`Object.assign`]: https://www.npmjs.com/package/object-assign
 
 
