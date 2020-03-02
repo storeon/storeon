@@ -271,7 +271,7 @@ Or if you want to print events to `console` you can use built-in logger.
 It could be useful for simple cases or to investigate issue in error trackers.
 
 ```js
- import logger from 'storeon/devtools/logger';
+import logger from 'storeon/devtools/logger';
 
 const store = createStore([
   …
