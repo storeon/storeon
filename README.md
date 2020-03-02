@@ -256,9 +256,11 @@ into `props`. It will re-render only if this keys will be changed.
 Storeon supports debugging with [Redux DevTools Extension].
 
 ```js
+import devtools from 'storeon/devtools';
+
 const store = createStore([
   …
-  process.env.NODE_ENV !== 'production' && require('storeon/devtools').default
+  process.env.NODE_ENV !== 'production' && devtools
 ])
 ```
 
@@ -269,9 +271,11 @@ Or if you want to print events to `console` you can use built-in logger.
 It could be useful for simple cases or to investigate issue in error trackers.
 
 ```js
+ import logger from 'storeon/devtools/logger';
+
 const store = createStore([
   …
-  process.env.NODE_ENV !== 'production' && require('storeon/devtools/logger').default
+  process.env.NODE_ENV !== 'production' && logger
 ])
 ```
 
