@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.1
+* Better tree-shaking of React/Preact.
+* Fix docs (by Johannes Kronmüller).
+
 ## 1.0
 * Add ES modules support.
 * Use ES2016 syntax.
