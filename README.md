@@ -95,7 +95,8 @@ add [`Object.assign`] polyfill to your bundle. You should have this polyfill
 already if you are using React.
 
 ```js
-Object.assign = require('object-assign')
+import assign from 'object-assign'
+Object.assign = assign
 ```
 
 [compile `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
