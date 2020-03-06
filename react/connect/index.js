@@ -1,4 +1,4 @@
-let React = require('react')
+let { createElement } = require('react')
 
 let useStoreon = require('../')
 
@@ -6,6 +6,6 @@ module.exports = (...keys) => {
   let Component = keys.pop()
   return originProps => {
     let props = { ...originProps, ...useStoreon(...keys) }
-    return React.createElement(Component, props)
+    return createElement(Component, props)
   }
 }

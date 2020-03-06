@@ -1,12 +1,14 @@
-let hooks = require('preact/hooks')
+let {
+  useMemo, useContext, useState, useLayoutEffect, useEffect
+} = require('preact/hooks')
 
 let StoreContext = require('./context')
 
 let useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? hooks.useLayoutEffect : hooks.useEffect
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 module.exports = (...keys) => {
-  let store = hooks.useContext(StoreContext)
+  let store = useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
       'Could not find storeon context value.' +
@@ -14,7 +16,7 @@ module.exports = (...keys) => {
     )
   }
 
-  let rerender = hooks.useState({ })
+  let rerender = useState({ })
 
   useIsomorphicLayoutEffect(() => {
     return store.on('@changed', (_, changed) => {
@@ -23,7 +25,7 @@ module.exports = (...keys) => {
     })
   }, [])
 
-  return hooks.useMemo(() => {
+  return useMemo(() => {
     let state = store.get()
     let data = { }
     keys.forEach(key => {

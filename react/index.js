@@ -1,12 +1,14 @@
-let React = require('react')
+let {
+  useMemo, useContext, useState, useLayoutEffect, useEffect
+} = require('react')
 
 let StoreContext = require('./context')
 
 let useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 module.exports = (...keys) => {
-  let store = React.useContext(StoreContext)
+  let store = useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
       'Could not find storeon context value.' +
@@ -14,7 +16,7 @@ module.exports = (...keys) => {
     )
   }
 
-  let rerender = React.useState({ })
+  let rerender = useState({ })
 
   useIsomorphicLayoutEffect(() => {
     return store.on('@changed', (_, changed) => {
@@ -23,7 +25,7 @@ module.exports = (...keys) => {
     })
   }, [])
 
-  return React.useMemo(() => {
+  return useMemo(() => {
     let state = store.get()
     let data = { }
     keys.forEach(key => {

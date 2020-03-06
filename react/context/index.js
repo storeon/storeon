@@ -1,3 +1,3 @@
-let React = require('react')
+let { createContext } = require('react')
 
-module.exports = React.createContext()
+module.exports = createContext()
