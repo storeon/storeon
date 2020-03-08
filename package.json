@@ -18,6 +18,7 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "storeon/storeon",
+  "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^36.1.0",
     "@logux/sharec-config": "^0.5.7",
