@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.1
+* Mark package to be free from side effects.
+* Fix Yarn 2 and pnpm support (by Mateusz Burzyński).
+
 ## 2.0
 * Move to named exports.
 * Rename types to `StoreonStore`, `StoreonModule`.
