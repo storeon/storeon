@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0
+* Move to named exports.
+* Rename types to `StoreonStore`, `StoreonModule`.
+* Move logger into `storeon/devtools`.
+* Reduce size.
+
 ## 1.0.1
 * Better tree-shaking of React/Preact.
 * Fix docs (by Johannes Kronmüller).
