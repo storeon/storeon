@@ -32,7 +32,7 @@
     }
   },
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.0",
+    "@logux/eslint-config": "^36.1.1",
     "@logux/sharec-config": "^0.5.7",
     "@size-limit/dual-publish": "^4.3.1",
     "@size-limit/preset-small-lib": "^4.3.1",
@@ -49,11 +49,11 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^16.1.1",
+    "eslint-plugin-unicorn": "^17.0.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
-    "nanodelay": "^1.0.0",
+    "nanodelay": "^1.0.1",
     "parcel-bundler": "^1.12.4",
     "preact": "^10.3.3",
     "react": "^16.13.0",
