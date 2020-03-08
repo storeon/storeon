@@ -315,7 +315,7 @@ const counterModule: StoreonModule<State, Events> = store => {
   store.on('set', (state, event) => ({ counter: event}))
 }
 
-const store = createStore<State, Events>([counterModule])
+const store = createStoreon<State, Events>([counterModule])
 
 const Counter = () => {
   const { dispatch, count } = useStoreon<State, Events>('count')
@@ -350,7 +350,7 @@ it('creates users', () => {
   jest.spyOn(api, 'addUser').mockImplementation(() => new Promise(resolve => {
     addUserResolve = resolve
   }))
-  let store = createStore([usersModule])
+  let store = createStoreon([usersModule])
 
   store.dispatch('users/add', { name: 'User' })
   expect(api.addUser).toHaveBeenCalledWith({ name: 'User' })
