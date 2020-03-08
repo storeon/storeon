@@ -19,6 +19,18 @@
   "license": "MIT",
   "repository": "storeon/storeon",
   "sideEffects": false,
+  "peerDependencies": {
+    "preact": "^10.0.0",
+    "react": "^16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "preact": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@logux/eslint-config": "^36.1.0",
     "@logux/sharec-config": "^0.5.7",
