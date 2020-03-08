@@ -1,10 +1,8 @@
 let renderer = require('react-test-renderer')
-let h = require('react').createElement
+let { createElement: h } = require('react')
 
-let StoreContext = require('../react/context')
-let createStore = require('../')
-let connect = require('../react/connect')
-let useStoreon = require('../react')
+let { StoreContext, useStoreon, connectStoreon } = require('../react')
+let { createStoreon } = require('../')
 
 jest.mock('react', () => {
   let React = require('react/cjs/react.development.js')
@@ -30,8 +28,10 @@ it('connects component to store', () => {
     })
   }
 
-  let store = createStore([increment])
-  let wrapper = init(store, h(connect('count', Button), { a: 1, count: 100 }))
+  let store = createStoreon([increment])
+  let wrapper = init(store,
+    h(connectStoreon('count', Button), { a: 1, count: 100 })
+  )
 
   let props = wrapper.root.findByType(Button).props
   expect(props).toEqual({ a: 1, count: 0, dispatch: store.dispatch })
@@ -53,9 +53,9 @@ it('renders only on changes', () => {
     renders += 1
     return renders
   }
-  let store = createStore([increment, other])
+  let store = createStoreon([increment, other])
 
-  init(store, h(connect('count', Tracker)))
+  init(store, h(connectStoreon('count', Tracker)))
   expect(renders).toEqual(1)
 
   renderer.act(() => {
@@ -80,7 +80,7 @@ it('allows using Symbol as a store key', () => {
     let hooks = useStoreon(sym)
     return hooks[sym]
   }
-  let store = createStore([symbol])
+  let store = createStoreon([symbol])
 
   let wrapper = init(store, h(Button, { }, 'Test'))
   expect(wrapper.toJSON()).toBe('0')

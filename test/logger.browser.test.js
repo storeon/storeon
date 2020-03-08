@@ -1,5 +1,5 @@
-let createStore = require('../')
-let logger = require('../devtools/logger')
+let { storeonLogger } = require('../devtools')
+let { createStoreon } = require('../')
 
 let STYLE = 'color: #070'
 let BOLD = 'color: #070; font-weight: 700'
@@ -11,7 +11,7 @@ function counter (store) {
 
 it('prints dispatches', () => {
   jest.spyOn(console, 'log').mockImplementation(() => true)
-  let store = createStore([counter, logger])
+  let store = createStoreon([counter, storeonLogger])
   store.dispatch('inc', 2)
   store.dispatch('inc', 0)
   store.dispatch('inc')

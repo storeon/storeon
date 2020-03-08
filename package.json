@@ -1,7 +1,7 @@
 {
   "name": "storeon",
   "version": "1.0.1",
-  "description": "Tiny (175 bytes) event-based Redux-like state manager for React and Preact",
+  "description": "Tiny (167 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",
     "immutable",
@@ -19,17 +19,18 @@
   "license": "MIT",
   "repository": "storeon/storeon",
   "devDependencies": {
-    "@logux/eslint-config": "^36.0.0",
+    "@logux/eslint-config": "^36.1.0",
     "@logux/sharec-config": "^0.5.7",
-    "@size-limit/preset-small-lib": "^4.0.2",
+    "@size-limit/dual-publish": "^4.3.1",
+    "@size-limit/preset-small-lib": "^4.3.1",
     "@types/react": "^16.9.23",
     "check-dts": "^0.1.2",
-    "dual-publish": "^0.3.0",
+    "dual-publish": "^0.5.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.1",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
@@ -39,14 +40,14 @@
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
-    "nanodelay": "^0.1.4",
+    "nanodelay": "^1.0.0",
     "parcel-bundler": "^1.12.4",
     "preact": "^10.3.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-test-renderer": "^16.13.0",
     "rimraf": "^3.0.2",
-    "size-limit": "^4.0.2",
+    "size-limit": "^4.3.1",
     "typescript": "^3.8.3",
     "yaspeller": "^6.0.3"
   },
@@ -56,38 +57,39 @@
   "size-limit": [
     {
       "name": "core",
-      "path": "index.js",
-      "limit": "172 B"
+      "import": {
+        "index.js": "{ createStoreon }"
+      },
+      "limit": "167 B"
     },
     {
       "name": "core + react hook",
-      "path": [
-        "index.js",
-        "react/index.js"
-      ],
-      "limit": "344 B",
+      "import": {
+        "index.js": "{ createStoreon }",
+        "react/index.js": "{ useStoreon }"
+      },
+      "limit": "333 B",
       "ignore": [
         "react"
       ]
     },
     {
       "name": "core + react decorator",
-      "path": [
-        "index.js",
-        "react/connect/index.js"
-      ],
-      "limit": "380 B",
+      "import": {
+        "index.js": "{ createStoreon }",
+        "react/index.js": "{ connectStoreon }"
+      },
+      "limit": "364 B",
       "ignore": [
         "react"
       ]
     },
     {
       "name": "devtools",
-      "path": [
-        "devtools/index.js",
-        "devtools/logger/index.js"
-      ],
-      "limit": "537 B"
+      "import": {
+        "devtools/index.js": "{ storeonDevtools, storeonLogger }"
+      },
+      "limit": "519 B"
     }
   ],
   "eslintConfig": {

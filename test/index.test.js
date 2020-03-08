@@ -1,6 +1,6 @@
-let delay = require('nanodelay')
+let { delay } = require('nanodelay')
 
-let createStore = require('../')
+let { createStoreon } = require('../')
 
 it('applies modules', () => {
   let store1, store2
@@ -11,13 +11,13 @@ it('applies modules', () => {
     store2 = arg
   }
 
-  let store = createStore([module1, module2])
+  let store = createStoreon([module1, module2])
   expect(store1).toBe(store)
   expect(store2).toBe(store)
 })
 
 it('allows false as module', () => {
-  createStore([false])
+  createStoreon([false])
 })
 
 it('fires @init', () => {
@@ -28,12 +28,12 @@ it('fires @init', () => {
     })
   }
 
-  createStore([module1])
+  createStoreon([module1])
   expect(fired).toEqual(1)
 })
 
 it('has empty object in state by default', () => {
-  let store = createStore([])
+  let store = createStoreon([])
   expect(store.get()).toEqual({ })
 })
 
@@ -41,7 +41,7 @@ it('changes state in event listener', () => {
   function init (store) {
     store.on('@init', () => ({ a: 0, c: 0 }))
   }
-  let store = createStore([init])
+  let store = createStoreon([init])
   store.on('test', (state, data) => {
     expect(store.get()).toEqual(state)
     expect(data).toEqual('a')
@@ -62,7 +62,7 @@ it('changes state in event listener', () => {
 })
 
 it('changes state immutably', () => {
-  let store = createStore([])
+  let store = createStoreon([])
   store.on('test', () => ({ b: 2 }))
 
   let state1 = store.get()
@@ -74,7 +74,7 @@ it('changes state immutably', () => {
 })
 
 it('unbinds event listeners', () => {
-  let store = createStore([])
+  let store = createStoreon([])
   let fired = 0
   let unbind = store.on('test', () => {
     fired += 1
@@ -101,7 +101,7 @@ it('notifies about new event', () => {
     a.on('test', testCallback)
   }
 
-  let store = createStore([module])
+  let store = createStoreon([module])
   store.dispatch('test', 1)
   store.dispatch('test', 2)
 
@@ -119,7 +119,7 @@ it('allows Symbol as a store key', () => {
   function init (store) {
     store.on('@init', () => ({ [a]: 0 }))
   }
-  let store = createStore([init])
+  let store = createStoreon([init])
   store.on('test', () => ({ [a]: 1 }))
 
   store.dispatch('test', 'a')
@@ -132,7 +132,7 @@ it('allows Symbol as an event name', () => {
   function init (store) {
     store.on('@init', () => ({ a: 0 }))
   }
-  let store = createStore([init])
+  let store = createStoreon([init])
   store.on(inc, () => ({ a: 1 }))
 
   store.dispatch(inc, 'a')
@@ -140,7 +140,7 @@ it('allows Symbol as an event name', () => {
 })
 
 it('does not fire @change if Promise is returned', () => {
-  let store = createStore([])
+  let store = createStoreon([])
 
   return new Promise(resolve => {
     store.on('inc', (state, data) => {

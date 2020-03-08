@@ -1,13 +1,9 @@
-let useCallback = require('react').useCallback
-let Fragment = require('react').Fragment
-let render = require('react-dom').render
-let h = require('react').createElement
+let { useCallback, Fragment, createElement: h } = require('react')
+let { render } = require('react-dom')
 
-let StoreContext = require('../../react/context')
-let createStore = require('../../')
-let useStoreon = require('../../react')
-let devtools = require('../../devtools')
-let logger = require('../../devtools/logger')
+let { storeonDevtools, storeonLogger } = require('../../devtools')
+let { StoreContext, useStoreon } = require('../../react')
+let { createStoreon } = require('../../')
 
 function counter1 (store) {
   store.on('@init', () => ({ count1: 0 }))
@@ -69,7 +65,9 @@ function App () {
     h(Tracker12))
 }
 
-let store = createStore([counter1, counter2, logger, devtools()])
+let store = createStoreon([
+  counter1, counter2, storeonLogger, storeonDevtools()
+])
 
 render(
   h(StoreContext.Provider, { value: store }, h(App)),

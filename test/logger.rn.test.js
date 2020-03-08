@@ -4,7 +4,7 @@ Object.defineProperty(navigator, 'product', {
   }
 })
 
-let createStore = require('../')
+let { createStoreon } = require('../')
 
 function counter (store) {
   store.on('@init', () => ({ count: 0, started: true }))
@@ -13,8 +13,8 @@ function counter (store) {
 
 it('prints dispatches', () => {
   jest.spyOn(console, 'log').mockImplementation(() => { })
-  let logger = require('../devtools/logger')
-  let store = createStore([counter, logger])
+  let { storeonLogger } = require('../devtools')
+  let store = createStoreon([counter, storeonLogger])
   store.dispatch('inc', 2)
   store.dispatch('inc', 0)
   store.dispatch('inc')

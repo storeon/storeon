@@ -1,6 +1,5 @@
-import createStore, {Module, Store} from '..'
-import logger from '../devtools/logger'
-import devtools from '../devtools'
+import { createStoreon, StoreonModule, StoreonStore } from '..'
+import { storeonDevtools, storeonLogger } from '../devtools'
 
 interface State {
   a: number
@@ -8,22 +7,22 @@ interface State {
 }
 
 // Reducer typed as a Module
-const init: Module<State> = store => {
+const init: StoreonModule<State> = store => {
   store.on('@init', () => ({ a: 0, b: '' }))
 }
 
 // Duck-typed reducer
-function setUp(store: Store<State>): void {
+function setUp(store: StoreonStore<State>): void {
   store.on('inc', state => ({ a: state.a + 1 }))
 }
 
 // Store
-const store = createStore<State>([
+const store = createStoreon<State>([
   init,
   setUp,
-  logger,
-  devtools,
-  devtools(),
+  storeonLogger,
+  storeonDevtools,
+  storeonDevtools(),
 ])
 
 // String event dispatch

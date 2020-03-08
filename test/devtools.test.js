@@ -1,5 +1,5 @@
-let createStore = require('../')
-let devtools = require('../devtools')
+let { storeonDevtools } = require('../devtools')
+let { createStoreon } = require('../')
 
 function mockDevTools () {
   let store
@@ -49,19 +49,19 @@ afterEach(() => {
 })
 
 it('initiates with data from store', () => {
-  let store = createStore([counter, devtools()])
+  let store = createStoreon([counter, storeonDevtools()])
   let getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
 it('supports old API', () => {
-  let store = createStore([counter, devtools])
+  let store = createStoreon([counter, storeonDevtools])
   let getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
   expect(getDevtoolStore()).toEqual(store.get())
 })
 
 it('gets state updates from store', () => {
-  let store = createStore([counter, devtools()])
+  let store = createStoreon([counter, storeonDevtools()])
   let getDevtoolStore = global.__REDUX_DEVTOOLS_EXTENSION__.store
 
   expect(getDevtoolStore()).toEqual(store.get())
@@ -71,7 +71,7 @@ it('gets state updates from store', () => {
 })
 
 it('gets events from store', () => {
-  let store = createStore([counter, devtools()])
+  let store = createStoreon([counter, storeonDevtools()])
   let getDevtoolsActions = global.__REDUX_DEVTOOLS_EXTENSION__.actions
   let initialState = { count: 0, started: true }
   let initialActions = [
@@ -89,7 +89,7 @@ it('gets events from store', () => {
 })
 
 it('is able to change store value', () => {
-  let store = createStore([counter, devtools()])
+  let store = createStoreon([counter, storeonDevtools()])
   let devToolDispatch = global.__REDUX_DEVTOOLS_EXTENSION__.devToolDispatch
   expect(store.get()).toEqual({ count: 0, started: true })
 
@@ -102,7 +102,7 @@ it('shows warning when devtool is not installed', () => {
   jest.spyOn(console, 'warn').mockImplementation(() => true)
   global.__REDUX_DEVTOOLS_EXTENSION__ = null
 
-  createStore([counter, devtools()])
+  createStoreon([counter, storeonDevtools()])
   expect(console.warn).toHaveBeenCalledWith(
     'Please install Redux devtools extension\n' +
     'http://extension.remotedev.io/'
@@ -110,7 +110,7 @@ it('shows warning when devtool is not installed', () => {
 })
 
 it('throws on unknown not system events', () => {
-  let store = createStore([devtools()])
+  let store = createStoreon([storeonDevtools()])
   let unbind = store.on('unknown2', () => { })
   unbind()
 

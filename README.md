@@ -6,7 +6,7 @@
 A tiny event-based Redux-like state manager for **React**, **Preact**,
 **[Angular]**, and **[Svelte]**.
 
-* **Small.** 172 bytes (minified and gzipped). No dependencies.
+* **Small.** 167 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
@@ -16,7 +16,7 @@ A tiny event-based Redux-like state manager for **React**, **Preact**,
 Read more about Storeon features in **[our article]**.
 
 ```js
-import createStore from 'storeon'
+import { createStoreon } from 'storeon'
 
 // Initial state, reducers and business logic are packed in independent modules
 let increment = store => {
@@ -26,13 +26,13 @@ let increment = store => {
   store.on('inc', ({ count }) => ({ count: count + 1 }))
 }
 
-export const store = createStore([increment])
+export const store = createStoreon([increment])
 ```
 
 ```js
-import useStoreon from 'storeon/react' // or storeon/preact
+import { useStoreon } from 'storeon/react' // or storeon/preact
 
-export default const Counter = () => {
+export const Counter = () => {
   // Counter will be re-render only on `state.count` changes
   const { dispatch, count } = useStoreon('count')
   return <button onClick={() => dispatch('inc')}>{count}</button>
@@ -40,7 +40,7 @@ export default const Counter = () => {
 ```
 
 ```js
-import StoreContext from 'storeon/react/context'
+import { StoreContext } from 'storeon/react'
 
 render(
   <StoreContext.Provider value={store}>
@@ -105,7 +105,7 @@ Object.assign = assign
 
 ## Store
 
-The store should be created with `createStore()` function. It accepts a list
+The store should be created with `createStoreon()` function. It accepts a list
 of the modules.
 
 Each module is just a function, which will accept a `store`
@@ -113,18 +113,18 @@ and bind their event listeners.
 
 ```js
 // store/index.js
-import createStore from 'storeon'
+import { createStoreon } from 'storeon'
 
-import projects from './projects'
-import users from './users'
+import { projects } from './projects'
+import { users } from './users'
 
-export const store = createStore([projects, users])
+export const store = createStoreon([projects, users])
 ```
 
 ```js
 // store/projects.js
 
-export default store => {
+export function projects (store) {
   store.on('@init', () => ({ projects: [] }))
 
   store.on('projects/add', ({ projects }, project) => {
@@ -144,11 +144,11 @@ The store has 3 methods:
 
 There are three built-in events:
 
-* `@init` will be fired in `createStore`. The best moment to set
+* `@init` will be fired in `createStoreon`. The best moment to set
   an initial state.
-* `@dispatch` will be fired on every new action (on `store.dispatch()` calls and `@changed` event).
-  It receives an array with the event name and the event’s data.
-  Can be useful for debugging.
+* `@dispatch` will be fired on every new action (on `store.dispatch()` calls
+  and `@changed` event). It receives an array with the event name
+  and the event’s data. Can be useful for debugging.
 * `@changed` will be fired when any event changes the state.
   It receives object with state changes.
 
@@ -215,7 +215,8 @@ store.on('users/add', async (state, user) => {
 For functional components, `useStoreon` hook will be the best option:
 
 ```js
-import useStoreon from 'storeon/react' // Use 'storeon/preact' for Preact
+import { useStoreon } from 'storeon/react' // Use 'storeon/preact' for Preact
+
 const Users = () => {
   const { dispatch, users, projects } = useStoreon('users', 'projects')
   const onAdd = useCallback(user => {
@@ -228,10 +229,10 @@ const Users = () => {
 }
 ```
 
-For class components, you can use `connect()` decorator.
+For class components, you can use `connectStoreon()` decorator.
 
 ```js
-import connect from 'storeon/react/connect' // Use 'storeon/preact/connect' for Preact
+import { connectStoreon } from 'storeon/react' // Use 'storeon/preact' for Preact
 
 class Users extends React.Component {
   onAdd = () => {
@@ -245,10 +246,10 @@ class Users extends React.Component {
   }
 }
 
-export default connect('users', 'anotherStateKey', Users)
+export default connectStoreon('users', 'anotherStateKey', Users)
 ```
 
-`useStoreon` hook and `connect()` accept the list of state keys to pass
+`useStoreon` hook and `connectStoreon()` accept the list of state keys to pass
 into `props`. It will re-render only if this keys will be changed.
 
 
@@ -257,11 +258,11 @@ into `props`. It will re-render only if this keys will be changed.
 Storeon supports debugging with [Redux DevTools Extension].
 
 ```js
-import devtools from 'storeon/devtools';
+import { storeonDevtools } from 'storeon/devtools';
 
-const store = createStore([
+const store = createStoreon([
   …
-  process.env.NODE_ENV !== 'production' && devtools
+  process.env.NODE_ENV !== 'production' && storeonDevtools
 ])
 ```
 
@@ -272,11 +273,11 @@ Or if you want to print events to `console` you can use built-in logger.
 It could be useful for simple cases or to investigate issue in error trackers.
 
 ```js
-import logger from 'storeon/devtools/logger';
+import { storeonLogger } from 'storeon/devtools';
 
-const store = createStore([
+const store = createStoreon([
   …
-  process.env.NODE_ENV !== 'production' && logger
+  process.env.NODE_ENV !== 'production' && storeonLogger
 ])
 ```
 
@@ -292,8 +293,8 @@ If Storeon store has to be full type safe the event types declaration
 interface has to be delivered as second type to `createStore` function.
 
 ```typescript
-import createStore, { Module } from 'storeon'
-import useStoreon from 'storeon/react' // or storeon/preact
+import { createStoreon, StoreonModule } from 'storeon'
+import { useStoreon } from 'storeon/react' // or storeon/preact
 
 // State structure
 interface State {
@@ -308,7 +309,7 @@ interface Events {
   'set': number
 }
 
-const counterModule: Module<State, Events> = store => {
+const counterModule: StoreonModule<State, Events> = store => {
   store.on('@init', () => ({ counter: 0}))
   store.on('inc', state => ({ counter: state.counter + 1}))
   store.on('set', (state, event) => ({ counter: event}))
@@ -337,18 +338,6 @@ store.dispatch('dec')        // Unknown event
 
 In order to work properly for imports, it is considering adding
 `allowSyntheticDefaultImports: true` to `tsconfig.json`.
-
-
-## ES Modules
-
-Storeon supports ES modules. You do not need to do anything for bundlers.
-
-For quick hacks you can load Storeon from CDN. Do not use it in production
-because of low performance.
-
-```js
-import createStore from 'https://cdn.jsdelivr.net/npm/storeon/index.js'
-```
 
 
 ## Testing

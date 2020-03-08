@@ -1,6 +1,5 @@
-import createStore, { Module, Store, StoreonEvents } from '..';
-import logger from '../devtools/logger'
-import devtools from '../devtools'
+import { createStoreon, StoreonModule, StoreonStore, StoreonEvents } from '..'
+import { storeonDevtools, storeonLogger } from '../devtools'
 
 const sym = Symbol('sym')
 
@@ -19,22 +18,22 @@ interface EventsDataTypesMap {
 }
 
 // Reducer typed as a Module
-const init: Module<State, StoreonEvents<State>> = store => {
+const init: StoreonModule<State, StoreonEvents<State>> = store => {
   store.on('@init', () => ({ a: 0, b: '' }))
 }
 
 // Duck-typed reducer
-function setUp(store: Store<State, EventsDataTypesMap>): void {
+function setUp(store: StoreonStore<State, EventsDataTypesMap>): void {
   store.on('inc', state => ({ a: state.a + 1 }))
 }
 
 // Store
-const store = createStore<State, EventsDataTypesMap>([
+const store = createStoreon<State, EventsDataTypesMap>([
   init,
   setUp,
-  logger,
-  devtools,
-  devtools(),
+  storeonLogger,
+  storeonDevtools,
+  storeonDevtools(),
 ])
 
 // String event dispatch
@@ -62,27 +61,27 @@ store.on('@dispatch', (_, [event, data]) => {
   }
 })
 
-const module: Module<{a: number}, {'inc': undefined}> = (store) => {
+const module: StoreonModule<{a: number}, {'inc': undefined}> = store => {
   store.on('@dispatch', (_,[event, data]) => {
     if (event === '@changed') {
       console.log(data)
     }
   })
 }
-module(store);
+module(store)
 
 const state = store.get()
 state.a
 
-let s1: Store<{}, {a: string}>  = {} as any
-let s2: Store<{}, {a: string, b: number}>  = {} as any
+let s1: StoreonStore<{}, {a: string}>  = {} as any
+let s2: StoreonStore<{}, {a: string, b: number}>  = {} as any
 
 // Store with wider events declaration should be assignable to Store with narrower events declaration
 s1 = s2
 s1.dispatch('a', '1')
 
-let s3: Store<{a: string}>  = {} as any
-let s4: Store<{a: string, b: number}>  = {} as any
+let s3: StoreonStore<{a: string}>  = {} as any
+let s4: StoreonStore<{a: string, b: number}>  = {} as any
 
 // Store with wider state declaration should be assignable to Store with narrower store declaration
 s3 = s4

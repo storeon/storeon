@@ -1,8 +1,10 @@
-import { Dispatch } from '..'
+import { Context, ComponentType, FunctionComponent } from 'react'
 
-declare namespace useStoreon {
+import { StoreonStore, StoreonDispatch } from '..'
+
+export namespace useStoreon {
   export type StoreData<State extends object = {}, EventsMap = any> = {
-    dispatch: Dispatch<EventsMap>
+    dispatch: StoreonDispatch<EventsMap>
   } & State
 }
 
@@ -23,8 +25,47 @@ declare namespace useStoreon {
  * @param keys List of state’s field.
  * @returns The selected part of the state.
  */
-declare function useStoreon<State extends object = {}, EventsMap = any>(
+export function useStoreon<State extends object = {}, EventsMap = any>(
   ...keys: (keyof State)[]
 ): useStoreon.StoreData<State, EventsMap>
 
-export = useStoreon
+/**
+ * Context to put store for `connect` decorator.
+ *
+ * ```js
+ * import { StoreContext } from 'storeon/react'
+ * render(
+ *   <StoreContext.Provider value={store}><App /></StoreContext.Provider>,
+ *   document.body
+ * )
+ * ```
+ */
+export const StoreContext: Context<StoreonStore>
+
+declare namespace connectStoreon {
+  export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
+
+  export type ConnectedComponent<ComponentProps> = FunctionComponent<
+    Partial<Omit<ComponentProps, "dispatch">>
+  >
+}
+
+/**
+ * Connect React components to the store.
+ *
+ * ```js
+ * import connect from 'storeon/react/connect'
+ * const Counter = ({ count, dispatch }) => {
+ *   return <div>
+ *     {count}
+ *     <button onClick={() => dispatch('inc')}
+ *   </div>
+ * }
+ * export default connect('count', Counter)
+ * ```
+ *
+ * @returns Wrapped component.
+ */
+export function connectStoreon<ComponentProps>(
+  ...keysOrComponent: Array<PropertyKey | ComponentType<ComponentProps>>
+): connectStoreon.ConnectedComponent<ComponentProps>

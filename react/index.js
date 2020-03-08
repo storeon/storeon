@@ -1,13 +1,14 @@
 let {
-  useMemo, useContext, useState, useLayoutEffect, useEffect
+  useMemo, useContext, useState, useLayoutEffect, useEffect,
+  createContext, createElement
 } = require('react')
 
-let StoreContext = require('./context')
+let StoreContext = createContext()
 
 let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-module.exports = (...keys) => {
+let useStoreon = (...keys) => {
   let store = useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
@@ -35,3 +36,13 @@ module.exports = (...keys) => {
     return data
   }, [rerender[0]])
 }
+
+let connectStoreon = (...keys) => {
+  let Component = keys.pop()
+  return originProps => {
+    let props = { ...originProps, ...useStoreon(...keys) }
+    return createElement(Component, props)
+  }
+}
+
+module.exports = { useStoreon, StoreContext, connectStoreon }

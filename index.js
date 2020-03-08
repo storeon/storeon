@@ -1,4 +1,4 @@
-module.exports = modules => {
+let createStoreon = modules => {
   let events = { }
   let state = { }
 
@@ -40,3 +40,5 @@ module.exports = modules => {
 
   return store
 }
+
+module.exports = { createStoreon }
