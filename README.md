@@ -4,7 +4,7 @@
      alt="Storeon logo by Anton Lovchikov" width="160" height="142">
 
 A tiny event-based Redux-like state manager for **React**, **Preact**,
-**[Angular]**, and **[Svelte]**.
+**[Angular]**, **[Vue]** and **[Svelte]**.
 
 * **Small.** 167 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
@@ -54,6 +54,7 @@ render(
 [Size Limit]: https://github.com/ai/size-limit
 [Angular]: https://github.com/storeon/angular
 [Svelte]: https://github.com/storeon/svelte
+[Vue]: https://github.com/storeon/vue
 
 <a href="https://evilmartians.com/?utm_source=storeon">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
