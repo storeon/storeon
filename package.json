@@ -32,15 +32,15 @@
     }
   },
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.1",
-    "@logux/sharec-config": "^0.5.7",
-    "@size-limit/dual-publish": "^4.3.1",
-    "@size-limit/preset-small-lib": "^4.3.1",
-    "@types/react": "^16.9.23",
-    "check-dts": "^0.1.2",
-    "dual-publish": "^0.5.0",
+    "@logux/eslint-config": "^36.1.2",
+    "@logux/sharec-config": "^0.6.2",
+    "@size-limit/dual-publish": "^4.4.2",
+    "@size-limit/preset-small-lib": "^4.4.2",
+    "@types/react": "^16.9.26",
+    "check-dts": "^0.1.4",
+    "dual-publish": "^0.8.6",
     "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-node": "^11.0.0",
@@ -48,20 +48,20 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^17.0.1",
+    "eslint-plugin-unicorn": "^18.0.1",
     "husky": "^4.2.3",
-    "jest": "^25.1.0",
-    "lint-staged": "^10.0.8",
+    "jest": "^25.2.3",
+    "lint-staged": "^10.0.9",
     "nanodelay": "^1.0.1",
     "parcel-bundler": "^1.12.4",
-    "preact": "^10.3.3",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-test-renderer": "^16.13.0",
+    "preact": "^10.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
-    "size-limit": "^4.3.1",
+    "size-limit": "^4.4.2",
     "typescript": "^3.8.3",
-    "yaspeller": "^6.0.3"
+    "yaspeller": "^6.0.4"
   },
   "engines": {
     "node": ">=8.3.0"
@@ -165,6 +165,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.5.7"
+    "version": "0.6.2"
   }
 }
