@@ -1,6 +1,6 @@
 let {
   useMemo, useContext, useState, useLayoutEffect, useEffect,
-  createContext, createElement
+  createContext, createElement, forwardRef
 } = require('react')
 
 let StoreContext = createContext()
@@ -39,10 +39,11 @@ let useStoreon = (...keys) => {
 
 let connectStoreon = (...keys) => {
   let Component = keys.pop()
-  return originProps => {
-    let props = { ...originProps, ...useStoreon(...keys) }
+
+  return forwardRef((originProps, ref) => {
+    let props = { ...originProps, ...useStoreon(...keys), ref }
     return createElement(Component, props)
-  }
+  })
 }
 
 module.exports = { useStoreon, StoreContext, connectStoreon }
