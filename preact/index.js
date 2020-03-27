@@ -2,6 +2,7 @@ let {
   useMemo, useContext, useState, useLayoutEffect, useEffect
 } = require('preact/hooks')
 let { createContext, h } = require('preact')
+let { forwardRef } = require('preact/compat')
 
 let StoreContext = createContext()
 
@@ -39,10 +40,10 @@ let useStoreon = (...keys) => {
 
 let connectStoreon = (...keys) => {
   let Component = keys.pop()
-  return originProps => {
-    let props = { ...originProps, ...useStoreon(...keys) }
+  return forwardRef((originProps, ref) => {
+    let props = { ...originProps, ...useStoreon(...keys), ref }
     return h(Component, props)
-  }
+  })
 }
 
 module.exports = { useStoreon, StoreContext, connectStoreon }

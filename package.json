@@ -91,7 +91,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ connectStoreon }"
       },
-      "limit": "364 B",
+      "limit": "381 B",
       "ignore": [
         "react"
       ]
