@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.2
+* Fix `ref` in wrapped component (by Andrey Ivliev).
+* Fix React Native support.
+* Reduce package size.
+
 ## 2.0.1
 * Mark package to be free from side effects.
 * Fix Yarn 2 and pnpm support (by Mateusz Burzyński).
