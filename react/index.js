@@ -1,14 +1,14 @@
-let {
+import {
   useMemo, useContext, useState, useLayoutEffect, useEffect,
   createContext, createElement, forwardRef
-} = require('react')
+} from 'react'
 
 let StoreContext = createContext()
 
 let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-let useStoreon = (...keys) => {
+let contextOverride = context => (...keys) => {
   let store = useContext(StoreContext)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
@@ -37,6 +37,8 @@ let useStoreon = (...keys) => {
   }, [rerender[0]])
 }
 
+let useStoreon = contextOverride(StoreContext)
+
 let connectStoreon = (...keys) => {
   let Component = keys.pop()
 
@@ -46,4 +48,5 @@ let connectStoreon = (...keys) => {
   })
 }
 
-module.exports = { useStoreon, StoreContext, connectStoreon }
+
+export { useStoreon, StoreContext, connectStoreon, contextOverride }
