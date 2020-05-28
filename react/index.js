@@ -1,7 +1,7 @@
-import {
+let {
   useMemo, useContext, useState, useLayoutEffect, useEffect,
   createContext, createElement, forwardRef
-} from 'react'
+} = require('react')
 
 let StoreContext = createContext()
 
