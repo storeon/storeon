@@ -48,5 +48,4 @@ let connectStoreon = (...keys) => {
   })
 }
 
-
-export { useStoreon, StoreContext, connectStoreon, contextOverride }
+module.exports = { useStoreon, StoreContext, connectStoreon, contextOverride }
