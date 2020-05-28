@@ -9,7 +9,7 @@ let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 let contextOverride = context => (...keys) => {
-  let store = useContext(StoreContext)
+  let store = useContext(context)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
       'Could not find storeon context value.' +
