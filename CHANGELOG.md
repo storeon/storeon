@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0
+* Add `customContext()` (by Phumrapee Limpianchop).
+* Remove Node.js 8 support.
+
 ## 2.0.2
 * Fix `ref` in wrapped component (by Andrey Ivliev).
 * Fix React Native support.
