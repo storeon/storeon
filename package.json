@@ -64,7 +64,7 @@
     "yaspeller": "^6.0.4"
   },
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=10.0.0"
   },
   "size-limit": [
     {
