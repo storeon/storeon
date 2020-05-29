@@ -14,7 +14,7 @@ let StoreContext = createContext()
 let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-let contextOverride = context => (...keys) => {
+let changeContext = context => (...keys) => {
   let store = useContext(context)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
@@ -43,7 +43,7 @@ let contextOverride = context => (...keys) => {
   }, [rerender[0]])
 }
 
-let useStoreon = contextOverride(StoreContext)
+let useStoreon = changeContext(StoreContext)
 
 let connectStoreon = (...keys) => {
   let Component = keys.pop()
@@ -54,4 +54,4 @@ let connectStoreon = (...keys) => {
   })
 }
 
-module.exports = { useStoreon, StoreContext, connectStoreon, contextOverride }
+module.exports = { useStoreon, StoreContext, connectStoreon, changeContext }
