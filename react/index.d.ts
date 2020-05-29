@@ -69,7 +69,8 @@ export function useStoreon<State extends object = {}, EventsMap = any>(
 export function customContext<
   State extends object = {},
   EventsMap = any
->(context: Context<StoreonStore<State, EventsMap>>): (...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
+>(context: Context<StoreonStore<State, EventsMap>>):
+  (...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
 
 /**
  * Context to put store for `connect` decorator.
