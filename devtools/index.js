@@ -44,20 +44,21 @@ let storeonDevtools = options => {
   let module = store => {
     let extension
     try {
-      extension = window.__REDUX_DEVTOOLS_EXTENSION__ ||
+      extension =
+        window.__REDUX_DEVTOOLS_EXTENSION__ ||
         window.top.__REDUX_DEVTOOLS_EXTENSION__
-    } catch (e) {}
+    } catch {}
     if (!extension) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn(
           'Please install Redux devtools extension\n' +
-          'http://extension.remotedev.io/'
+            'http://extension.remotedev.io/'
         )
       }
       return
     }
 
-    let ReduxTool = extension.connect(isStore ? { } : options)
+    let ReduxTool = extension.connect(isStore ? {} : options)
     store.on('@init', () => {
       ReduxTool.subscribe(message => {
         if (message.type === 'DISPATCH' && message.state) {
@@ -82,7 +83,7 @@ let storeonDevtools = options => {
     })
 
     store.on('UPDATE_FROM_DEVTOOLS', (state, data) => {
-      let newState = { }
+      let newState = {}
       let key
       for (key in state) {
         newState[key] = undefined

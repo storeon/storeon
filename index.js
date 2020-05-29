@@ -1,6 +1,6 @@
 let createStoreon = modules => {
-  let events = { }
-  let state = { }
+  let events = {}
+  let state = {}
 
   let store = {
     dispatch (event, data) {
@@ -9,7 +9,7 @@ let createStoreon = modules => {
       }
 
       if (events[event]) {
-        let changes = { }
+        let changes = {}
         let changed
         events[event].forEach(i => {
           let diff = i(state, data)
@@ -25,7 +25,7 @@ let createStoreon = modules => {
     get: () => state,
 
     on (event, cb) {
-      (events[event] || (events[event] = [])).push(cb)
+      ;(events[event] || (events[event] = [])).push(cb)
 
       return () => {
         events[event] = events[event].filter(i => i !== cb)

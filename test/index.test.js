@@ -34,7 +34,7 @@ it('fires @init', () => {
 
 it('has empty object in state by default', () => {
   let store = createStoreon([])
-  expect(store.get()).toEqual({ })
+  expect(store.get()).toEqual({})
 })
 
 it('changes state in event listener', () => {
@@ -69,7 +69,7 @@ it('changes state immutably', () => {
   store.dispatch('test')
   let state2 = store.get()
 
-  expect(state1).toEqual({ })
+  expect(state1).toEqual({})
   expect(state2).toEqual({ b: 2 })
 })
 
