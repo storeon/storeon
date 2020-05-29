@@ -340,6 +340,43 @@ store.dispatch('dec')        // Unknown event
 In order to work properly for imports, it is considering adding
 `allowSyntheticDefaultImports: true` to `tsconfig.json`.
 
+## Server-side rendering
+
+In order to preload data for server-side rendering, Storeon provide `customContext` function to create your own `useStoreon` hooks that it will depends on your custom context.
+
+```tsx
+// parent.tsx
+import { createContext, render } from 'react' // or preact
+
+import { createStoreon, StoreonModule } from 'storeon'
+import { customContext } from 'storeon/react' // or storeon/preact
+
+const CustomContext = createContext(store)
+
+// useStoreon will automatically recognize your storeon store and event types
+export const useStoreon = customContext(CustomContext)
+
+render(
+  <CustomContext.Provider value={store}>
+    <Counter />
+  </CustomContext.Provider>,
+  document.body
+)
+```
+
+```tsx
+// children.tsx
+import { useStoreon } from './parent'
+
+const Counter = () => {
+  const { dispatch, count } = useStoreon('count')
+  // Correct call
+  dispatch('set', 100)
+  // Compilation error: `set` event do not expect string data
+  dispatch('set', "100")
+  …
+}
+```
 
 ## Testing
 
