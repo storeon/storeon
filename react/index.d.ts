@@ -30,6 +30,45 @@ export function useStoreon<State extends object = {}, EventsMap = any>(
 ): useStoreon.StoreData<State, EventsMap>
 
 /**
+ * Higher-order function to let user create their own custom hooks in case of server-side rendering
+ *
+ * ```js
+ * // Parent component
+ * import { CreateContext } from 'react
+ * import { contextOverride } from 'storeon/react'
+ * 
+ * const CustomContext = CreateContext(storeon)
+ * 
+ * export const useStoreon = contextOverride(CustomContext)
+ * 
+ * const Component = props => {
+ *   return (
+ *     <CustomContext>
+ *       {props.children}
+ *     </CustomContext>
+ *   )
+ * }
+ * ```
+ * 
+ * ```js
+ * // Children component
+ * import { useStoreon } from './parent'
+ * 
+ * const Counter = () => {
+ *   const { dispatch, count } = useStoreon('count')
+ *   return <div>
+ *     {count}
+ *     <button onClick={() => dispatch('inc')}
+ *   </div>
+ * }
+ * ```
+ * 
+ * @param context User's owned React context
+ * @returns useStoreon hooks that attatched to User's React context
+ */
+export function contextOverride(context: Context<StoreonStore>): <State extends object = {}, EventsMap = any>(...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
+
+/**
  * Context to put store for `connect` decorator.
  *
  * ```js
