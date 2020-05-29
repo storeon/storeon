@@ -71,10 +71,7 @@ export function useStoreon<State extends object = {}, EventsMap = any>(
  * @param context User's owned React context
  * @returns useStoreon hooks that attatched to User's React context
  */
-export function customContext(context: Context<StoreonStore>): <
-  State extends object = {},
-  EventsMap = any
->(...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
+export function customContext<State extends object = {}, EventsMap = any>(context: Context<StoreonStore<State, EventsMap>>): (...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
 
 /**
  * Context to put store for `connect` decorator.
