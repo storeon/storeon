@@ -346,8 +346,8 @@ In order to preload data for server-side rendering, Storeon provide
 `customContext` function to create your own `useStoreon` hooks that it will
 depends on your custom context.
 
-```tsx
-// parent.tsx
+```js
+// parent.jsx
 import { createContext, render } from 'react' // or preact
 
 import { createStoreon, StoreonModule } from 'storeon'
@@ -366,16 +366,14 @@ render(
 )
 ```
 
-```tsx
-// children.tsx
+```js
+// children.jsx
 import { useStoreon } from './parent'
 
 const Counter = () => {
   const { dispatch, count } = useStoreon('count')
-  // Correct call
+
   dispatch('set', 100)
-  // Compilation error: `set` event do not expect string data
-  dispatch('set', "100")
   …
 }
 ```
