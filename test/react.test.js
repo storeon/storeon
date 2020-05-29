@@ -1,7 +1,12 @@
 let renderer = require('react-test-renderer')
-let { createElement: h } = require('react')
+let { createContext, createElement: h } = require('react')
 
-let { StoreContext, useStoreon, connectStoreon } = require('../react')
+let {
+  StoreContext,
+  useStoreon,
+  connectStoreon,
+  changeContext
+} = require('../react')
 let { createStoreon } = require('../')
 
 jest.mock('react', () => {
@@ -101,4 +106,21 @@ it('throws if there is no StoreProvider', () => {
     renderer.create(h(Button))
   }
   expect(render).toThrow(Error)
+})
+
+it('allows to change context', () => {
+  let store = createStoreon([increment])
+  let CustomContext = createContext(store)
+  let useCustomStoreon = changeContext(CustomContext)
+
+  function Button () {
+    let { count } = useCustomStoreon('count')
+    return h('button', {}, count)
+  }
+
+  let wrapper = renderer.create(
+    h(CustomContext.Provider, { value: store }, h(Button, {}))
+  )
+
+  expect(wrapper.toJSON().children).toEqual(['0'])
 })
