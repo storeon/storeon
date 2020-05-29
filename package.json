@@ -32,36 +32,38 @@
     }
   },
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.2",
-    "@logux/sharec-config": "^0.6.2",
-    "@size-limit/dual-publish": "^4.4.2",
-    "@size-limit/preset-small-lib": "^4.4.2",
-    "@types/react": "^16.9.26",
-    "check-dts": "^0.1.4",
-    "dual-publish": "^0.8.6",
-    "eslint": "^6.8.0",
+    "@logux/eslint-config": "^39.0.3",
+    "@logux/sharec-config": "^0.7.3",
+    "@size-limit/dual-publish": "^4.5.0",
+    "@size-limit/preset-small-lib": "^4.5.0",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "check-dts": "^0.3.0",
+    "dual-publish": "^0.10.2",
+    "eslint": "^7.0.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
+    "eslint-plugin-prettierx": "^0.12.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^18.0.1",
-    "husky": "^4.2.3",
-    "jest": "^25.2.3",
-    "lint-staged": "^10.0.9",
-    "nanodelay": "^1.0.1",
+    "eslint-plugin-unicorn": "^20.0.0",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.4",
+    "nanodelay": "^1.0.2",
     "parcel-bundler": "^1.12.4",
-    "preact": "^10.3.4",
+    "preact": "^10.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
-    "size-limit": "^4.4.2",
-    "typescript": "^3.8.3",
-    "yaspeller": "^6.0.4"
+    "size-limit": "^4.5.0",
+    "typescript": "^3.9.2",
+    "yaspeller": "^7.0.0"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -80,7 +82,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ useStoreon }"
       },
-      "limit": "333 B",
+      "limit": "339 B",
       "ignore": [
         "react"
       ]
@@ -91,7 +93,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ connectStoreon }"
       },
-      "limit": "381 B",
+      "limit": "388 B",
       "ignore": [
         "react"
       ]
@@ -112,7 +114,8 @@
     }
   },
   "eslintIgnore": [
-    "test/demo/dist"
+    "test/demo/dist",
+    "**/*.errors.ts"
   ],
   "jest": {
     "coverageThreshold": {
@@ -123,7 +126,7 @@
   },
   "lint-staged": {
     "*.md": "yaspeller",
-    "*.js": "eslint"
+    "*.js": "eslint --fix"
   },
   "husky": {
     "hooks": {
@@ -165,6 +168,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.6.2"
+    "version": "0.7.3"
   }
 }
