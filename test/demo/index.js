@@ -17,10 +17,14 @@ function counter2 (store) {
 
 function tracker (text) {
   let hue = Math.round(255 * Math.random())
-  return h('div', {
-    className: 'tracker',
-    style: { backgroundColor: `hsla(${ hue }, 50%, 50%, 0.2)` }
-  }, text)
+  return h(
+    'div',
+    {
+      className: 'tracker',
+      style: { backgroundColor: `hsla(${hue}, 50%, 50%, 0.2)` }
+    },
+    text
+  )
 }
 
 function Button1 () {
@@ -41,32 +45,35 @@ function Button2 () {
 
 function Tracker1 () {
   let { count1 } = useStoreon('count1')
-  return tracker(`Counter 1: ${ count1 }`)
+  return tracker(`Counter 1: ${count1}`)
 }
 
 function Tracker2 () {
   let { count2 } = useStoreon('count2')
-  return tracker(`Counter 2: ${ count2 }`)
+  return tracker(`Counter 2: ${count2}`)
 }
 
 function Tracker12 () {
   let { count1, count2 } = useStoreon('count1', 'count2')
-  return tracker(`Counter 1: ${ count1 }, counter 2: ${ count2 }`)
+  return tracker(`Counter 1: ${count1}, counter 2: ${count2}`)
 }
 
 function App () {
-  return h(Fragment, null,
-    h('div', { className: 'buttons' },
-      h(Button1),
-      h(Button2)
-    ),
+  return h(
+    Fragment,
+    null,
+    h('div', { className: 'buttons' }, h(Button1), h(Button2)),
     h(Tracker1),
     h(Tracker2),
-    h(Tracker12))
+    h(Tracker12)
+  )
 }
 
 let store = createStoreon([
-  counter1, counter2, storeonLogger, storeonDevtools()
+  counter1,
+  counter2,
+  storeonLogger,
+  storeonDevtools()
 ])
 
 render(

@@ -29,7 +29,8 @@ it('connects component to store', () => {
   }
 
   let store = createStoreon([increment])
-  let wrapper = init(store,
+  let wrapper = init(
+    store,
     h(connectStoreon('count', Button), { a: 1, count: 100 })
   )
 
@@ -82,7 +83,7 @@ it('allows using Symbol as a store key', () => {
   }
   let store = createStoreon([symbol])
 
-  let wrapper = init(store, h(Button, { }, 'Test'))
+  let wrapper = init(store, h(Button, {}, 'Test'))
   expect(wrapper.toJSON()).toBe('0')
 
   renderer.act(() => {

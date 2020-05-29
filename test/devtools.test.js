@@ -82,10 +82,12 @@ it('gets events from store', () => {
 
   let event = { action: 'inc', payload: 5 }
   store.dispatch(event.action, event.payload)
-  expect(getDevtoolsActions()).toEqual(initialActions.concat([
-    { type: event.action, payload: event.payload },
-    { type: '@changed', payload: { count: event.payload } }
-  ]))
+  expect(getDevtoolsActions()).toEqual(
+    initialActions.concat([
+      { type: event.action, payload: event.payload },
+      { type: '@changed', payload: { count: event.payload } }
+    ])
+  )
 })
 
 it('is able to change store value', () => {
@@ -105,13 +107,13 @@ it('shows warning when devtool is not installed', () => {
   createStoreon([counter, storeonDevtools()])
   expect(console.warn).toHaveBeenCalledWith(
     'Please install Redux devtools extension\n' +
-    'http://extension.remotedev.io/'
+      'http://extension.remotedev.io/'
   )
 })
 
 it('throws on unknown not system events', () => {
   let store = createStoreon([storeonDevtools()])
-  let unbind = store.on('unknown2', () => { })
+  let unbind = store.on('unknown2', () => {})
   unbind()
 
   expect(() => {
