@@ -5,7 +5,7 @@ let {
   StoreContext,
   useStoreon,
   connectStoreon,
-  changeContext
+  customContext
 } = require('../react')
 let { createStoreon } = require('../')
 
@@ -111,7 +111,7 @@ it('throws if there is no StoreProvider', () => {
 it('allows to change context', () => {
   let store = createStoreon([increment])
   let CustomContext = createContext(store)
-  let useCustomStoreon = changeContext(CustomContext)
+  let useCustomStoreon = customContext(CustomContext)
 
   function Button () {
     let { count } = useCustomStoreon('count')
