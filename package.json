@@ -103,7 +103,7 @@
       "import": {
         "devtools/index.js": "{ storeonDevtools, storeonLogger }"
       },
-      "limit": "519 B"
+      "limit": "517 B"
     }
   ],
   "eslintConfig": {

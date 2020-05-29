@@ -13,8 +13,8 @@ let StoreContext = createContext()
 let useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-let useStoreon = (...keys) => {
-  let store = useContext(StoreContext)
+let changeContext = context => (...keys) => {
+  let store = useContext(context)
   if (process.env.NODE_ENV !== 'production' && !store) {
     throw new Error(
       'Could not find storeon context value.' +
@@ -42,6 +42,8 @@ let useStoreon = (...keys) => {
   }, [rerender[0]])
 }
 
+let useStoreon = changeContext(StoreContext)
+
 let connectStoreon = (...keys) => {
   let Component = keys.pop()
   return forwardRef((originProps, ref) => {
@@ -50,4 +52,4 @@ let connectStoreon = (...keys) => {
   })
 }
 
-module.exports = { useStoreon, StoreContext, connectStoreon }
+module.exports = { useStoreon, StoreContext, connectStoreon, changeContext }
