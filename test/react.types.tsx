@@ -37,5 +37,6 @@ const App = connectStoreon<State>('a', ({ a }) => {
 ReactDOM.render(
   <StoreContext.Provider value={store}>
     <App/>
-  </StoreContext.Provider>
+  </StoreContext.Provider>,
+  document.body
 )
