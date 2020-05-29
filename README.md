@@ -342,7 +342,9 @@ In order to work properly for imports, it is considering adding
 
 ## Server-side rendering
 
-In order to preload data for server-side rendering, Storeon provide `customContext` function to create your own `useStoreon` hooks that it will depends on your custom context.
+In order to preload data for server-side rendering, Storeon provide
+`customContext` function to create your own `useStoreon` hooks that it will
+depends on your custom context.
 
 ```tsx
 // parent.tsx
