@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.1
+* Fix TypeScript definitions (by Phumrapee Limpianchop).
+
 ## 3.0
 * Add `customContext()` (by Phumrapee Limpianchop).
 * Remove Node.js 8 support.
