@@ -40,11 +40,11 @@ export function useStoreon<State extends object = {}, EventsMap = any>(
  * ```js
  * // Parent component
  * import { CreateContext } from 'react'
- * import { changeContext } from 'storeon/react'
+ * import { customContext } from 'storeon/react'
  *
  * const CustomContext = CreateContext(storeon)
  *
- * export const useStoreon = changeContext(CustomContext)
+ * export const useStoreon = customContext(CustomContext)
  *
  * const Component = props => {
  *   return (
@@ -71,7 +71,7 @@ export function useStoreon<State extends object = {}, EventsMap = any>(
  * @param context User's owned React context
  * @returns useStoreon hooks that attatched to User's React context
  */
-export function changeContext(context: Context<StoreonStore>): <
+export function customContext(context: Context<StoreonStore>): <
   State extends object = {},
   EventsMap = any
 >(...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
