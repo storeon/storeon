@@ -1,6 +1,6 @@
 import {
   PreactContext,
-  AnyComponent,
+  ComponentType,
   FunctionalComponent,
   Context
 } from 'preact'
@@ -99,19 +99,19 @@ declare namespace connectStoreon {
 /**
  * Connect Preact components to the store.
  *
- * ```js
- * import connect from 'storeon/preact/connect'
+ * ```typescript
+ * import { connectStoreon } from 'storeon/preact'
  * const Counter = ({ count, dispatch }) => {
  *   return <div>
  *     {count}
  *     <button onClick={() => dispatch('inc')}
  *   </div>
  * }
- * export default connect('count', Counter)
+ * export default connectStoreon('count', Counter)
  * ```
  *
  * @returns Wrapped component.
  */
 export function connectStoreon<ComponentProps>(
-  ...keysOrComponent: Array<PropertyKey | AnyComponent<ComponentProps>>
+  ...keysOrComponent: Array<PropertyKey | ComponentType<ComponentProps>>
 ): connectStoreon.ConnectedComponent<ComponentProps>
