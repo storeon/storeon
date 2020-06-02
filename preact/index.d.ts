@@ -17,7 +17,7 @@ declare namespace useStoreon {
  * Hook to use Storeon in functional React component.
  *
  * ```js
- * import useStoreon from 'storeon/preact'
+ * import { useStoreon } from 'storeon/preact'
  * const Counter = () => {
  *   const { dispatch, count } = useStoreon('count')
  *   return <div>

@@ -12,7 +12,7 @@ export namespace useStoreon {
  * Hook to use Storeon in functional React component.
  *
  * ```js
- * import useStoreon from 'storeon/react'
+ * import { useStoreon } from 'storeon/react'
  * const Counter = () => {
  *   const { dispatch, count } = useStoreon('count')
  *   return <div>
@@ -97,7 +97,7 @@ declare namespace connectStoreon {
  * Connect React components to the store.
  *
  * ```js
- * import connect from 'storeon/react/connect'
+ * import { connectStoreon } from 'storeon/react/connect'
  * const Counter = ({ count, dispatch }) => {
  *   return <div>
  *     {count}
