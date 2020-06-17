@@ -6,7 +6,7 @@ type DataTypes<Map, Key extends keyof Map> =
 /**
  * Store with application state and event listeners.
  */
-export class StoreonStore<State = unknown, Events = any> {
+export interface StoreonStore<State = unknown, Events = any> {
   /**
    * Add event listener.
    *
