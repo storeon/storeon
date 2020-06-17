@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.3
+* Fix TypeScript definitions (by @irustm).
+
 ## 3.0.2
 * Fix TypeScript definitions (by @ligser).
 
