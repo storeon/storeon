@@ -68,7 +68,7 @@ render(
   tracks links and Back button click and allows you to open
   pages without reloading the whole page.
 * [`@storeon/localstorage`](https://github.com/storeon/localstorage)
-  saves and restores state to `localStorage`.
+  saves and restores state to `localStorage` or `sessionStorage`.
 * [`@storeon/crosstab`](https://github.com/storeon/crosstab)
   synchronizes events between browser tabs.
 * [`@storeon/undo`](https://github.com/storeon/undo)
@@ -81,8 +81,6 @@ Third-party tools:
 * [`majo44/storeon-async-router`](https://github.com/majo44/storeon-async-router)
   is router with data prefetch, modules lazy load, navigation cancellation,
   and routes modification on the fly.
-* [`koddr/storeon-sessionstorage`](https://github.com/koddr/storeon-sessionstorage)
-  saves and restores state to `sessionStorage` (based on [`@storeon/localstorage`](https://github.com/storeon/localstorage)).
 * [`mariosant/storeon-streams`](https://github.com/mariosant/storeon-streams)
   is side effects management library.
 
