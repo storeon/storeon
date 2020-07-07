@@ -65,7 +65,7 @@ export namespace createStoreon {
   > = (
     state: Readonly<State>,
     data: (Events & StoreonEvents<State, Events>)[Event]
-  ) => Partial<State> | Promise<void> | null | void
+  ) => Partial<State> | Promise<void> | null | void | false
 
   export interface DispatchableEvents<State> {
     '@init': never
