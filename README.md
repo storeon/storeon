@@ -105,11 +105,10 @@ Object.assign = assign
 
 ## Store
 
-The store should be created with `createStoreon()` function. It accepts a list
-of the modules.
+The store should be created with the `createStoreon()` function. It accepts a list
+of functions.
 
-Each module is just a function, which will accept a `store`
-and bind their event listeners.
+Each function should accept a `store` as the only argument and bind their event listeners using `store.on()`.
 
 ```js
 // store/index.js
@@ -144,15 +143,14 @@ The store has 3 methods:
 
 There are three built-in events:
 
-* `@init` will be fired in `createStoreon`. The best moment to set
-  an initial state.
+* `@init` will be fired in `createStoreon`. Bind to this event to set the initial state.
 * `@dispatch` will be fired on every new action (on `store.dispatch()` calls
-  and `@changed` event). It receives an array with the event name
-  and the event’s data. Can be useful for debugging.
+  and `@changed` events). It receives an array with the event name
+  and the event's data. Can be useful for debugging.
 * `@changed` will be fired when any event changes the state.
   It receives object with state changes.
 
-To add an event listener, call `store.on()` with event name and callback.
+To add an event listener, call `store.on()` with the event name and a callback function.
 
 ```js
 store.on('@dispatch', (state, [event, data]) => {
@@ -160,7 +158,7 @@ store.on('@dispatch', (state, [event, data]) => {
 })
 ```
 
-`store.on()` will return cleanup function. This function will remove
+`store.on()` will return a cleanup function. Calling this function will remove
 the event listener.
 
 ```js
@@ -179,11 +177,11 @@ with changed keys.
 store.on('@init', () => ({ users:  { } }))
 ```
 
-Event listener accepts the current state as a first argument
-and optional event object as a second.
+An event listener accepts the current state as the first argument
+and optional event object as the second.
 
-So event listeners can be a reducer as well. As in Redux’s reducers,
-you should change immutable.
+So event listeners can be reducers as well. As in Redux’s reducers,
+your should change immutable.
 
 ```js
 store.on('users/save', ({ users }, user) => {
@@ -212,7 +210,7 @@ store.on('users/add', async (state, user) => {
 
 ## Components
 
-For functional components, `useStoreon` hook will be the best option:
+For functional components, the `useStoreon` hook will be the best option:
 
 ```js
 import { useStoreon } from 'storeon/react' // Use 'storeon/preact' for Preact
@@ -229,7 +227,7 @@ const Users = () => {
 }
 ```
 
-For class components, you can use `connectStoreon()` decorator.
+For class components, you can use the `connectStoreon()` decorator.
 
 ```js
 import { connectStoreon } from 'storeon/react' // Use 'storeon/preact' for Preact
@@ -269,8 +267,8 @@ const store = createStoreon([
 DevTools will also warn you about **typo in event name**. It will throw an error
 if you are dispatching event, but nobody subscribed to it.
 
-Or if you want to print events to `console` you can use built-in logger.
-It could be useful for simple cases or to investigate issue in error trackers.
+Or if you want to print events to `console` you can use the built-in logger.
+It could be useful for simple cases or to investigate issues in error trackers.
 
 ```js
 import { storeonLogger } from 'storeon/devtools';
@@ -286,10 +284,10 @@ const store = createStoreon([
 
 ## TypeScript
 
-Storeon delivers TypeScript declaration which allows to declare type
+Storeon delivers TypeScript declarations which allows to declare type
 of state and optionally declare types of events and parameter.
 
-If Storeon store has to be full type safe the event types declaration
+If a Storeon store has to be fully type safe the event types declaration
 interface has to be delivered as second type to `createStore` function.
 
 ```typescript
@@ -336,14 +334,14 @@ store.dispatch('set', "100") // `set` event do not expect string data
 store.dispatch('dec')        // Unknown event
 ```
 
-In order to work properly for imports, it is considering adding
+In order to work properly for imports, consider adding
 `allowSyntheticDefaultImports: true` to `tsconfig.json`.
 
 ## Server-Side Rendering
 
-In order to preload data for server-side rendering, Storeon provide
-`customContext` function to create your own `useStoreon` hooks that it will
-depends on your custom context.
+In order to preload data for server-side rendering, Storeon provides the
+`customContext` function to create your own `useStoreon` hooks that
+depend on your custom context.
 
 ```js
 // store.jsx
@@ -401,7 +399,7 @@ it('creates users', () => {
 })
 ```
 
-We recommend to keep business logic away from the components. In this case,
+We recommend to keep business logic away from components. In this case,
 UI kit (special page with all your components in all states)
 will be the best way to test components.
 
