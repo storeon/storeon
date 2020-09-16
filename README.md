@@ -83,7 +83,7 @@ Third-party tools:
   and routes modification on the fly.
 * [`mariosant/storeon-streams`](https://github.com/mariosant/storeon-streams)
   is side effects management library.
-* [`storeonize`](https://github.com/octav47/storeonize)
+* [`octav47/storeonize`](https://github.com/octav47/storeonize)
   is migrating lib from redux to storeon
 
 ## Install
