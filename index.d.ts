@@ -23,9 +23,12 @@ export interface StoreonStore<State = unknown, Events = any> {
    * Return current state. You can use this method only to read state.
    * Any state changes should be in event listeners.
    *
-   * @returns The current state.
+   * @param path The path of state property
+   * @returns The current state or state property, if path is defined.
    */
-  get(): State
+  get(
+    path: String | String[]
+  ): any
 
   /**
    * Emit event.

@@ -22,7 +22,23 @@ let createStoreon = modules => {
       }
     },
 
-    get: () => state,
+    get (path) {
+      if (!path) {
+        return state
+      }
+
+      if (!Array.isArray(path)) {
+        path = path.split('/')
+      }
+
+      let object = state, index = 0, length = path.length
+
+      while (object !== null && index < length) {
+        object = object[path[index++]]
+      }
+
+      return (index && index === length) ? object : undefined
+    },
 
     on (event, cb) {
       ;(events[event] || (events[event] = [])).push(cb)

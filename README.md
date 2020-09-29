@@ -136,7 +136,7 @@ export function projects (store) {
 
 The store has 3 methods:
 
-* `store.get()` will return current state. The state is always an object.
+* `store.get(path)` will return current state or state property, if path is defined. The state is always an object.
 * `store.on(event, callback)` will add an event listener.
 * `store.dispatch(event, data)` will emit an event with optional data.
 
