@@ -27,7 +27,7 @@ export interface StoreonStore<State = unknown, Events = any> {
    * @returns The current state or state property, if path is defined.
    */
   get(
-    path: String | String[]
+    path?: String | String[]
   ): any
 
   /**
