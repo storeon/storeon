@@ -47,3 +47,9 @@ store.on('comment:post', async (_, data: string) => {
 
 const state = store.get()
 state.a
+
+// Allows undefined on state type
+let storeA: StoreonStore
+const storeB: StoreonStore<{} | undefined> = {} as any
+storeA = storeB
+storeA.get()
