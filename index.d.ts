@@ -1,7 +1,8 @@
-type DataTypes<Map, Key extends keyof Map> =
-    Map extends never
-      ? [any?]
-      : (Map[Key] extends (never | undefined) ? [never?] : [Map[Key]])
+type DataTypes<Map, Key extends keyof Map> = Map extends never
+  ? [any?]
+  : Map[Key] extends never | undefined
+  ? [never?]
+  : [Map[Key]]
 
 /**
  * Store with application state and event listeners.
@@ -14,7 +15,7 @@ export interface StoreonStore<State = unknown, Events = any> {
    * @param handler The event listener.
    * @returns The function to remove listener.
    */
-  on <Event extends keyof (Events & StoreonEvents<State, Events>)>(
+  on<Event extends keyof (Events & StoreonEvents<State, Events>)>(
     event: Event,
     handler: createStoreon.EventHandler<State, Events, Event>
   ): () => void
@@ -34,34 +35,37 @@ export interface StoreonStore<State = unknown, Events = any> {
    * @param data Any additional data for the event.
    * @returns The current state.
    */
-  dispatch: StoreonDispatch<
+  dispatch: StoreonDispatch<Events & createStoreon.DispatchableEvents<State>>
+}
+
+export type StoreonModule<State, Events = any> = (
+  store: StoreonStore<State, Events>
+) => void
+
+export interface StoreonEvents<State, Events = any>
+  extends createStoreon.DispatchableEvents<State> {
+  '@dispatch': createStoreon.DispatchEvent<
+    State,
     Events & createStoreon.DispatchableEvents<State>
   >
 }
 
-export type StoreonModule<State, Events = any> =
-  (store: StoreonStore<State, Events>) => void
-
-export interface StoreonEvents<
-  State, Events = any
-> extends createStoreon.DispatchableEvents<State>{
-  '@dispatch': createStoreon.DispatchEvent<
-    State, Events & createStoreon.DispatchableEvents<State>
-  >
-}
-
 export type StoreonDispatch<Events> = (<Event extends keyof Events>(
-  event: Event, ...data: DataTypes<Partial<Events>, Event>
-) => void) & {___events: Events}
+  event: Event,
+  ...data: DataTypes<Partial<Events>, Event>
+) => void) & { ___events: Events }
 
 export namespace createStoreon {
-
   export type DispatchEvent<
-    State, Events, Event extends keyof Events = keyof Events
-  > = [Event, Events[Event], Array<EventHandler<State, Events, Event>>]
+    State,
+    Events,
+    Event extends keyof Events = keyof Events
+  > = [Event, Events[Event], EventHandler<State, Events, Event>[]]
 
   export type EventHandler<
-    State, Events, Event extends keyof (Events & StoreonEvents<State, Events>)
+    State,
+    Events,
+    Event extends keyof (Events & StoreonEvents<State, Events>)
   > = (
     state: State extends object ? Readonly<State> : State,
     data: (Events & StoreonEvents<State, Events>)[Event]
@@ -92,6 +96,6 @@ export namespace createStoreon {
  *                and subscribe to all system events.
  * @returns The new store.
  */
-export function createStoreon<State, Events = any>(
-  modules: Array<StoreonModule<State, Events> | false>
+export function createStoreon<State, Events = any> (
+  modules: (StoreonModule<State, Events> | false)[]
 ): StoreonStore<State, Events>

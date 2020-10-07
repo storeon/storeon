@@ -1,6 +1,6 @@
 import { Context, ComponentType, FunctionComponent } from 'react'
 
-import { StoreonStore, StoreonDispatch } from '..'
+import { StoreonStore, StoreonDispatch } from '../index.js'
 
 export namespace useStoreon {
   export type StoreData<State extends object = {}, EventsMap = any> = {
@@ -25,7 +25,7 @@ export namespace useStoreon {
  * @param keys List of state’s field.
  * @returns The selected part of the state.
  */
-export function useStoreon<State extends object = {}, EventsMap = any>(
+export function useStoreon<State extends object = {}, EventsMap = any> (
   ...keys: (keyof State)[]
 ): useStoreon.StoreData<State, EventsMap>
 
@@ -66,11 +66,9 @@ export function useStoreon<State extends object = {}, EventsMap = any>(
  * @param context User's owned React context
  * @returns useStoreon hooks that attatched to User's React context
  */
-export function customContext<
-  State extends object = {},
-  EventsMap = any
->(context: Context<StoreonStore<State, EventsMap>>):
-  (...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
+export function customContext<State extends object = {}, EventsMap = any> (
+  context: Context<StoreonStore<State, EventsMap>>
+): (...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
 
 /**
  * Context to put store for `connect` decorator.
@@ -89,7 +87,7 @@ declare namespace connectStoreon {
   export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
 
   export type ConnectedComponent<ComponentProps> = FunctionComponent<
-    Partial<Omit<ComponentProps, "dispatch">>
+    Partial<Omit<ComponentProps, 'dispatch'>>
   >
 }
 
@@ -109,6 +107,6 @@ declare namespace connectStoreon {
  *
  * @returns Wrapped component.
  */
-export function connectStoreon<ComponentProps>(
-  ...keysOrComponent: Array<PropertyKey | ComponentType<ComponentProps>>
+export function connectStoreon<ComponentProps> (
+  ...keysOrComponent: (PropertyKey | ComponentType<ComponentProps>)[]
 ): connectStoreon.ConnectedComponent<ComponentProps>

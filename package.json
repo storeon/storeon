@@ -32,37 +32,39 @@
     }
   },
   "devDependencies": {
-    "@logux/eslint-config": "^39.0.3",
-    "@logux/sharec-config": "^0.7.3",
-    "@size-limit/dual-publish": "^4.5.0",
-    "@size-limit/preset-small-lib": "^4.5.0",
-    "@types/react": "^16.9.36",
+    "@logux/eslint-config": "^40.0.5",
+    "@logux/sharec-config": "^0.7.4",
+    "@size-limit/dual-publish": "^4.6.0",
+    "@size-limit/preset-small-lib": "^4.6.0",
+    "@types/react": "^16.9.51",
     "@types/react-dom": "^16.9.8",
-    "check-dts": "^0.3.0",
-    "dual-publish": "^0.10.3",
-    "eslint": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "check-dts": "^0.3.3",
+    "dual-publish": "^0.11.0",
+    "eslint": "^7.10.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-let": "^1.0.1",
-    "eslint-plugin-prettierx": "^0.12.0",
+    "eslint-plugin-prefer-let": "^1.1.0",
+    "eslint-plugin-prettierx": "^0.14.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^20.0.0",
-    "husky": "^4.2.5",
-    "jest": "^26.0.1",
-    "lint-staged": "^10.2.10",
+    "eslint-plugin-unicorn": "^22.0.0",
+    "husky": "^4.3.0",
+    "jest": "^26.5.2",
+    "lint-staged": "^10.4.0",
     "nanodelay": "^1.0.3",
     "parcel-bundler": "^1.12.4",
-    "preact": "^10.4.4",
+    "preact": "^10.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
-    "size-limit": "^4.5.0",
-    "typescript": "^3.9.5",
+    "size-limit": "^4.6.0",
+    "typescript": "^4.0.3",
     "yaspeller": "^7.0.0"
   },
   "engines": {
@@ -107,9 +109,13 @@
     }
   ],
   "eslintConfig": {
-    "extends": "@logux/eslint-config",
+    "extends": "@logux/eslint-config/ts",
     "rules": {
+      "@typescript-eslint/no-unused-expressions": "off",
+      "@typescript-eslint/no-explicit-any": "off",
       "node/no-unpublished-require": "off",
+      "import/export": "off",
+      "no-redeclare": "off",
       "func-style": "off"
     }
   },
@@ -126,7 +132,8 @@
   },
   "lint-staged": {
     "*.md": "yaspeller",
-    "*.js": "eslint --fix"
+    "*.js": "eslint --fix",
+    "*.ts": "eslint --fix"
   },
   "husky": {
     "hooks": {
@@ -169,6 +176,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.7.3"
+    "version": "0.7.4"
   }
 }
