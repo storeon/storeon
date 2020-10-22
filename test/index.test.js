@@ -162,3 +162,16 @@ it('does not fire @change if Promise is returned', () => {
     expect(count).toBe(0)
   })
 })
+
+it('does not handle @change event if handler already removed', () => {
+  let spy = jest.fn()
+  let store = createStoreon([
+    s => {
+      s.on('@changed', () => un())
+      let un = s.on('@changed', spy)
+      s.on('action', () => ({ data: 'abc' }))
+    }
+  ])
+  store.dispatch('action')
+  expect(spy).not.toHaveBeenCalled()
+})
