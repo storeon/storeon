@@ -76,7 +76,7 @@
       "import": {
         "index.js": "{ createStoreon }"
       },
-      "limit": "167 B"
+      "limit": "188 B"
     },
     {
       "name": "core + react hook",
@@ -84,7 +84,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ useStoreon }"
       },
-      "limit": "339 B",
+      "limit": "352 B",
       "ignore": [
         "react"
       ]
@@ -95,7 +95,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ connectStoreon }"
       },
-      "limit": "388 B",
+      "limit": "400 B",
       "ignore": [
         "react"
       ]
