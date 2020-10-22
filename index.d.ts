@@ -63,7 +63,7 @@ export namespace createStoreon {
   export type EventHandler<
     State, Events, Event extends keyof (Events & StoreonEvents<State, Events>)
   > = (
-    state: State extends object ? Readonly<State> : State,
+    state: Readonly<State>,
     data: (Events & StoreonEvents<State, Events>)[Event]
   ) => Partial<State> | Promise<void> | null | void
 
