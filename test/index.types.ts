@@ -1,5 +1,5 @@
-import { createStoreon, StoreonModule, StoreonStore } from '..'
-import { storeonDevtools, storeonLogger } from '../devtools'
+import { createStoreon, StoreonModule, StoreonStore } from '../index.js'
+import { storeonDevtools, storeonLogger } from '../devtools/index.js'
 
 interface State {
   a: number
@@ -12,7 +12,7 @@ const init: StoreonModule<State> = store => {
 }
 
 // Duck-typed reducer
-function setUp(store: StoreonStore<State>): void {
+function setUp (store: StoreonStore<State>): void {
   store.on('inc', state => ({ a: state.a + 1 }))
 }
 
@@ -22,7 +22,7 @@ const store = createStoreon<State>([
   setUp,
   storeonLogger,
   storeonDevtools,
-  storeonDevtools(),
+  storeonDevtools()
 ])
 
 // String event dispatch
@@ -37,8 +37,8 @@ store.dispatch(sym, 2)
 store.on('comment:post', async (_, data: string) => {
   store.dispatch('comment:posting')
   try {
-    const response = await fetch('https://github.com', { body: data })
-    const result = await response.json()
+    let response = await fetch('https://github.com', { body: data })
+    let result = await response.json()
     store.dispatch('comment:posted', result)
   } catch (e) {
     store.dispatch('comment:error', e)
@@ -47,3 +47,9 @@ store.on('comment:post', async (_, data: string) => {
 
 const state = store.get()
 state.a
+
+// Allows undefined on state type
+let storeA: StoreonStore
+const storeB: StoreonStore<{} | undefined> = {} as any
+storeA = storeB
+storeA.get()

@@ -3,5 +3,6 @@ yarn.lock
 
 test/
 coverage/
+tsconfig.json
 
 logo.svg

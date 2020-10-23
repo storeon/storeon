@@ -1,5 +1,10 @@
-import { createStoreon, StoreonModule, StoreonStore, StoreonEvents } from '..'
-import { storeonDevtools, storeonLogger } from '../devtools'
+import {
+  createStoreon,
+  StoreonModule,
+  StoreonStore,
+  StoreonEvents
+} from '../index.js'
+import { storeonDevtools, storeonLogger } from '../devtools/index.js'
 
 const sym = Symbol('sym')
 
@@ -9,12 +14,16 @@ interface State {
 }
 
 interface EventsDataTypesMap {
-  'inc': undefined;
-  [sym]: number;
-  'comment:posting': undefined;
-  'comment:posted': object;
-  'comment:error': object;
-  'comment:post': string;
+  'inc': undefined
+  [sym]: number
+  'comment:posting': undefined
+  'comment:posted': object
+  'comment:error': object
+  'comment:post': string
+  '@dispatch': createStoreon.DispatchEvent<
+    State,
+    EventsDataTypesMap & createStoreon.DispatchableEvents<State>
+  >
 }
 
 // Reducer typed as a Module
@@ -23,7 +32,7 @@ const init: StoreonModule<State, StoreonEvents<State>> = store => {
 }
 
 // Duck-typed reducer
-function setUp(store: StoreonStore<State, EventsDataTypesMap>): void {
+function setUp (store: StoreonStore<State, EventsDataTypesMap>): void {
   store.on('inc', state => ({ a: state.a + 1 }))
 }
 
@@ -33,7 +42,7 @@ const store = createStoreon<State, EventsDataTypesMap>([
   setUp,
   storeonLogger,
   storeonDevtools,
-  storeonDevtools(),
+  storeonDevtools()
 ])
 
 // String event dispatch
@@ -47,8 +56,8 @@ store.dispatch(sym, 2)
 store.on('comment:post', async (_, data: string) => {
   store.dispatch('comment:posting')
   try {
-    const response = await fetch('https://github.com', { body: data })
-    const result: object = await response.json()
+    let response = await fetch('https://github.com', { body: data })
+    let result: object = await response.json()
     store.dispatch('comment:posted', result)
   } catch (e) {
     store.dispatch('comment:error', e)
@@ -57,12 +66,12 @@ store.on('comment:post', async (_, data: string) => {
 
 store.on('@dispatch', (_, [event, data]) => {
   if (event === 'comment:post') {
-    console.log(data);
+    console.log(data)
   }
 })
 
-const module: StoreonModule<{a: number}, {'inc': undefined}> = store => {
-  store.on('@dispatch', (_,[event, data]) => {
+const module: StoreonModule<{ a: number }, { inc: undefined }> = s => {
+  s.on('@dispatch', (_, [event, data]) => {
     if (event === '@changed') {
       console.log(data)
     }
@@ -73,15 +82,15 @@ module(store)
 const state = store.get()
 state.a
 
-let s1: StoreonStore<{}, {a: string}>  = {} as any
-let s2: StoreonStore<{}, {a: string, b: number}>  = {} as any
+let s1: StoreonStore<{}, { a: string }> = {} as any
+let s2: StoreonStore<{}, { a: string; b: number }> = {} as any
 
 // Store with wider events declaration should be assignable to Store with narrower events declaration
 s1 = s2
 s1.dispatch('a', '1')
 
-let s3: StoreonStore<{a: string}>  = {} as any
-let s4: StoreonStore<{a: string, b: number}>  = {} as any
+let s3: StoreonStore<{ a: string }> = {} as any
+let s4: StoreonStore<{ a: string; b: number }> = {} as any
 
 // Store with wider state declaration should be assignable to Store with narrower store declaration
 s3 = s4

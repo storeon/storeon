@@ -1,6 +1,18 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.7
+* Fixed `package.types` path.
+
+## 3.0.6
+* Added `package.types`.
+
+## 3.0.5
+* Fixed `@change` handling if handler already removed (by @majo44).
+
+## 3.0.4
+* Fixed types for `undefined` state (by @majo44).
+
 ## 3.0.3
 * Fix TypeScript definitions (by @irustm).
 

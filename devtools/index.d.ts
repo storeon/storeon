@@ -1,4 +1,4 @@
-import { StoreonStore, StoreonModule } from '..'
+import { StoreonStore, StoreonModule } from '../index.js'
 
 export const storeonDevtools: {
   <State>(store: StoreonStore<State>): void
