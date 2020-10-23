@@ -1156,10 +1156,10 @@
   dependencies:
     globals "^13.2.0"
 
-"@logux/sharec-config@^0.7.8":
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.7.8.tgz#e0cffb001ced25b93b4aeb26b6a79bc949e75be7"
-  integrity sha512-eWHr5bafRBueJlXd2kunThQgcQvAfg7z9/zcT4DEEULu1G9b05VcfV6RVR7LvPE9B+75qFzmfjuQvEDmt7w+VQ==
+"@logux/sharec-config@^0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.7.9.tgz#a7c4fb42d8318b13c061a743fbb369a31338fea8"
+  integrity sha512-JSHPhal4RkfS/Q/l/BBl1dl4wSDDvBMhqBSDpRMw+QgDfEQXcjqxRZEMZOaiXf0TM4HWNN+12iDViy30CwFJpw==
   dependencies:
     sharec "^2.5.1"
 
@@ -6614,15 +6614,15 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
   integrity sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
 
-nanodelay@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/nanodelay/-/nanodelay-1.0.5.tgz#a1ea452c9837c4fba2fd4b042c091ea093d048eb"
-  integrity sha512-Zks73xTq/KqH3HPk/oPjADT6m5+X3K70FN7Z99xN2bUKS9S/4c/pCQKAljEkQA8ZMNxFRMls9VlK3kGlJwJ0zA==
+nanodelay@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/nanodelay/-/nanodelay-1.0.6.tgz#912b206e1ddffaf19144062fc32c2c402d454729"
+  integrity sha512-UXxoLdFU5m9IOWZfPTbz/rsCgmfQDTYxJkPJblJVts5YlJaf5Ys1ldPrEd3SAuoxzmFGPfc9EEcEECNzFXYtrQ==
 
 nanoid@^3.1.10, nanoid@^3.1.12:
-  version "3.1.13"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.13.tgz#7f4f0729ab8a824291deb72b0d10cf357bc7563c"
-  integrity sha512-oYL7jWZUdScASxYOrcwE8EvISFGzO3/1g+t56vCyR0s2nrpmBcOc7hTAFJaVf6HMyEPJrnNelnjRnMN6KZnCPA==
+  version "3.1.15"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.15.tgz#28e7c4ce56aff2d0c2d37814c7aef9d6c5b3e6f3"
+  integrity sha512-n8rXUZ8UU3lV6+43atPrSizqzh25n1/f00Wx1sCiE7R1sSHytZLTTiQl8DjC4IDLOnEZDlgJhy0yO4VsIpMxow==
 
 nanomatch@^1.2.13, nanomatch@^1.2.9:
   version "1.2.13"

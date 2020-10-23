@@ -2,7 +2,7 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 3.0.6
-* Add `package.types`.
+* Added `package.types`.
 
 ## 3.0.5
 * Fixed `@change` handling if handler already removed (by @majo44).
