@@ -1156,10 +1156,10 @@
   dependencies:
     globals "^13.2.0"
 
-"@logux/sharec-config@^0.7.7":
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.7.7.tgz#69e80e25bf4d35f67e30100e94c55a266a8104de"
-  integrity sha512-6LczjvuFVkLYlIEKmAtGSsCYvTWWdrfw0VcsTI81OoZJY1SVhfoko9RVjsiYwidxkirX67JWoIB9cBJm+ikMAw==
+"@logux/sharec-config@^0.7.8":
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.7.8.tgz#e0cffb001ced25b93b4aeb26b6a79bc949e75be7"
+  integrity sha512-eWHr5bafRBueJlXd2kunThQgcQvAfg7z9/zcT4DEEULu1G9b05VcfV6RVR7LvPE9B+75qFzmfjuQvEDmt7w+VQ==
   dependencies:
     sharec "^2.5.1"
 
@@ -6614,10 +6614,10 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
   integrity sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
 
-nanodelay@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/nanodelay/-/nanodelay-1.0.4.tgz#5bffa953fcc90c1671abbedef91513b27cf1a25f"
-  integrity sha512-e39xn+nzPBptPyewqcUhOpo+27fEGyDMZeHZS00XKNk0TSpNdK7cHzd/jWqGylGYu9p7H7X4Zicvlwgchi4m7w==
+nanodelay@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/nanodelay/-/nanodelay-1.0.5.tgz#a1ea452c9837c4fba2fd4b042c091ea093d048eb"
+  integrity sha512-Zks73xTq/KqH3HPk/oPjADT6m5+X3K70FN7Z99xN2bUKS9S/4c/pCQKAljEkQA8ZMNxFRMls9VlK3kGlJwJ0zA==
 
 nanoid@^3.1.10, nanoid@^3.1.12:
   version "3.1.13"
