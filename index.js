@@ -12,7 +12,7 @@ let createStoreon = modules => {
         let changes = {}
         let changed
         events[event].forEach(i => {
-          let diff = events[event].includes(i) && i(state, data)
+          let diff = events[event].includes(i) && i(state, data, store)
           if (diff && typeof diff.then !== 'function') {
             changed = state = { ...state, ...diff }
             changes = { ...changes, ...diff }

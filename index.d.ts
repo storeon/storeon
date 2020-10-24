@@ -68,7 +68,8 @@ export namespace createStoreon {
     Event extends keyof (Events & StoreonEvents<State, Events>)
   > = (
     state: State extends object ? Readonly<State> : State,
-    data: (Events & StoreonEvents<State, Events>)[Event]
+    data: (Events & StoreonEvents<State, Events>)[Event],
+    store: StoreonStore
   ) => Partial<State> | Promise<void> | null | void
 
   export interface DispatchableEvents<State> {
