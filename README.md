@@ -179,8 +179,8 @@ with changed keys.
 store.on('@init', () => ({ users:  { } }))
 ```
 
-An event listener accepts the current state as the first argument
-and optional event object as the second.
+An event listener accepts the current state as the first argument,
+optional event object as the second and optional store object as the third.
 
 So event listeners can be reducers as well. As in Redux’s reducers,
 your should change immutable.
