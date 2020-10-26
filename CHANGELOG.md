@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.1
+* Fixed store in third argument types.
+
 ## 3.1
 * Added third argument to event handler with store (by @octav47).
 
