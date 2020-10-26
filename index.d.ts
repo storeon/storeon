@@ -69,7 +69,7 @@ export namespace createStoreon {
   > = (
     state: State extends object ? Readonly<State> : State,
     data: (Events & StoreonEvents<State, Events>)[Event],
-    store: StoreonStore
+    store: StoreonStore<State, Events>
   ) => Partial<State> | Promise<void> | null | void
 
   export interface DispatchableEvents<State> {
