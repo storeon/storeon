@@ -9,16 +9,15 @@ let createStoreon = modules => {
       }
 
       if (events[event]) {
-        let changes = {}
-        let changed
+        let changes
         events[event].forEach(i => {
           let diff = events[event].includes(i) && i(state, data, store)
           if (diff && typeof diff.then !== 'function') {
-            changed = state = { ...state, ...diff }
+            state = { ...state, ...diff }
             changes = { ...changes, ...diff }
           }
         })
-        if (changed) store.dispatch('@changed', changes)
+        if (changes) store.dispatch('@changed', changes)
       }
     },
 
