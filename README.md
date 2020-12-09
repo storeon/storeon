@@ -6,7 +6,7 @@
 A tiny event-based Redux-like state manager for **React**, **Preact**,
 **[Angular]**, **[Vue]** and **[Svelte]**.
 
-* **Small.** 185 bytes (minified and gzipped). No dependencies.
+* **Small.** 180 bytes (minified and gzipped). No dependencies.
   It uses [Size Limit] to control size.
 * **Fast.** It tracks what parts of state were changed and re-renders
   only components based on the changes.
