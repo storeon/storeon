@@ -20,8 +20,8 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "peerDependencies": {
-    "preact": "^10.0.0",
-    "react": "^16.8.0"
+    "preact": ">=10.0.0",
+    "react": ">=16.8.0"
   },
   "peerDependenciesMeta": {
     "preact": {
