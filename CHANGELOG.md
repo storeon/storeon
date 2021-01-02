@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.4
+* Fix ES modules support regression.
+
 ## 3.1.3
 * Fix peer dependency warning for React 17.
 
