@@ -1,6 +1,6 @@
 {
   "name": "storeon",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "description": "Tiny (180 bytes) event-based Redux-like state manager for React and Preact",
   "keywords": [
     "state",

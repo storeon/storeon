@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.3
+* Fix peer dependency warning for React 17.
+
 ## 3.1.2
 * Reduced size (by Alexander Zaytsev).
 
