@@ -22,7 +22,9 @@ const store = createStoreon<State, EventsDataTypesMap>([init])
 function Button () {
   let { dispatch, a } = useStoreon<State, EventsDataTypesMap>('a')
 
-  let onClick = React.useCallback(() => dispatch('inc'), [])
+  let onClick = React.useCallback(() => {
+    dispatch('inc')
+  }, [])
 
   return <button onClick={onClick}>Count: {a}</button>
 }
