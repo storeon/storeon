@@ -4,10 +4,10 @@ let { createStoreon } = require('../')
 
 it('applies modules', () => {
   let store1, store2
-  function module1 (arg) {
+  function module1(arg) {
     store1 = arg
   }
-  function module2 (arg) {
+  function module2(arg) {
     store2 = arg
   }
 
@@ -22,7 +22,7 @@ it('allows false as module', () => {
 
 it('fires @init', () => {
   let fired = 0
-  function module1 (store) {
+  function module1(store) {
     store.on('@init', () => {
       fired += 1
     })
@@ -38,7 +38,7 @@ it('has empty object in state by default', () => {
 })
 
 it('changes state in event listener', () => {
-  function init (store) {
+  function init(store) {
     store.on('@init', () => ({ a: 0, c: 0 }))
   }
   let store = createStoreon([init])
@@ -87,14 +87,14 @@ it('unbinds event listeners', () => {
 
 it('notifies about new event', () => {
   let events = []
-  function testCallback (state, data) {
+  function testCallback(state, data) {
     if (data === 1) {
       return { test: 1 }
     } else {
       return undefined
     }
   }
-  function module (a) {
+  function module(a) {
     a.on('@dispatch', (state, e) => {
       events.push(e)
     })
@@ -116,7 +116,7 @@ it('notifies about new event', () => {
 it('allows Symbol as a store key', () => {
   let a = Symbol('a')
 
-  function init (store) {
+  function init(store) {
     store.on('@init', () => ({ [a]: 0 }))
   }
   let store = createStoreon([init])
@@ -129,7 +129,7 @@ it('allows Symbol as a store key', () => {
 it('allows Symbol as an event name', () => {
   let inc = Symbol('inc')
 
-  function init (store) {
+  function init(store) {
     store.on('@init', () => ({ a: 0 }))
   }
   let store = createStoreon([init])

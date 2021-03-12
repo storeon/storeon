@@ -97,6 +97,6 @@ export namespace createStoreon {
  *                and subscribe to all system events.
  * @returns The new store.
  */
-export function createStoreon<State, Events = any> (
+export function createStoreon<State, Events = any>(
   modules: (StoreonModule<State, Events> | false)[]
 ): StoreonStore<State, Events>

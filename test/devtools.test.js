@@ -1,41 +1,41 @@
 let { storeonDevtools } = require('../devtools')
 let { createStoreon } = require('../')
 
-function mockDevTools () {
+function mockDevTools() {
   let store
   let subscribeCb
   let actions = []
 
   let reduxTool = {
-    init (state) {
+    init(state) {
       store = state
     },
-    send (action, state) {
+    send(action, state) {
       actions.push(action)
       store = state
     },
-    subscribe (cb) {
+    subscribe(cb) {
       subscribeCb = cb
     }
   }
 
   return {
-    connect () {
+    connect() {
       return reduxTool
     },
-    store () {
+    store() {
       return store
     },
-    devToolDispatch (message) {
+    devToolDispatch(message) {
       if (subscribeCb) subscribeCb(message)
     },
-    actions () {
+    actions() {
       return actions
     }
   }
 }
 
-function counter (store) {
+function counter(store) {
   store.on('@init', () => ({ count: 0, started: true }))
   store.on('inc', (state, value) => ({ count: state.count + value }))
 }

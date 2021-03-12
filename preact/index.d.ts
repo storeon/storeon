@@ -30,7 +30,7 @@ declare namespace useStoreon {
  * @param keys List of state’s field.
  * @returns The selected part of the state.
  */
-export function useStoreon<State extends object = {}, EventsMap = any> (
+export function useStoreon<State extends object = {}, EventsMap = any>(
   ...keys: (keyof State)[]
 ): useStoreon.StoreData<State, EventsMap>
 
@@ -71,7 +71,7 @@ export function useStoreon<State extends object = {}, EventsMap = any> (
  * @param context User's owned React context
  * @returns useStoreon hooks that attatched to User's React context
  */
-export function customContext<State extends object = {}, EventsMap = any> (
+export function customContext<State extends object = {}, EventsMap = any>(
   context: Context<StoreonStore<State, EventsMap>>
 ): (...keys: (keyof State)[]) => useStoreon.StoreData<State, EventsMap>
 
@@ -110,6 +110,6 @@ declare namespace connectStoreon {
  *
  * @returns Wrapped component.
  */
-export function connectStoreon<ComponentProps> (
+export function connectStoreon<ComponentProps>(
   ...keysOrComponent: (PropertyKey | ComponentType<ComponentProps>)[]
 ): connectStoreon.ConnectedComponent<ComponentProps>

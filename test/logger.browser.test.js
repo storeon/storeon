@@ -4,7 +4,7 @@ let { createStoreon } = require('../')
 let STYLE = 'color: #070'
 let BOLD = 'color: #070; font-weight: 700'
 
-function counter (store) {
+function counter(store) {
   store.on('@init', () => ({ count: 0, started: true }))
   store.on('inc', (state, value = 1) => ({ count: state.count + value }))
 }

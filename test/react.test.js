@@ -15,19 +15,19 @@ jest.mock('react', () => {
   return React
 })
 
-function increment (store) {
+function increment(store) {
   store.on('@init', () => ({ count: 0, started: true }))
   store.on('inc', state => ({ count: state.count + 1 }))
 }
 
-function init (store, body) {
+function init(store, body) {
   return renderer.create(h(StoreContext.Provider, { value: store }, body))
 }
 
 it('connects component to store', () => {
-  function Button ({ dispatch }) {
+  function Button({ dispatch }) {
     return h('button', {
-      onClick () {
+      onClick() {
         dispatch('inc')
       }
     })
@@ -49,13 +49,13 @@ it('connects component to store', () => {
 })
 
 it('renders only on changes', () => {
-  function other (store) {
+  function other(store) {
     store.on('@init', () => ({ other: 0 }))
     store.on('other', state => ({ other: state.other + 1 }))
   }
 
   let renders = 0
-  function Tracker () {
+  function Tracker() {
     renders += 1
     return renders
   }
@@ -78,11 +78,11 @@ it('renders only on changes', () => {
 it('allows using Symbol as a store key', () => {
   let sym = Symbol('sym')
 
-  function symbol (store) {
+  function symbol(store) {
     store.on('@init', () => ({ [sym]: 0 }))
     store.on('sym', state => ({ [sym]: state[sym] + 1 }))
   }
-  function Button () {
+  function Button() {
     let hooks = useStoreon(sym)
     return hooks[sym]
   }
@@ -98,11 +98,11 @@ it('allows using Symbol as a store key', () => {
 })
 
 it('throws if there is no StoreProvider', () => {
-  function Button () {
+  function Button() {
     let hooks = useStoreon('')
     return hooks
   }
-  function render () {
+  function render() {
     renderer.create(h(Button))
   }
   expect(render).toThrow(Error)
@@ -113,7 +113,7 @@ it('allows to change context', () => {
   let CustomContext = createContext(store)
   let useCustomStoreon = customContext(CustomContext)
 
-  function Button () {
+  function Button() {
     let { count } = useCustomStoreon('count')
     return h('button', {}, count)
   }

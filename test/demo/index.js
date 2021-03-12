@@ -5,17 +5,17 @@ let { storeonDevtools, storeonLogger } = require('../../devtools')
 let { StoreContext, useStoreon } = require('../../react')
 let { createStoreon } = require('../../')
 
-function counter1 (store) {
+function counter1(store) {
   store.on('@init', () => ({ count1: 0 }))
   store.on('inc1', state => ({ count1: state.count1 + 1 }))
 }
 
-function counter2 (store) {
+function counter2(store) {
   store.on('@init', () => ({ count2: 0 }))
   store.on('inc2', state => ({ count2: state.count2 + 1 }))
 }
 
-function tracker (text) {
+function tracker(text) {
   let hue = Math.round(255 * Math.random())
   return h(
     'div',
@@ -27,7 +27,7 @@ function tracker (text) {
   )
 }
 
-function Button1 () {
+function Button1() {
   let { dispatch } = useStoreon()
   let onClick = useCallback(() => {
     dispatch('inc1')
@@ -35,7 +35,7 @@ function Button1 () {
   return h('button', { onClick }, 'Increase counter 1')
 }
 
-function Button2 () {
+function Button2() {
   let { dispatch } = useStoreon()
   let onClick = useCallback(() => {
     dispatch('inc2')
@@ -43,22 +43,22 @@ function Button2 () {
   return h('button', { onClick }, 'Increase counter 2')
 }
 
-function Tracker1 () {
+function Tracker1() {
   let { count1 } = useStoreon('count1')
   return tracker(`Counter 1: ${count1}`)
 }
 
-function Tracker2 () {
+function Tracker2() {
   let { count2 } = useStoreon('count2')
   return tracker(`Counter 2: ${count2}`)
 }
 
-function Tracker12 () {
+function Tracker12() {
   let { count1, count2 } = useStoreon('count1', 'count2')
   return tracker(`Counter 1: ${count1}, counter 2: ${count2}`)
 }
 
-function App () {
+function App() {
   return h(
     Fragment,
     null,

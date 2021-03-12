@@ -32,7 +32,7 @@ const init: StoreonModule<State, StoreonEvents<State>> = store => {
 }
 
 // Duck-typed reducer
-function setUp (store: StoreonStore<State, EventsDataTypesMap>): void {
+function setUp(store: StoreonStore<State, EventsDataTypesMap>): void {
   store.on('inc', state => ({ a: state.a + 1 }))
 }
 

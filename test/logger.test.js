@@ -3,7 +3,7 @@ Object.defineProperty(global, 'navigator', { undefined })
 let { storeonLogger } = require('../devtools')
 let { createStoreon } = require('../')
 
-function counter (store) {
+function counter(store) {
   store.on('@init', () => ({ count: 0, started: true }))
   store.on('inc', (state, value = 1) => ({ count: state.count + value }))
 }

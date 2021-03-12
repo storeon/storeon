@@ -3,7 +3,7 @@ let createStoreon = modules => {
   let state = {}
 
   let store = {
-    dispatch (event, data) {
+    dispatch(event, data) {
       if (event !== '@dispatch') {
         store.dispatch('@dispatch', [event, data, events[event]])
       }
@@ -23,7 +23,7 @@ let createStoreon = modules => {
 
     get: () => state,
 
-    on (event, cb) {
+    on(event, cb) {
       ;(events[event] || (events[event] = [])).push(cb)
 
       return () => {

@@ -12,14 +12,14 @@ interface EventsDataTypesMap extends StoreonEvents<State> {
   inc: undefined
 }
 
-function init (store: StoreonStore<State>) {
+function init(store: StoreonStore<State>): void {
   store.on('@init', () => ({ a: 0 }))
   store.on('inc', (state, data: number) => ({ a: state.a + data }))
 }
 
 const store = createStoreon<State, EventsDataTypesMap>([init])
 
-function Button () {
+const Button: React.FC = () => {
   let { dispatch, a } = useStoreon<State, EventsDataTypesMap>('a')
 
   let onClick = React.useCallback(() => {
