@@ -107,7 +107,7 @@ it('shows warning when devtool is not installed', () => {
   createStoreon([counter, storeonDevtools()])
   expect(console.warn).toHaveBeenCalledWith(
     'Please install Redux devtools extension\n' +
-      'http://extension.remotedev.io/'
+      'https://github.com/reduxjs/redux-devtools'
   )
 })
 
