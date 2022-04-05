@@ -60,7 +60,9 @@ store.on('comment:post', async (_, data: string) => {
     let result: object = await response.json()
     store.dispatch('comment:posted', result)
   } catch (e) {
-    store.dispatch('comment:error', e)
+    if (typeof e === 'object' && e instanceof Error) {
+      store.dispatch('comment:error', e)
+    }
   }
 })
 

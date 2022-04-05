@@ -10,8 +10,8 @@
     "hook"
   ],
   "scripts": {
-    "clean": "rimraf api.md coverage/ test/demo/.cache test/demo/dist",
-    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller *.md",
+    "clean": "rm -Rf coverage/ test/demo/.cache test/demo/dist",
+    "test": "jest --coverage && eslint . && check-dts && rm -R coverage/ && size-limit",
     "start": "parcel serve --cache-dir test/demo/.cache -d test/demo/dist test/demo/index.html --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -32,40 +32,31 @@
     }
   },
   "devDependencies": {
-    "@logux/eslint-config": "^45.2.0",
-    "@logux/sharec-config": "^0.9.0",
-    "@size-limit/dual-publish": "^4.10.1",
-    "@size-limit/preset-small-lib": "^4.10.1",
+    "@logux/eslint-config": "^46.1.1",
+    "@size-limit/dual-publish": "^7.0.8",
+    "@size-limit/preset-small-lib": "^7.0.8",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
-    "@typescript-eslint/eslint-plugin": "^4.17.0",
-    "@typescript-eslint/parser": "^4.17.0",
-    "check-dts": "^0.4.4",
-    "dual-publish": "^1.0.4",
-    "eslint": "^7.21.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "check-dts": "^0.6.6",
+    "dual-publish": "^3.0.1",
+    "eslint": "^8.11.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-let": "^1.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^28.0.2",
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^6.0.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.4",
     "nanodelay": "^1.0.7",
-    "parcel-bundler": "^1.12.4",
+    "parcel-bundler": "^1.12.5",
     "preact": "^10.5.12",
-    "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-test-renderer": "^17.0.1",
-    "rimraf": "^3.0.2",
-    "simple-git-hooks": "^2.0.2",
-    "size-limit": "^4.10.1",
+    "size-limit": "^7.0.8",
     "ts-jest": "^26.5.3",
-    "typescript": "^4.2.3",
-    "yaspeller": "^7.0.0"
+    "typescript": "^4.2.3"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -76,7 +67,7 @@
       "import": {
         "index.js": "{ createStoreon }"
       },
-      "limit": "180 B"
+      "limit": "217 B"
     },
     {
       "name": "core + react hook",
@@ -84,7 +75,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ useStoreon }"
       },
-      "limit": "352 B",
+      "limit": "392 B",
       "ignore": [
         "react"
       ]
@@ -95,7 +86,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ connectStoreon }"
       },
-      "limit": "399 B",
+      "limit": "445 B",
       "ignore": [
         "react"
       ]
@@ -105,7 +96,7 @@
       "import": {
         "devtools/index.js": "{ storeonDevtools, storeonLogger }"
       },
-      "limit": "517 B"
+      "limit": "595 B"
     }
   ],
   "eslintConfig": {
@@ -118,6 +109,13 @@
       "no-redeclare": "off",
       "no-console": "off",
       "func-style": "off"
+    },
+    "globals": {
+      "it": "readonly",
+      "expect": "readonly",
+      "jest": "readonly",
+      "beforeEach": "readonly",
+      "afterEach": "readonly"
     }
   },
   "eslintIgnore": [
@@ -127,25 +125,16 @@
   ],
   "jest": {
     "preset": "ts-jest",
+    "globals": {
+      "ts-jest": {
+        "isolatedModules": true
+      }
+    },
     "coverageThreshold": {
       "global": {
         "statements": 100
       }
     }
-  },
-  "lint-staged": {
-    "*.md": "yaspeller",
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -154,43 +143,5 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
-  },
-  "yaspeller": {
-    "lang": "en",
-    "ignoreCapitalization": true,
-    "ignoreText": [
-      " \\(by [^)]+\\)."
-    ],
-    "dictionary": [
-      "Versioning",
-      "createStore",
-      "moduleInitializer",
-      "Preact",
-      "Redux",
-      "gzipped",
-      "Storeon A",
-      "Redux’s",
-      "async",
-      "StoreContext",
-      "Storeon",
-      "DevTools",
-      "useStoreon",
-      "polyfill",
-      "UIBook",
-      "UI",
-      "WebSocket",
-      "supports ES",
-      "bundlers",
-      "CDN",
-      "ES",
-      "ES2016",
-      "pnpm",
-      "Vue",
-      "js"
-    ]
-  },
-  "sharec": {
-    "config": "@logux/sharec-config",
-    "version": "0.9.0"
   }
 }

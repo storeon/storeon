@@ -32,7 +32,7 @@ store.dispatch('inc', 1)
 // THROWS Argument of type '(state: State, data: number) => { a: number; }' is not assignable to parameter of type 'EventHandler<State, EventsDataTypesMap, unique symbol>'.
 store.on(sym, (state: State, data: number) => ({ a: state.a + data }))
 
-// THROWS Argument of type '2' is not assignable to parameter of type 'string | undefined'.
+// THROWS 'number' is not assignable to parameter of type 'string'
 store.dispatch(sym, 2)
 
 // THROWS Argument of type 'true' is not assignable to parameter of type 'undefined'.
