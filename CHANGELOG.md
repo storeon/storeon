@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.5
+* Fixed link to Redux DevTools.
+* Fixed `package.exports`.
+
 ## 3.1.4
 * Fix ES modules support regression.
 
