@@ -40,12 +40,17 @@ function counter(store) {
   store.on('inc', (state, value) => ({ count: state.count + value }))
 }
 
+const env = process.env
+
 beforeEach(() => {
   global.__REDUX_DEVTOOLS_EXTENSION__ = mockDevTools()
+  process.env = { ...env }
 })
 
 afterEach(() => {
   global.__REDUX_DEVTOOLS_EXTENSION__ = undefined
+  process.env = env
+  jest.resetAllMocks()
 })
 
 it('initiates with data from store', () => {
@@ -103,12 +108,31 @@ it('is able to change store value', () => {
 it('shows warning when devtool is not installed', () => {
   jest.spyOn(console, 'warn').mockImplementation(() => true)
   global.__REDUX_DEVTOOLS_EXTENSION__ = null
+  process.env.NODE_ENV = 'development'
 
   createStoreon([counter, storeonDevtools()])
   expect(console.warn).toHaveBeenCalledWith(
     'Please install Redux devtools extension\n' +
       'https://github.com/reduxjs/redux-devtools'
   )
+})
+
+it('does not show warning when devtool is not installed in test environment', () => {
+  jest.spyOn(console, 'warn').mockImplementation(() => true)
+  global.__REDUX_DEVTOOLS_EXTENSION__ = null
+  process.env.NODE_ENV = 'test'
+
+  createStoreon([counter, storeonDevtools()])
+  expect(console.warn).not.toHaveBeenCalled()
+})
+
+it('does not show warning when devtool is not installed in production environment', () => {
+  jest.spyOn(console, 'warn').mockImplementation(() => true)
+  global.__REDUX_DEVTOOLS_EXTENSION__ = null
+  process.env.NODE_ENV = 'production'
+
+  createStoreon([counter, storeonDevtools()])
+  expect(console.warn).not.toHaveBeenCalled()
 })
 
 it('throws on unknown not system events', () => {

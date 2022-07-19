@@ -49,7 +49,10 @@ let storeonDevtools = options => {
         window.top.__REDUX_DEVTOOLS_EXTENSION__
     } catch {}
     if (!extension) {
-      if (process.env.NODE_ENV !== 'production') {
+      if (
+        process.env.NODE_ENV !== 'production' &&
+        process.env.NODE_ENV !== 'test'
+      ) {
         console.warn(
           'Please install Redux devtools extension\n' +
             'https://github.com/reduxjs/redux-devtools'
