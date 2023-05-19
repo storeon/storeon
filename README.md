@@ -1,5 +1,7 @@
 # Storeon
 
+*Deprecated in favor of [Nano Stores](https://github.com/nanostores/nanostores).*
+
 <img src="https://storeon.github.io/storeon/logo.svg" align="right"
      alt="Storeon logo by Anton Lovchikov" width="160" height="142">
 
