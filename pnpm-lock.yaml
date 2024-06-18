@@ -6733,7 +6733,7 @@ packages:
       source-map: 0.6.1
       terser: 3.17.0
       v8-compile-cache: 2.3.0
-      ws: 5.2.3
+      ws: 5.2.4
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -8962,8 +8962,8 @@ packages:
       typedarray-to-buffer: 3.1.5
     dev: true
 
-  /ws@5.2.3:
-    resolution: {integrity: sha512-jZArVERrMsKUatIdnLzqvcfydI85dvd/Fp1u/VOpfdDWQ4c9qWXe+VIeAbQ5FrDwciAkr+lzofXLz3Kuf26AOA==}
+  /ws@5.2.4:
+    resolution: {integrity: sha512-fFCejsuC8f9kOSu9FYaOw8CdO68O3h5v0lg4p74o8JqWpwTf9tniOD+nOB78aWoVSS6WptVUmDrp/KPsMVBWFQ==}
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
