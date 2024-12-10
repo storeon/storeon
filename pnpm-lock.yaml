@@ -3204,8 +3204,8 @@ packages:
   nanodelay@1.0.8:
     resolution: {integrity: sha512-mfVn7t26m4mVoUuWdUevZccq0saIh5T4Lu3cAzbZ6j03yc4sIDwM3Dof0LS70YwflPZtGJ92BGhNYV862wXRvg==}
 
-  nanoid@3.3.2:
-    resolution: {integrity: sha512-CuHBogktKwpm5g2sRgv83jEy2ijFzBwMoYA60orPDR7ynsLijJDqgsi4RDGj3OJpy3Ieb+LYwiRmIOGyytgITA==}
+  nanoid@3.3.8:
+    resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -5609,11 +5609,7 @@ snapshots:
       jest-runner: 26.6.3
       jest-runtime: 26.6.3
     transitivePeerDependencies:
-      - bufferutil
-      - canvas
       - supports-color
-      - ts-node
-      - utf-8-validate
 
   '@jest/transform@26.6.2':
     dependencies:
@@ -5741,7 +5737,7 @@ snapshots:
   '@size-limit/esbuild@7.0.8(size-limit@7.0.8)':
     dependencies:
       esbuild: 0.14.31
-      nanoid: 3.3.2
+      nanoid: 3.3.8
       size-limit: 7.0.8
 
   '@size-limit/file@7.0.8(size-limit@7.0.8)':
@@ -8519,7 +8515,7 @@ snapshots:
 
   nanodelay@1.0.8: {}
 
-  nanoid@3.3.2: {}
+  nanoid@3.3.8: {}
 
   nanomatch@1.2.13:
     dependencies:
