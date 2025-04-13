@@ -11,7 +11,7 @@ let createStoreon = modules => {
       if (events[event]) {
         let changes
         events[event].forEach(i => {
-          let diff = events[event].includes(i) && i(state, data, store)
+          let diff = events[event].has(i) && i(state, data, store)
           if (diff && typeof diff.then !== 'function') {
             state = { ...state, ...diff }
             changes = { ...changes, ...diff }
@@ -24,10 +24,10 @@ let createStoreon = modules => {
     get: () => state,
 
     on(event, cb) {
-      ;(events[event] || (events[event] = [])).push(cb)
+      ;(events[event] || (events[event] = new Set())).add(cb)
 
       return () => {
-        events[event] = events[event].filter(i => i !== cb)
+        events[event].delete(cb)
       }
     }
   }

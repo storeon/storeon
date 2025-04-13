@@ -67,7 +67,7 @@
       "import": {
         "index.js": "{ createStoreon }"
       },
-      "limit": "217 B"
+      "limit": "215 B"
     },
     {
       "name": "core + react hook",
@@ -75,7 +75,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ useStoreon }"
       },
-      "limit": "392 B",
+      "limit": "386 B",
       "ignore": [
         "react"
       ]
@@ -86,7 +86,7 @@
         "index.js": "{ createStoreon }",
         "react/index.js": "{ connectStoreon }"
       },
-      "limit": "445 B",
+      "limit": "439 B",
       "ignore": [
         "react"
       ]
@@ -96,7 +96,7 @@
       "import": {
         "devtools/index.js": "{ storeonDevtools, storeonLogger }"
       },
-      "limit": "595 B"
+      "limit": "598 B"
     }
   ],
   "eslintConfig": {

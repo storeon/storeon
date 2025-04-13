@@ -107,9 +107,9 @@ it('notifies about new event', () => {
 
   expect(events).toEqual([
     ['@init', undefined, undefined],
-    ['test', 1, [testCallback]],
+    ['test', 1, new Set([testCallback])],
     ['@changed', { test: 1 }, undefined],
-    ['test', 2, [testCallback]]
+    ['test', 2, new Set([testCallback])]
   ])
 })
 
